@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                background-color:pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <button id="btn">BTN</button>
+        <script>
+            /**
+             * ECMAScript（JS的前身）
+             *
+             * ES5
+             *
+             * 2015版本之后是以年份开始
+             * ES2015 -- ES6
+             * 基本不兼容IE678
+             *
+             * Babel是一个JavaScript编译器
+             * 使用ES6开发，使用Babel打包，转换成ES5代码
+             * ES6定义变量
+             *      let      可以更改
+             *      const    常量，不可更改
+             *      function
+             *      class
+             * ES5定义变量
+             *      var
+             *      function
+             *
+             *变量命名规则：
+             *      严格区分大小写；
+             *      只能包含 **字母 数字 _ $** 四大类，且不能以数字开头；
+             *      不能使用 关键词/保留词/已有的API；
+             *      见名知意。
+             */
+
+            //定义变量
+            let goudan = document.getElementById('wrap');
+
+            goudan.onclick = function(){
+                goudan.innerHTML = 'wrap被点击了';
+            }
+
+            document.getElementById('btn').onclick = function(){
+                goudan.innerHTML = 'btn被点击了';
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p></p>
+            <p></p>
+            <div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+        <p></p>
+        
+        <script>
+            // let oWrap = document.getElementById("wrap");    //因为ID唯一，所以只属于document，全文查找
+            // let aP = oWrap.getElementsByTagName("p");       //节点内部寻找标签
+            let aaP = document.getElementById("wrap")
+                .getElementsByTagName("div")[0].getElementsByTagName("p");  //一层层查找，但性能仍然较querySelector好
+            console.log(aaP);
+
+            let aP = document.querySelectorAll("#wrap div p"); //All多个，参数类似css选择器
+            console.log(aP);
+            aP[2].innerHTML = 789;
+
+            /*最低支持IE8*/
+            let sP = document.querySelector("#wrap div p");  //只能选到第一个
+            sP.innerHTML = "jjj";
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            // a = document.getElementsByTagName("body")[0];
+            a = document.getElementsByTagName("body");
+            console.log(a);
+
+            console.log(document.body);
+            console.log(document.head);
+            console.dir(document.title);
+            //获取HTML
+            console.log(document.documentElement);   //打印的是引用，尽管在后面改变，但引用也会跟上
+
+            document.title = "阿飞";
+            document.documentElement.id = '狗蛋';
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

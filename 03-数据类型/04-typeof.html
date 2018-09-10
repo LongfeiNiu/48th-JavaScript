@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            let a = 10;
+            let b = typeof a;         //b是string类型
+            let c;                    //undefined
+            let d = null;             //typeof在检测null类型时返回object类型，其本质是null类型
+            let e = Symbol(123);      //返回Symbol类型
+            let f = document;         //object
+            let g = function(){       //typeof在检测function数据会返回"function",其本质是object
+            };
+            console.log(typeof(b));
+            console.log(typeof c);
+            console.log(typeof d);
+            console.log(typeof e);
+            console.log(typeof f);
+            console.log(typeof g);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

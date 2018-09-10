@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //当用 . 去取某一个对象的时候，我们基本上都可以用 [ ] 的方式来代替
+            let x ={
+                0 : 889,
+                name : '王师傅',
+                age : 18
+            };
+            let age = "name";
+            console.log(x.name);       // .直接加属性，是不能跟变量的
+            console.log(x['age']);
+            console.log(x[age]);       // []内不加引号的是变量
+            console.log(x[0]);         //数字类型的属性名只能用[]选
+
+            console['log']("用[]代替了.使用log");
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        
+        <script>
+            // let x = {
+            //     goudan : function(){},
+            //     name : '狗蛋',
+            //     age : 20
+            // };
+            // x.goudan();
+
+            let a = document.getElementById("wrap");   //a就是节点对象
+
+            let b = document.getElementsByClassName("box");  //ClassName不唯一，所以Elements有s
+            console.log(b);  //类（似）数组
+            console.log(b.length);
+            console.log(b[0]);
+            b[1].innerHTML = '阿飞';
+
+            let a = document.getElementsByTagName("div");   //根据标签获取节点对象
+
+            document.getElementsByName('name');  //应用在input标签
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
