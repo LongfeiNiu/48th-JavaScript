@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                    运算符优先级
+                    . [] ()
+                    ++ -- - ~ ! delete new typeof void
+                    * / %
+                    + -
+                    < <= > >=
+                    == != === !==
+                    &&
+                    ||
+                    三目
+                    =
+                    ，
+
+
+             */
+
+            // let a = 8 || 9 && 0;
+            // console.log(a);       //返回8
+
+            let a = 10;
+            let b = 5;
+
+            //浏览器会惰性运算，||的左边已经确定，右边不会计算
+            // a = 8 || 5 && (b=6);
+            a = 0 || 5 && (b=6);         //返回 a = 6, b = 6
+            console.log(a);         //8
+            console.log(b);         //5  ，b的赋值没有计算
+
+
+            console.log( 6 || (b=6) && 10         || 11);  //返回6
+            console.log(b);              //b仍为赋值
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

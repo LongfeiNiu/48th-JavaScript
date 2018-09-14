@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap.box{
+                height:150px;
+                background-color:pink;
+                border:5px solid #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap" class="goudan" style="width:150px;"></div>
+        
+        <script>
+            let oWrap = document.getElementById("wrap");
+
+            oWrap.className += " box";     //操作className代替复杂的css样式设置
+
+            //因为style是对象，所以可以 . 操作样式
+            // oWrap.style.width = "100px";
+            // oWrap.style.height = "100px";
+            // oWrap.style.backgroundColor = "pink";
+            // oWrap.style.border = "5px solid #999";
+            oWrap.style.float = "left";    //以前有兼容问题，写在css样式表内没这个问题
+            /*
+            oWrap.style.cssFloat = "left";
+            oWrap.style.styleFloat = "left";
+             */
+
+            //console.log(oWrap.style.cssText);   //行内样式都在cssText内，可以直接修改这个设置样式
+
+            //oWrap.style.cssText += "height:150px;background-color:pink;border:5px solid #999";
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

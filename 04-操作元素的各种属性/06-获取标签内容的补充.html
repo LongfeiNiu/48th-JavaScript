@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"><i>阿飞飞</i> 小浪浪 海文文 银时时 朱雀雀</div>
+
+        <input id="inp" type="text">
+        <button id="btn">按钮</button>
+        <script>
+            /*
+            .innerHTML
+            .innerText    火狐低版本    .textContent
+            .value
+             */
+            // let oWrap = document.getElementById("wrap");
+            //
+            // console.log(oWrap.innerHTML);  //获取HTML
+            // console.log(oWrap.innerText);  //只获取文本
+            //
+            // oWrap.innerHTML = "<b>朱雀雀真...</b>";
+            //oWrap.innerText = "<b>猪八戒...</b>";
+            document.getElementById("btn").onclick = function(){
+                alert(document.getElementById("inp").value);
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

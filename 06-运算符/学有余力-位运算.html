@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                二进制
+                位运算时会将数值转换为32位整型来进行运算，
+                所以位运算遇到小数时，直接处理掉小数部分当成整数来运算。
+             */
+
+            // let a = 15;
+            // 00000000 00000000 00000000 00001111
+
+            // -15的二进制
+            // 11111111 11111111 11111111 11110000   取反码
+            // 11111111 11111111 11111111 11110001   反码+1
+
+            /**
+             * 位运算操作符：按位非`~` 、按位与`&`、按位或`|`、
+             * 按位异或`^`、左移`<<`、无符号右移`>>>`、有符号右移`>>`
+             */
+
+            //按位取反
+            let a = 7;           // 0111
+            console.log(~a);     // 1000   （-1  取反）   （0111  1000）
+
+            //按位与
+            console.log(10 & 8); // 1010 & 1000 = 1000 => 8
+
+            //按位或
+
+            //左移
+            a << 2;    //a * 2^2;
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

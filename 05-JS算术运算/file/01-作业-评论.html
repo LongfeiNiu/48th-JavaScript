@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:400px;
+                margin:50px auto;
+            }
+            #input{
+                width:100%;
+                height:200px;
+            }
+            #tArea{
+                width:394px;
+                height:180px;
+                /*resize:none;*/
+                font-size:20px;
+            }
+            #list{
+                margin-top:20px;
+            }
+            #list li{
+                margin:5px 0;
+                text-indent:2em;
+                line-height:25px;
+                border-bottom:1px dotted #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="input">
+                <textarea id="tArea"></textarea>
+                <button id="btn">提交</button>
+            </div>
+            <ul id="list">
+                <!--先设计后隐藏-->
+                <!--<li>艾萨拉</li>-->
+                <!--<li>2323</li>-->
+            </ul>
+        </div>
+        
+        <script>
+            /*
+            *  先把HTML布局样式做好
+            *  JS实现效果
+            */
+            /*
+            (同一个作用域下)let 的变量名不能相同
+             */
+            let oArea = document.getElementById("tArea"),
+                oBtn = document.getElementById("btn"),
+                oList = document.getElementById("list");
+
+
+            //给btn加点击事件
+            oBtn.onclick = function(){
+                let val = oArea.value;
+                if(val.length != 0) {
+                    oList.innerHTML += '<li>' + val + '</li>';  //第一次+=也会重写HTML
+                    oArea.value = '';
+                }
+            }
+            // oBtn.onclick = function () {
+            //      oList.innerHTML += '<li>'+oArea.value+'</li>';
+            // }
+
+
+            
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+            隐式类型转换:
+                - * / %都会变成数字再进行运算
+
+                出现非法运算（字符串非数字字符串进行计算）时，会出现NaN(not a number)
+
+             */
+            let a = '50p';
+            let b = "40";
+
+            //alert(a * b);     //  返回10，
+            console.log(a - b);
+            console.log(a * b);
+            console.log(a / 20);
+            console.log(a % 20);
+
+            console.log(typeof(NaN));    //NaN是number类型，但不是一个数字
+
+            // console.log(NaN + 10);    返回NaN
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

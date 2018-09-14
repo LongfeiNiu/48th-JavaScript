@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p id="goudan">9999</p>
+        </div>
+        
+        <script>
+            let a = 20;
+
+            a += 5;     // a = a + 5;
+
+            console.log(a);
+
+            let oWrap = document.getElementById("wrap");
+            let oP = document.getElementById("goudan");
+
+            oWrap.innerHTML += "<a href='https://www.baidu.com' target='_blank'>baidu</a>";   //此时oP已经获取不到p标签了，内容被重新赋值了
+
+            oP.innerHTML = "456";       //p被重写，oP获取错误，无法操作
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

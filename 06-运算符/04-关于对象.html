@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+            基础数据类型  （栈内存）   只比较值与类型
+                number string boolean undefined null symbol
+
+            引用数据类型  （堆内存）   比较地址
+                object
+             */
+
+            /* a 和 b 是不同的对象，有自己的地址  */
+            let a = [10];
+            let b = [10];
+
+            console.log(a == b);       //false
+            console.log(a === b);      //false
+
+            console.log(a[0] === b[0]);  //true
+
+            //console.log(false == [0]);   //这样不科学的，建议 ===
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
