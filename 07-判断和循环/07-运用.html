@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                cursor:pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>tttttt</p>
+            <p>pppppp</p>
+            <p>gggggg</p>
+        </div>
+        
+        <script>
+            let aP = document.querySelectorAll("#wrap p");
+
+            for(let i = 0; i < aP.length; i++){
+                aP[i].onclick = function(){
+                    console.log(aP[i].innerHTML);
+                }
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            let a = true;
+
+            function b() {
+                console.log(123);
+            }
+
+            // if (a) {
+            //     b();
+            // }
+
+            a && b();         //遇到假停止，b()会运行
+
+
+
+            //先与再或，勉强可以代替三目运算
+            let x = 5;
+            let y = 6;
+            //console.log(a<b ? 2 : 3);
+            console.log(a<b && 2 || 3);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

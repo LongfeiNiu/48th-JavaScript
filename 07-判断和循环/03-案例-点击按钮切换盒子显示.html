@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <button id="btn">控制隐藏</button>
+        
+        <script>
+            let oWrap = document.getElementById("wrap"),
+                oBtn = document.getElementById("btn");
+
+            // 直接判断
+            // oBtn.onclick = function () {
+            //     if(oWrap.style.display === "none"){
+            //         oWrap.style.display = "block";
+            //     }else{
+            //         oWrap.style.display = "none";
+            //     }
+            // }
+
+            //添加变量再判断
+            // let onOff = true;
+            // oBtn.onclick = function () {
+            //     if(onOff){
+            //         oWrap.style.display = "none";
+            //     }else{
+            //         oWrap.style.display = "block";
+            //     }
+            //     onOff = !onOff;
+            // }
+
+            //三目运算
+            let onOff = true;
+            oBtn.onclick = function () {
+                oWrap.style.display = onOff ? "none" : "block";
+                onOff = !onOff;
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
