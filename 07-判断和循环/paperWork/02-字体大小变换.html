@@ -15,6 +15,8 @@
             #box{
                 width:650px;
                 margin:50px auto;
+                user-select: none;
+                font-size:18px;
             }
 
             #box button{
@@ -27,6 +29,7 @@
             }
             #box p{
                 padding:10px 0;
+                line-height:1.5em;
             }
         </style>
     </head>
@@ -45,29 +48,33 @@
         </div>
         
         <script>
+            let oBox = document.getElementById('box');
             let addBtn = document.getElementById("add");
             let subBtn = document.getElementById("sub");
-            let oP = document.querySelectorAll("#box p");
+            // let oP = document.querySelectorAll("#box p");
             let fSize = 18;
 
 
-            for(let i = 0; i<oP.length; i++){
-               oP[i].style.fontSize = fSize + "px";
-            }
+            // for(let i = 0; i<oP.length; i++){
+            //    oP[i].style.fontSize = fSize + "px";
+            // }
+            oBox.style.fontSize = fSize + "px";
 
             addBtn.onclick = function(){
                     fSize += 2;
                     fSize = fSize>26 ? 26 : fSize;
-                for(let i = 0; i<oP.length; i++){
-                    oP[i].style.fontSize = fSize + "px";
-                }
+                    oBox.style.fontSize = fSize + "px";
+                // for(let i = 0; i<oP.length; i++){
+                //     oP[i].style.fontSize = fSize + "px";
+                // }
             }
             subBtn.onclick = function () {
                     fSize -= 2;
                     fSize = fSize<12 ? 12 : fSize;
-                for(let i = 0; i<oP.length; i++){
-                    oP[i].style.fontSize = fSize + "px";
-                }
+                    oBox.style.fontSize = fSize + "px";
+                // for(let i = 0; i<oP.length; i++){
+                //     oP[i].style.fontSize = fSize + "px";
+                // }
             }
         </script>
     </body>

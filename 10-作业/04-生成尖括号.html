@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                border:1px dotted #666;
+                margin:50px auto 0;
+                user-select: none;
+            }
+            #wrap div{
+                float:left;
+                width:50px;
+                height:50px;
+                background-color:#abcded;
+                font-size:18px;
+                line-height:50px;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--<div>1</div>-->
+        </div>
+        
+        <script>
+            /*
+                 5   3
+                 6  3
+                 7   4
+                 8  4
+                 9   5
+                 10 5
+             */
+
+            let oWrap = document.getElementById("wrap");
+            let HTML = '';
+
+            let num = 11;
+            let mid = 0;
+
+            //计算oWrap的宽高
+            if(num & 1){
+                mid = (num+1)/2;
+            }else{
+                mid = num/2;
+            }
+            oWrap.style.width = num*50 + 'px';
+            oWrap.style.height = mid*50 + 'px';
+
+            for(let i = 0; i < num; i++){
+                let x = i>(mid-1) ? num-i-1 : i;   //箭头朝下
+                let y = i>(mid-1) ? i+1-mid : mid-1-i;  //箭头朝上
+                HTML += `<div style="margin-top:${y*50}px;">${i+1}</div>`;
+            }
+            oWrap.innerHTML = HTML;
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

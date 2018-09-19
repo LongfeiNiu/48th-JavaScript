@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:800px;
+            }
+            #wrap span{
+                display:inline-block;
+                width:60px;
+                height:30px;
+                margin:5px 5px;
+                border:1px solid blue;
+                line-height:30px;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <!--<span>1*1=1</span>-->
+            <!--<span>2*1=2</span>-->
+            <!--<span>2*2=4</span>-->
+        </div>
+        
+        <script>
+            let oWrap = document.getElementById("wrap");
+
+            let sum = '';
+
+            for(let i = 1; i <= 9; i++){
+                let html='';
+                for(let j = 1; j <= i; j++){
+                    html += `<span>${i}*${j}=${i*j}</span>`
+                }
+                html += "<br>";
+                sum += html;
+            }
+            oWrap.innerHTML = sum;
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,6 +18,7 @@
                 height:500px;
                 margin:50px auto;
                 border:1px solid #ccc;
+                user-select: none;          /*不允许选中*/
             }
             #banner ul li{
                 display:none;
@@ -114,6 +115,22 @@
             let normalBtn = document.getElementsByClassName("normalBtn")[0];
             let loopBtn = document.getElementsByClassName("loopBtn")[0];
 
+            //预定义数组
+            let arrTop = [
+                '1/5',
+                '2/5',
+                '3/5',
+                '4/5',
+                '5/5'
+            ];
+            let arrBottom = [
+                "iphone xs",
+                "初秋邂逅",
+                "百事可乐",
+                "全球大家电",
+                "荣耀8X"
+            ];
+
             //设置按钮模式,true为正常
             let btnFlag = true;
            // btnFlag ? normalBtn.style.cssText = " color:#fff; background-color:#f00;" : loopBtn.style.cssText = " color:#fff; background-color:#f00;";
@@ -137,8 +154,7 @@
                 }
             }
 
-            let count = 0;  //点击计数
-            //让图片消失
+            //让图片全部消失
             function dis(){
                 for(let i=0;i<=4;i++){
                     oList[i].style.display = "none";
@@ -172,30 +188,46 @@
                         break;
                 }
             }
+            let count = 0;  //点击计数
+            let length = oList.length - 1;   //图片列表的长度-1
             //只显示一张
             oList[count].style.display = "block";
             //点击事件
             next.onclick = function () {
+                oList[count].style.display = "none";
                 count += 1;
-                if(btnFlag) {
-                    count = count >= 4 ? 4 : count;
-                }else{
-                    count = count > 4 ? 0 : count;
+                //只有超过才判断二次，节省性能
+                if(count > length) {
+                    count = btnFlag ? length : 0;
                 }
-                dis();
+                // if(btnFlag) {
+                //     count = count >= length ? length : count;
+                // }else{
+                //     count = count > length ? 0 : count;
+                // }
+                //dis();
                 oList[count].style.display = "block";
-                desc(count);
+                topDesc.innerHTML = arrTop[count];
+                bottomDesc.innerHTML = arrBottom[count];
+                //desc(count);
             }
             pre.onclick = function () {
+                oList[count].style.display = "none";
                 count -= 1;
-                if(btnFlag) {
-                    count = count <= 0 ? 0 : count;
-                }else {
-                    count = count < 0 ? 4 : count;
+                //小于0才判断两次，
+                if(count < 0){
+                    count = btnFlag ? 0 : length;
                 }
-                dis();
+                // if(btnFlag) {
+                //     count = count <= 0 ? 0 : count;
+                // }else {
+                //     count = count < 0 ? length : count;
+                // }
+                //dis();
                 oList[count].style.display = "block";
-                desc(count);
+                topDesc.innerHTML = arrTop[count];
+                bottomDesc.innerHTML = arrBottom[count];
+                //desc(count);
             }
         </script>
     </body>
