@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //break：switch里面的break只对switch有用，不会影响到外面的for
+
+           /* for(let i=0;i<10;i++){
+                switch (i) {
+                    case 5:
+                        break;   //作用不到for
+                }
+                console.log(i);
+            }*/
+
+           //break只能跳出一个for，要想跳出第二层，定义一个伪变量表示for循环，break aaa；
+           aaa:for(let i=0;i<5;i++){
+               for(let j=0;j<4;j++){
+                   if(i*j ===6){
+                       break aaa;
+                   }
+                   console.log(`i===${i},j===${j}`);
+               }
+           }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
