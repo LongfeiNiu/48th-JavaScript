@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                let a = function () {
+                    alert(1);
+                }
+                a();         //函数加括号，自执行
+            */
+
+
+            /*
+                a(); //可以放在function之前，let、var定义的函数，不允许提前调用
+                function a () {
+                    alert(1);
+                }
+             */
+
+
+            /*  let、var定义的函数，不允许提前调用
+
+                a();
+                var a = function () {
+                    alert(1);
+                }
+             */
+
+            let a = function b() {
+                alert(2);
+                console.log(b);      //在函数里面可以获取b，此时b === a
+                console.log(b === a);
+            }
+            a();
+            //b();  //显示b()未定义,函数外面不能使用b
+
+
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

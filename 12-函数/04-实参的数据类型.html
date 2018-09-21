@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+           /*
+            function a(x) {
+                console.log(x);
+                console.log(arguments[0][0]);
+            }
+
+            a([4,5,6]);
+
+            */
+
+           /*  对象
+           function a() {
+               console.log(arguments[1].x[2]);
+           }
+
+           a([],{x:[4,5,7]});
+           */
+
+           function a(b) {
+               alert(b);           //弹出函数体
+               b();             //执行函数
+           }
+           a(function () {
+               alert(1);
+           })
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

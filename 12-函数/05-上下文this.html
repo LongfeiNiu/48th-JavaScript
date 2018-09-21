@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            console.log(this);     //打印Window  是顶层属性
+
+          //  window.alert(4);
+
+          //  alert(a);       //未定义  报错
+            //  alert(requestAnimationFrame);
+
+            //不存在即报错
+            if(window.requestAnimationFrame){      //直接判断时，如果不支持，直接报错，不能进行判断，此时最好用类属性判断
+                console.log(requestAnimationFrame);
+            }
+
+            /*
+                函数自执行，this指向window
+            */
+
+            function a() {
+                console.log(this === window);
+            }
+            console.log(a === window.a);          //  相等
+            a();
+
+
+            let b = function () {
+                console.log(this);        //this都是指向window
+            }
+            console.log(b === window.b);       //let定义的函数不挂载window内，var定义的函数在window内
+            b();
+
+
+            /*
+                    对象内的this,找 爸爸 所在的对象
+             */
+            let afei = {
+                name:'阿飞',
+                x : function () {
+                    console.log(this);
+                }
+            }
+            afei.x(); //对象方法自执行。this指向对象
+
+            let zhuque = {
+                xx:{
+                    name:"朱雀的xx",
+                    a:function () {
+                        console.log(this === zhuque.xx);
+                    }
+                }
+            }
+            zhuque.xx.a();      // 打印 父级的对象
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

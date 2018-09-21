@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                函数表达式
+             */
+
+            /*   使用fuction直接定义的函数不能直接加括号执行，只能通过名字再加括号执行
+            function a() {
+                alert(3);
+            }
+            a();
+            */
+
+            //let定义的函数表达式，可以直接在后面加括号执行
+            let b=function () {
+                console.log(4);
+            }();
+            console.log(b);    //undefined,此时b不能代表函数，b成为了函数的返回值
+
+            //匿名函数只能传参或赋值，不允许直接出现
+                //[function () {}]   //允许
+
+                // function{}   //不允许
+
+                //匿名函数加括号变成函数表达式，括号可内可外
+                (function () {
+                    console.log(5);
+                })();
+
+                (function () {
+                    console.log(6);
+                }());
+
+                //改变函数的返回值，也是函数表达式
+                    +function(){          //一元运算符 + - 可以变为函数表达式
+                        console.log(7);
+                    }();
+
+                    ~function () {        //位运算非
+                        console.log(8);
+                    }();
+
+                    !function () {          //逻辑运算非
+                        console.log(9);
+                    }();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

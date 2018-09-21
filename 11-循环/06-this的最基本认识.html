@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">123456</div>
+        
+        <script>
+            //事件里面的this  表示触发事件的对象本身
+
+
+            // document.onclick = function () {
+            //     console.log(this === document);             //返回true
+            // }
+
+            let oWrap = document.getElementById("wrap");
+
+            oWrap.onclick = function () {
+                this.style.color = "red";
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
