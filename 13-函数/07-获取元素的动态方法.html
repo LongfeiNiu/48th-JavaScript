@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p class="goudan"></p>
+            <p class="goudan"></p>
+            <p class="goudan"></p>
+        </div>
+        
+        <script>
+            /*
+            let oWrap = document.getElementById("wrap");
+
+            oWrap.id = "g456";
+
+            oWrap.title = "阿飞";
+            */
+
+            /*
+                动态有三个
+                getElementsByClassName()
+                getElementsByTagName()
+                getElementsByName()
+
+                静态有以下,获取后，选择器被改也指向原对象
+                querySelectorAll
+                getElementById
+             */
+            //getElementsByClassName是个动态的
+            let aP = document.getElementsByClassName("goudan");
+
+            let oP = aP[0];      //这种就是静态的，不存在因修改而改变
+
+            oP.className = 'dachui';
+            oP.title = 'ppp';
+
+            aP[0].className = "a2121";        //aP是动态数组，
+            aP[0].innerHTML = "112121212";    //因为aP[0]的类名被改变了,动态获取的内容更新了，现在少了一个
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

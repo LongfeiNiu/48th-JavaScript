@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*  返回对象
+            function a() {
+                return [1,2,3];
+            }
+
+            console.log(a()[2]);
+            */
+
+            /*
+            function a() {
+                return{
+                    5:[4,7,9],
+                    goudan:123
+                };
+            }
+            console.log(a()[5][2]);     //数字属性不能用 .
+            console.log(a().goudan);
+            */
+
+            function a() {
+               let b = function () {
+                   alert(5);
+               };
+               return b;
+            }
+            a();      //啥都没有
+            console.log(a());    //打印一个函数体
+            a()();
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

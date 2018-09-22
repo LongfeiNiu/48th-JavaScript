@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                同名函数会被覆盖
+
+             */
+           /*
+
+            function a() {
+               alert(2);
+            }
+
+            function a(x,y) {      //覆盖上一个定义
+                alert(x+y);
+            }
+            a();
+            */
+
+
+            /*
+                       大括号就是一个作用域
+                       let关键词定义的变量，起作用的范围就是包含这个变量最近的{}
+             */
+
+            let x = 10;
+            let y;
+            if(true){
+                let y = 120;
+                console.log(x);
+            }
+            console.log(y);     //报错
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

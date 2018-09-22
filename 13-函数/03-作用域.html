@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                    var比较奇怪，不推荐
+             */
+            if(false){
+                var a = 10;
+            }
+
+            console.log(a);   //ES5的var在if内，不管真假，都有内存，此处返回undefined，因为没执行，所以不是10
+
+
+            //函数的话，var只能作用到最近的函数，外面读不到，像let
+            function b() {
+                var x = 100;
+            }
+            console.log(x);    //此处报错
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
