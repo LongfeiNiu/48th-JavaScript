@@ -150,45 +150,86 @@
         
         <script>
 
-            let aDan = document.querySelectorAll("table .danjia"),
-                aSub = document.querySelectorAll("table .number .sub"),
-                aAdd = document.querySelectorAll("table .number .add"),
-                aNum = document.querySelectorAll("table .number .num"),
-                aPrice = document.querySelectorAll("table .price"),
-                oSelected = document.querySelector(".footer .selected span"),
-                oSum = document.querySelector(".footer .sum span"),
-                len = aDan.length;
+            (function () {
+                //模拟一个存储各种关键值的数据，而不是每次通过innerHTML获取
+                let data = [
+                    {
+                        id:0,
+                        danjia:8,
+                        num:0
+                    },
+                    {
+                        id:1,
+                        danjia:10,
+                        num:0
+                    },
+                    {
+                        id:2,
+                        danjia:12.5,
+                        num:0
+                    },
+                    {
+                        id:3,
+                        danjia:23,
+                        num:0
+                    }
+                ]
 
-            //减法封装
-            function subtraction(i) {
-                //console.log(typeof aNum[i].innerHTML);     string
-                if(aNum[i].innerHTML == 0) return;  //不能小于0
-                aNum[i].innerHTML--;
-                aPrice[i].innerHTML -= aDan[i].innerHTML;
-                oSelected.innerHTML --;
-                oSum.innerHTML -= aDan[i].innerHTML;
-            }
-            
-            //加法封装
-            function addition(i) {
-                aNum[i].innerHTML++;
-                aPrice[i].innerHTML = aNum[i].innerHTML*aDan[i].innerHTML;
-                oSelected.innerHTML++;
-                oSum.innerHTML = oSum.innerHTML*1 + aDan[i].innerHTML*1;
-            }
-            
-            
-            //循环添加点击事件
-            for(let i=0;i<len;i++){
-                //减法计算
-                aSub[i].onclick = function () {
-                    subtraction(i);
+
+                let aDan = document.querySelectorAll("table .danjia"),
+                    aSub = document.querySelectorAll("table .number .sub"),
+                    aAdd = document.querySelectorAll("table .number .add"),
+                    aNum = document.querySelectorAll("table .number .num"),
+                    aPrice = document.querySelectorAll("table .price"),
+                    oSelected = document.querySelector(".footer .selected span"),
+                    oSum = document.querySelector(".footer .sum span"),
+                    len = aDan.length;
+
+                //显示代码
+                function change(i) {
+                    //数量更新
+                    aNum[i].innerHTML=data[i].num;
+                    //总价更新
+                    aPrice[i].innerHTML = data[i].num*data[i].danjia;
+
+                    //oSelected.innerHTML --;
+                    oSelected.innerHTML = (function () {
+                        let sum=0;
+                        for(let i=0;i<len;i++){
+                            sum += data[i].num;
+                        }
+                        return sum;
+                    })();
+
+                    oSum.innerHTML =(function () {
+                        let sum=0;
+                        for(let i=0;i<len;i++){
+                            sum += data[i].num*data[i].danjia;
+                        }
+                        return sum;
+                    })();
                 }
-                //加法计算
-                aAdd[i].onclick = function () {
-                    addition(i);
+
+
+
+                //循环添加点击事件
+                for(let i=0;i<len;i++){
+                    //减法计算
+                    aSub[i].onclick = function () {
+                        //点击计算
+                        if(data[i].num == 0) return;  //不能小于0
+                        //数量变化
+                        data[i].num--;
+                        change(i);
+                    }
+                    //加法计算
+                    aAdd[i].onclick = function () {
+                        //点击计算
+                        data[i].num ++;
+                        change(i);
+                    }
                 }
-            }
+            })();
 
         </script>
     </body>

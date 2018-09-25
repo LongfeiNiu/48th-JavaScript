@@ -114,37 +114,60 @@
                 index = 0,
                 len=aImgLi.length;
 
+            //各个模块变化的函数
+            function change(x) {
+                aTabLi[index].className = '';
+                aImgLi[index].className = '';
+                index = x;
+                aTabLi[index].className = 'active';
+                aImgLi[index].className = 'show';
+            }
+
+            //单独点击事件
             for(let i=0;i<len;i++){
-
                 aTabLi[i].onclick = function () {
-                    if(i !== index){
-                        aTabLi[index].className = '';
-                        aImgLi[index].className = '';
-
-                        aTabLi[i].className = 'active';
-                        aImgLi[i].className = 'show';
-
-                        index = i;
-                    }
+                    if(i === index){return;}
+                    change(i);
+                    /*
+                    aTabLi[index].className = '';
+                    aImgLi[index].className = '';
+                    index = i;
+                    aTabLi[index].className = 'active';
+                    aImgLi[index].className = 'show';
+                    */
                 }
             }
 
+            //循环点击事件    <
             aWrapSpan[0].onclick = function () {
+                let x = index;     //不能直接改变index，函数需要用到index
+                x--;
+                x = x<0?len-1:x;
+                change(x);
+                /*
                 aTabLi[index].className = '';
                 aImgLi[index].className = '';
                 --index;
                 index = index<0 ? len-1 : index;
                 aTabLi[index].className = 'active';
                 aImgLi[index].className = 'show';
+                */
             }
 
+            //循环点击事件    >
             aWrapSpan[1].onclick = function () {
+                let x = index;
+                x++;
+                x = x>len-1?0:x;
+                change(x);
+                /*
                 aTabLi[index].className = '';
                 aImgLi[index].className = '';
                 ++index;
                 index = index>len-1 ? 0 : index;
                 aTabLi[index].className = 'active';
                 aImgLi[index].className = 'show';
+                */
             }
 
         </script>
