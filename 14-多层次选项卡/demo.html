@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:430px;
+                height:205px;
+                margin:50px auto 0;
+            }
+            #wrap .left{
+                float:left;
+                width:100px;
+                height:125px;
+            }
+            #wrap .left ul li{
+                width:100px;
+                height:40px;
+                margin-bottom: 2px;
+                background-color:#000;
+                color:#fff;
+                font-size:14px;
+                line-height:40px;
+                text-align:center;
+                cursor:pointer;
+            }
+            #wrap .left ul li.on{
+                background-color: #f60;
+            }
+            #wrap .content{
+                position: relative;
+                float:right;
+                width:326px;
+                height:204px;
+            }
+            #wrap .content .right{
+                position: absolute;
+                display:none;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+            }
+            #wrap .content .right.on{
+                display: block;
+            }
+            #wrap .content .right ul.pic{
+                position: relative;
+                width:100%;
+                height:100%;
+            }
+            #wrap .content .right ul.tab{
+                position: absolute;
+                left:10px;
+                bottom:5px;
+                width:180px;
+                height:30px;
+            }
+            #wrap .content .right ul.pic li{
+                position: absolute;
+                display: none;
+            }
+            #wrap .content .right ul.pic li.on{
+                display:block;
+            }
+            #wrap .content .right ul.tab li{
+                float:left;
+                width:30px;
+                height:30px;
+                margin-right:5px;
+                background-color: #000;
+                color:#fff;
+                line-height:30px;
+                text-align:center;
+                cursor:pointer;
+            }
+            #wrap .content .right ul.tab li.on{
+                background-color: #f60;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="left">
+                <ul>
+                    <li class="on">豪车</li>
+                    <li>美味</li>
+                    <li>美女风景</li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="right on">
+                    <ul class="pic">
+                        <li class="on"><img src="img/1.jpg" alt=""></li>
+                        <li><img src="img/2.jpg" alt=""></li>
+                        <li><img src="img/3.jpg" alt=""></li>
+                        <li><img src="img/4.jpg" alt=""></li>
+                    </ul>
+                    <ul class="tab">
+                        <li class="on">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul class="pic">
+                        <li class="on"><img src="img/m1.jpg" alt=""></li>
+                        <li><img src="img/m2.jpg" alt=""></li>
+                        <li><img src="img/m3.jpg" alt=""></li>
+                        <li><img src="img/m4.jpg" alt=""></li>
+                        <li><img src="img/m5.jpg" alt=""></li>
+                    </ul>
+                    <ul class="tab">
+                        <li class="on">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul class="pic">
+                        <li class="on"><img src="img/s1.jpg" alt=""></li>
+                        <li><img src="img/s2.jpg" alt=""></li>
+                        <li><img src="img/s3.jpg" alt=""></li>
+                        <li><img src="img/s4.jpg" alt=""></li>
+                        <li><img src="img/s5.jpg" alt=""></li>
+                    </ul>
+                    <ul class="tab">
+                        <li class="on">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            let aLeftLi = document.querySelectorAll("#wrap .left ul li"),
+                aRight = document.querySelectorAll("#wrap .content .right"),
+                aRightPic = document.querySelectorAll("#wrap .content .right .pic"),
+                aRightTab = document.querySelectorAll("#wrap .content .right .tab"),
+                index=0
+            ;
+            //左边选项卡封装
+            function leftTab(i) {
+                aLeftLi[i].onmouseenter = function () {
+                    if(i === index)return;
+                    aLeftLi[index].className='';
+                    aRight[index].className='right';
+                    index = i;
+                    aLeftLi[index].className='on';
+                    aRight[index].className='right on';
+                }
+            }
+            //右边选项卡封装
+            function rightTab(i) {
+                let aPicLi = aRightPic[i].querySelectorAll("li"),
+                    aTabLi = aRightTab[i].querySelectorAll("li"),
+                    index1=0;
+                for(let j=0,len1=aPicLi.length;j<len1;j++){
+                    aTabLi[j].onmouseenter = function () {
+                        if(j === index1)return;
+                        aTabLi[index1].className='';
+                        aPicLi[index1].className='';
+                        index1=j;
+                        aTabLi[index1].className='on';
+                        aPicLi[index1].className='on';
+                    }
+                }
+            }
+
+            //循环添加事件
+            for(let i=0,len=aLeftLi.length;i<len;i++){
+                //左边选项卡
+                leftTab(i);
+                //右边选项卡
+                rightTab(i);
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
