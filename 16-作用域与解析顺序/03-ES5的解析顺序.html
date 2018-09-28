@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                var、function解析顺序
+
+                第一步：定义
+                    找出当前作用域里面所有的var和function定义的变量名，不赋值，赋值是执行
+                    此时function定义的函数，是个完整的函数，所以函数定义可以在函数执行的前后任意位置
+
+                第二步：执行
+                    从上到下执行
+
+             */
+
+            alert(x);     //返回不是报错，是undefined，变量已有，但未赋值
+            var x=10;
+            //let x=10;     //报错
+            /*
+                1.定义
+                    var x;
+                2.执行
+                    alert(x);   //undefined
+                    x=10;
+             */
+
+
+            alert(b);
+            function b() {
+
+            }
+            /*
+                1.定义
+                    function b(){}
+                2.执行
+                    alert(b);
+             */
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

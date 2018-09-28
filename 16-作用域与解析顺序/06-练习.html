@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            alert(a);
+            var a = 10;
+            alert(a);
+            function a(){alert(20)}
+            alert(a);
+            var a = 30;
+            alert(a);
+            function a(){alert(40)}
+            alert(a);
+            a();
+
+            /*
+                    1.定义
+                        function a(){alert(40)}
+                    2.执行
+                        alert(a);      //函数块（alert(40)的那个）
+                        a=10;          //a被重新赋值
+                        alert(a);      //弹出10
+                        alert(a);      //10
+                        a=30;
+                        alert(a);      //30
+                        alert(a);      //30
+                        a();            //报错
+             */
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

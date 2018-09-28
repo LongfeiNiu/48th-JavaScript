@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //script标签是最大的作用域，也是全局作用域
+            //如果var、function在全局作用域里面定义变量。相当于给window添加了属性
+            var b = 10;
+            console.log(window.b);   //window的属性
+
+
+            //ES5定义变量的关键词 var   funtion
+            //作用域是往上离变量最近的函数
+            /*
+            function a() {
+                var g = 10;
+                console.log(g);
+            }
+            a();
+            alert(g);  //报错
+            */
+
+
+            //任意作用域里面，如果不加var直接产生了没有定义过的变量，那么这个变量相当于window的属性
+            //但是实际开发不允许这样写
+            function aa() {
+                bb = "bb";
+            }
+            aa();
+            console.log(bb);
+
+            //面试题
+            function f() {
+                var x=y=5;
+                console.log(x);  //x是局部的5
+            }
+            f();
+            console.log(y);  //y未声明，因此算是window的属性，y=5
+            console.log(x);  //因为x是局部变量，外部访问不到，故报错
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

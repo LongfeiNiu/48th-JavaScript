@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            fn();
+            alert(a);
+            var a = 10;
+            alert(a);
+            function fn(){
+                 a = 1;
+            }
+
+            /*
+                    1.定义
+                        var a;
+                        function fn(){...};
+                    2.执行
+                        22：fn() =======>新的作用域
+                                         1.定义
+                                         2.执行
+                                            a=1;(找到父级的a)
+                        23：alert(a);   //1;
+                        24: a=10;
+                        25: alert(a);   //10
+
+             */
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
