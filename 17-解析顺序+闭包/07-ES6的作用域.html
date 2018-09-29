@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                   ES6定义变量
+                        let const function class
+
+                             let 和 const没有预解析，不同于var
+                             先对定义function，进行解析
+             */
+            /*
+            alert(a);  //报错
+            let a = 10;
+            */
+
+            /*
+            let a = 20;
+            function b() {
+                //从上到下读
+                //暂时性死区，只要是在作用域里面let过的变量，那就不允许提前使用
+                alert(a);
+                //let a = 30;  死区了
+                a=30;  //这样可以
+            }
+            b();
+            */
+
+            //var的作用域只认函数
+            /*
+            if(false){
+                var a=10;
+            }
+            console.log(a);
+            */
+
+            //let的作用域是大括号
+            /*
+            if(true){
+                let a=1;
+            }
+            console.log(a);  //无法访问局部作用域
+            */
+
+            //for的小括号()是{}的父级作用域，但var不认这是作用域
+
+            const g = 10;  //不允许重新赋值的常量
+
+            const a = [];  //对象不能被重新赋值
+            a[0] = 10;         //但允许改变其内容
+            console.log(a);
+
+
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

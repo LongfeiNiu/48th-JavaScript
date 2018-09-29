@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+            JS自带变量回收机制，只有全局变量不会被回收，除非网页关闭；
+                    闭包：一个使用了外部函数的参数或者变量的函数(作用域嵌套作用域，ES5只有函数能产生作用域)
+             */
+            function a() {
+                var x=10;
+                function b() {
+                    x++;
+                    alert(x);
+                }
+                return b;
+            }
+            //函数执行每次都会产生新的作用域，
+            var c=a(); //c指向函数体内的函数b，局部变量x只在a()时产生了一次，所以不会回收
+            //alert(c);  c是函数
+            //c()每次执行使用的都是同一个父级作用域下的变量x
+            c();  //11
+            c();  //12
+            c();  //13
+            c();  //14
+
+            //a()每次执行后返回的都是新的作用域，使用的变量x是新的，
+            a()();
+            a()();
+            a()();
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

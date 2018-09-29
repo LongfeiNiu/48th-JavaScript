@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>aaaaaaaaaaa</p>
+            <p>bbbbbbbbbbb</p>
+            <p>cccccccccc</p>
+            <p>dddddddddd</p>
+            <p>eeeeeeeeee</p>
+        </div>
+        
+        <script>
+
+            //闭包的作用之一，闭包避免局部变量被回收，onclick不知道什么时候触发，所以num不会被回收
+            /*
+            (function () {
+                var num=10;
+                document.onclick = function () {
+                    num++;
+                    alert(num);
+                }
+            })();
+
+
+            */
+
+            let oP = document.getElementsByTagName("p");
+
+            //ES6只要是{}就是作用域，{}内的onclick使用了父级的i，所以i没有回收，子作用域可以调用
+            //产生了5次闭包，存了5个i，子作用域之间的i不相干
+            //5个闭包是5个单独的作用域，let i是5个父级作用域
+            /*
+            for(let i=0;i<5;i++){
+                oP[i].onclick = function () {
+                    alert(++i);
+                }
+            }
+            */
+
+            //var不能产生作用域，不是闭包，函数作用域用的是同一个变量i，(扩号内执行的结果是5)i最后是5，所以每次点击都是同一个i
+            /*
+            for(var i=0;i<5;i++){
+                oP[i].onclick = function () {
+                    alert(i);
+                }
+            };
+            */
+
+            //强行给var加闭包,创造一个父级作用域，使得点击事件用上父级作用域的变量，产生5个闭包，存下5个变量
+            /*
+            for(var i=0;i<5;i++){
+
+
+                function a(x){
+
+                    oP[x].onclick = function() {
+                        alert(x);
+                    };
+                }
+                a(i);  //a(i)执行了5次，产生了5次闭包
+            }
+            */
+            //等于自执行
+            /*
+            for(var i=0;i<5;i++){
+                (function a(x){
+
+                    oP[x].onclick = function() {
+                        alert(x);
+                    };
+                })(i);//a(i)执行了5次，产生了5次闭包
+            }
+            */
+            //可以简写自执行
+            for(var i=0;i<5;i++){
+                !function a(x){
+
+                    oP[x].onclick = function() {
+                        alert(x);
+                    };
+                }(i);//a(i)执行了5次，产生了5次闭包
+            }
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
