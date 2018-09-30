@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                bind不能执行
+             */
+            function a(x,y) {
+                console.log(x);
+                console.log(y);
+                console.log(this);
+            }
+
+            //a.bind(document);  这样直接写是没有效果的,只是相当于生成了一个新的函数,将this绑定给document
+
+            function b(x) {
+                x();
+            }
+            b( a.bind(document) );  //bind后生成了有this新指向的函数，bind是定义函数，不能直接执行，需要手动执行
+
+            a.bind(document)(10,20);  //新的函数内的this指向 document
+
+            a.bind(10)(0,1);  //新的函数内this指向number  10
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
