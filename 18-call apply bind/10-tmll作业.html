@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #nav{
+                position:fixed;
+                right:-35px;
+                width:35px;
+                height:100%;
+                background-color:#000;
+                transition: 1s;
+            }
+            #nav.on{
+                animation: navonoff .5s .5s both;
+            }
+            #nav.off{
+                animation: navonoff .5s .5s reverse both;
+            }
+            @keyframes navonoff {
+                from{
+                    right:-35px;
+                }
+                to{
+                    right:0;
+                }
+            }
+            #nav .content{
+                position:fixed;
+                top:0;
+                right:0;
+                bottom:0;
+                width:35px;
+                height:330px;
+                margin:auto;
+                color:white;
+                font-size:12px;
+            }
+            /*div 隐藏 选中 出现*/
+            #nav .content div.list{
+                position: relative;
+                display:none;
+                width:35px;
+                height:35px;
+                margin-bottom:10px;
+                cursor:pointer;
+            }
+            #nav .content div.money{
+                margin-top:125px;
+            }
+            /*选中*/
+            #nav .content div.on{
+                background-color: #ff0036;
+            }
+            /*出现*/
+            #nav .content div.show{
+                display: block;
+            }
+            #nav .content div.list span{
+                position: absolute;
+                display:none;
+                top:0;
+                left:-90px;
+                width:90px;
+                height:35px;
+                background-color:#494949;
+                text-align:center;
+                line-height:35px;
+            }
+            #nav .content div.list span:after{
+                content: "";
+                position:absolute;
+                right:-8px;
+                top:0;
+                bottom:0;
+                display: block;
+                width:0;
+                height:0;
+                margin:auto;
+                border-style:solid;
+                border-width: 8px;
+                border-color: transparent #494949;
+                border-right:none;
+            }
+            #nav .content div.list span.on{
+                display:block;
+                animation: show 0.5s;
+            }
+            @keyframes show {
+                0%{
+                    left:-120px;
+                }
+                100%{
+                    left:-90px;
+                }
+            }
+            /*购物车事件*/
+            #nav .content .shopcar{
+                position:absolute;
+                top:15%;
+                right:0;
+                width: 35px;
+                height: 100px;
+                background-color:#000;
+                background-image: url("img/shopcar.png");
+                background-repeat: no-repeat;
+                background-position: center 15%;
+                text-align: center;
+            }
+            #nav .content .shopcar span{
+                display: inline-block;
+                width:15px;
+                margin:auto;
+                padding:40px 5px 10px 5px;
+                border-top:1px solid rgba(100,100,100,0.7);
+                border-bottom:1px solid rgba(100,100,100,0.7);
+            }
+            #nav .content .shopcar:hover{
+                background-image: url("img/spcar.png");
+                background-color: #ff0036;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="nav">
+            <div class="content">
+                <div class="vip list">
+                    <img src="img/vip.png" alt="vip">
+                    <span>会员权益</span>
+                </div>
+                <div class="shopcar">
+                    <span href="#">购物车</span>
+                </div>
+                <div class="money list">
+                    <img src="img/money.png" alt="money">
+                    <span>我的资产</span>
+                </div>
+                <div class="collect list">
+                    <img src="img/collect.png" alt="collect">
+                    <span>我的收藏</span>
+                </div>
+                <div class="history list">
+                    <img src="img/history.png" alt="history">
+                    <span>我看过的</span>
+                </div>
+                <div class="pay list">
+                    <img src="img/pay.png" alt="pay">
+                    <span>我要充值</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let oNav = document.getElementById("nav"),
+                oContent = document.getElementsByClassName("content")[0],
+                oScar = document.getElementsByClassName("shopcar")[0],
+                aList = document.getElementsByClassName("list"),
+                aSpan = document.querySelectorAll("#nav .content .list span"),
+                len = aList.length;
+
+                /*选中购物车，全部出现*/
+                oNav.onmouseenter = function () {
+                    oNav.classList.remove("off");
+                    oNav.classList.add("on");
+                    for(let i=0;i<len;i++){
+                        aList[i].classList.add("show");
+                    }
+                }
+                /*离开购物车，消失*/
+                oNav.onmouseleave = function () {
+                    oNav.classList.remove("on");
+                    oNav.classList.add("off");
+                    for(let i=0;i<len;i++){
+                        aList[i].classList.remove("show");
+                    }
+                }
+
+                /*添加侧边说明框*/
+                for(let i=0;i<len;i++){
+                    aList[i].onmouseenter = function () {
+                        this.classList.add("on");
+                        aSpan[i].classList.add("on");
+                    }
+
+                    aList[i].onmouseleave = function () {
+                        this.classList.remove("on");
+                        aSpan[i].classList.remove("on");
+                    }
+                }
+
+
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:1080px;
+                height:360px;
+                margin:50px auto;
+            }
+            #wrap .head{
+                width:100%;
+                height:40px;
+                background-color: #f5f5f5;
+            }
+            #wrap .head h3{
+                position: relative;
+                float:left;
+                width:132px;
+                background-color: #000;
+                color:white;
+                font-size:14px;
+                line-height:40px;
+                text-align:center;
+                font-weight: normal;
+            }
+            #wrap .head h3:after{
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:-6px;
+                content: '';
+                display: block;
+                width:0;
+                height:0;
+                margin:auto;
+                border-style: solid;
+                border-width: 6px;
+                border-color:transparent #000;
+                border-right:none;
+            }
+            #wrap .head ul li{
+                position:relative;
+                float:left;
+                margin-left:30px;
+                font-size:14px;
+                line-height:40px;
+            }
+            #wrap .head ul li:hover a{
+                color:#db3a45;
+            }
+            #wrap .head ul li.on i{
+                animation: go .5s forwards;
+            }
+            @keyframes go {
+                0%{
+                    width:0%;
+                }
+                100%{
+                    width:100%;
+                }
+            }
+            #wrap .head ul li a{
+                display: inline-block;
+                width:100%;
+                height:100%;
+                color:black;
+                text-decoration: none;
+            }
+            #wrap .head ul li i{
+                position: absolute;
+                left:0;
+                right:0;
+                bottom: 0;
+                width:0%;
+                height:2px;
+                margin:auto;
+                background-color:#db3a45;
+            }
+            #wrap .content{
+                position: relative;
+                width:100%;
+                height:310px;
+                margin-top:20px;
+            }
+            #wrap .content .box{
+                position: absolute;
+                display: none;
+                left:0;
+                top:0;
+                width:120%;
+                height:310px;
+            }
+            #wrap .content .box.on{
+                display: block;
+            }
+            #wrap .content .box ul li{
+                float:left;
+                width:340px;
+                height:310px;
+                margin-right:30px;
+                font-size:14px;
+            }
+            #wrap .content .box ul li img{
+                cursor: pointer;
+            }
+            #wrap .content .box ul li span{
+                display: block;
+                overflow: hidden;
+                width:340px;
+                height:20px;
+                margin-top:10px;
+                color:#000;
+                line-height:20px;
+                cursor: pointer;
+                transition: color .5s;
+            }
+            #wrap .content .box ul li span:hover{
+                color:#db3a45;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="head">
+                <h3>独家精品策划</h3>
+                <ul>
+                    <li class="on">
+                        <a href="#">全部</a>
+                        <i class="on"></i>
+                    </li>
+                    <li>
+                        <a href="#">剧好看</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a href="#">报尚名来</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a href="#">摩范先生</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a href="#">报料</a>
+                        <i></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="box all on">
+                    <ul>
+                        <li>
+                            <img src="img/m01.jpg" alt="">
+                            <span>”傅恒”许凯穿越回现代，太让人惊喜！</span>
+                        </li>
+                        <li>
+                            <img src="img/b02.jpg" alt="">
+                            <span>为家庭曾淡出娱乐圈，重新出发的黄圣依美得这么高级！</span>
+                        </li>
+                        <li>
+                            <img src="img/bl01.jpg" alt="">
+                            <span>“鬼马精灵”周冬雨做客「报料」！</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box jhk">
+                    <ul>
+                        <li>
+                            <img src="img/j01.jpg" alt="">
+                            <span>金亚中时髦的职场穿搭术《名不虚传》！</span>
+                        </li>
+                        <li>
+                            <img src="img/j02.jpg" alt="">
+                            <span>剧好看Vol.26：《“吃吃”的爱》小S、林志玲教你穿出时髦“少女样”！</span>
+                        </li>
+                        <li>
+                            <img src="img/j03.png" alt="">
+                            <span>剧好看Vol.25：《不期而遇》“长腿御姐”张雨绮的撩人时尚经！</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box bsml">
+                    <ul>
+                        <li>
+                            <img src="img/b01.jpg" alt="">
+                            <span>为家庭曾淡出娱乐圈，重新出发的黄圣依美得这么高级！</span>
+                        </li>
+                        <li>
+                            <img src="img/b02.jpg" alt="">
+                            <span>如莲娉婷香远益清，恬淡轻盈的江一燕就是一首诗！</span>
+                        </li>
+                        <li>
+                            <img src="img/b03.jpg" alt="">
+                            <span>水原希子：个性酷女孩的时尚经！</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box mfxs">
+                    <ul>
+                        <li>
+                            <img src="img/m01.jpg" alt="">
+                            <span>”傅恒”许凯穿越回现代，太让人惊喜！</span>
+                        </li>
+                        <li>
+                            <img src="img/m02.jpg" alt="">
+                            <span>宋威龙：19岁的漫画少年</span>
+                        </li>
+                        <li>
+                            <img src="img/m03.jpg" alt="">
+                            <span>从古装男神到虐惨的反派，好奇袁弘都做了什么？</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box bl">
+                    <ul>
+                        <li>
+                            <img src="img/bl01.jpg" alt="">
+                            <span>“鬼马精灵”周冬雨做客「报料」！</span>
+                        </li>
+                        <li>
+                            <img src="img/bl02.jpg" alt="">
+                            <span>两极分化的双子座代表谭松韵做客「报料」！</span>
+                        </li>
+                        <li>
+                            <img src="img/bl03.jpg" alt="">
+                            <span>没想到李溪芮最想合作的是TF老Boy!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            let aLi = document.querySelectorAll("#wrap .head ul li"),
+                aBox = document.querySelectorAll("#wrap .content .box"),
+                len = aLi.length,
+                index = 0;
+
+            for(let i=0;i<len;i++){
+                aLi[i].onmouseenter = function () {
+                    if (i === index)return;
+                    aLi[index].classList.remove("on");
+                    aBox[index].classList.remove("on");
+                    this.classList.add("on");
+                    index = i;
+                    aBox[index].classList.add("on");
+                }
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

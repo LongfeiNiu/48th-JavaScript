@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:270px;
+                height:400px;
+                margin:50px auto;
+                border:1px solid #ccc;
+                border-radius:20px;
+                font-size:0;
+                user-select: none;
+            }
+            #wrap ul{
+                width:100%;
+                margin:20px 0;
+            }
+            #wrap ul li{
+                width:100%;
+                height:40px;
+                color:white;
+                line-height:40px;
+                text-indent:10px;
+                vertical-align:middle;
+            }
+            #wrap ul li input,#wrap ul li label{
+                margin-left:10px;
+                font-size:12px;
+                vertical-align:middle;
+                cursor:pointer;
+            }
+            #wrap ul li.b{
+                background-color: #333;
+            }
+            #wrap ul li.g{
+                background-color: #666;
+            }
+            #wrap ul li.m{
+                background-color: #999;
+            }
+            #all,#all+label,#versa,#versa+label{
+                font-size:12px;
+                vertical-align:middle;
+            }
+            #all{
+                margin-left:20px;
+            }
+            #versa{
+                margin-left:50px;
+            }
+            #all+label,#versa+label{
+                margin-left:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul>
+                <li><input type="checkbox" id="box1"><label for="box1">项目1</label></li>
+                <li><input type="checkbox" id="box2"><label for="box2">项目2</label></li>
+                <li><input type="checkbox" id="box3"><label for="box3">项目3</label></li>
+                <li><input type="checkbox" id="box4"><label for="box4">项目4</label></li>
+                <li><input type="checkbox" id="box5"><label for="box5">项目5</label></li>
+                <li><input type="checkbox" id="box6"><label for="box6">项目6</label></li>
+                <li><input type="checkbox" id="box7"><label for="box7">项目7</label></li>
+                <li><input type="checkbox" id="box8"><label for="box8">项目8</label></li>
+            </ul>
+            <input type="checkbox" id="all"><label for="all">全选</label>
+            <input type="checkbox" id="versa"><label for="versa">反选</label>
+        </div>
+        
+        <script>
+            let aLi = document.querySelectorAll("#wrap ul li"),
+                aInp = document.querySelectorAll("input"),
+                oAll = document.getElementById("all"),
+                oVersa = document.getElementById("versa"),
+                len = aLi.length,
+                num = 0
+            ;
+            /*li背景上色*/
+            for(let i=0;i<len;i++){
+                if(i%3 === 0){
+                    aLi[i].classList.add('b');
+                }else if(i%3 === 1){
+                    aLi[i].classList.add('g');
+                }else{
+                    aLi[i].classList.add('m');
+                }
+            }
+            /*添加单选事件*/
+            for(let i=0;i<len;i++){
+                aInp[i].onchange = function () {
+                    this.checked ? num++ : num--;
+                    oAll.checked = num === len;
+                }
+            }
+            /*添加全选事件*/
+            oAll.onchange = function () {
+                if(this.checked){
+                    for(let i=0;i<len;i++){
+                        aInp[i].checked = true;
+                    }
+                    num = len;
+                }else{
+                    for(let i=0;i<len;i++){
+                        aInp[i].checked = false;
+                    }
+                    num = 0;
+                }
+            }
+
+            /*添加反选点击事件*/
+            oVersa.onclick = function () {
+                //num = 0;
+                for(let i=0;i<len;i++){
+                    aInp[i].checked = !aInp[i].checked;
+                    //aInp[i].checked ? num++ : null;         //只计算选中的个数，然后判断是否全选
+                }
+                num = len - num;
+                oAll.checked = num === len;
+            }
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
