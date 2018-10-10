@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:1080px;
+                height:320px;
+                margin:50px auto;
+                user-select: none;
+            }
+            #wrap .head{
+                position: relative;
+                width:100%;
+                height:40px;
+                background-color: #f5f5f5;
+                font-size:14px;
+                line-height:40px;
+            }
+            #wrap .head p{
+                position: absolute;
+                left:0;
+                top:0;
+                width:130px;
+                background-color: black;
+                color:white;
+                text-align: center;
+            }
+            #wrap .head p::after{
+                position: absolute;
+                content: '';
+                top:0;
+                bottom:0;
+                right:-6px;
+                width:0;
+                height:0;
+                margin:auto;
+                border-style: solid;
+                border-width:6px;
+                border-right: none;
+                border-color:transparent black;
+            }
+            #wrap .head ul{
+                position: absolute;
+                left:160px;
+            }
+            #wrap .head ul li{
+                position: relative;
+                float: left;
+                margin-right:30px;
+                cursor: pointer;
+            }
+            #wrap .head ul li:hover{
+                color:#db3a45;
+            }
+            #wrap .head ul li::after{
+                position: absolute;
+                content: "";
+                bottom:0;
+                left:0;
+                right:0;
+                width:0%;
+                height:2px;
+                margin:auto;
+                background-color: #db3a45;
+                transition: width .5s;
+            }
+            #wrap .head ul li.active::after{
+                width:100%;
+            }
+            #wrap .content{
+                position: relative;
+                width:100%;
+                height:255px;
+                margin-top:25px;
+            }
+            #wrap .content .firstUl{
+                width:100%;
+                height:100%;
+            }
+            #wrap .content .firstUl>li{
+                position: absolute;
+                display: none;
+                width:100%;
+                height:100%;
+            }
+            #wrap .content .firstUl>li.show{
+                display: block;
+            }
+            #wrap .content .secondUl{
+                width:150%;
+                height:100%;
+            }
+            #wrap .content .secondUl>li{
+                float:left;
+                margin-right:30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="head">
+                <p>独家精品策划</p>
+                <ul class="headlist">
+                    <li class="active">全部</li>
+                    <!--<li>剧好看</li>-->
+                    <!--<li>报尚名来</li>-->
+                    <!--<li>摩范先生</li>-->
+                    <!--<li>报料</li>-->
+                </ul>
+            </div>
+            <div class="content">
+                <ul class="firstUl">
+
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+
+            (function (data) {
+                let oHeadList = document.querySelector("#wrap .head .headlist"),
+                    oFirstUl = document.getElementsByClassName("firstUl")[0],
+                    aSecondUl = document.getElementsByClassName("secondUl"),
+                    len = data.length,
+                    typeArr = ["全部"],
+                    aheadLi;
+
+
+                //遍历数组，生成HTML
+                (function () {
+                    let  html = '';
+                    //根据数组内容，生成head列表项
+                    for(let i=0;i<len;i++){
+                        let type = data[i].type;
+                        if(!typeArr.includes(type)){
+                            oHeadList.innerHTML += `<li>${type}</li>`;
+                            typeArr.push(type);
+                        }
+                    }
+
+                    //根据type类型数量，生成对应数量secondUl
+                    for(let i=0,typeArrLen=typeArr.length;i<typeArrLen;i++){
+                         html += `<li><ul class="secondUl"></ul></li>`;
+                    }
+                    oFirstUl.innerHTML += html;
+
+
+                    //根据数组内容，生成content内容
+                    for(let i=0;i<len;i++){
+                        let {id,src,type} = data[i];
+                        //type = all
+                        if(i<3){
+                            aSecondUl[0].innerHTML += `<li><img src=${src}></li>`;
+                        }
+                        //按照type类型插入相应html
+                        switch (type) {
+                            case typeArr[1]:
+                                aSecondUl[1].innerHTML += `<li><img src=${src}></li>`;
+                                break;
+                            case typeArr[2]:
+                                aSecondUl[2].innerHTML += `<li><img src=${src}></li>`;
+                                break;
+                            case typeArr[3]:
+                                aSecondUl[3].innerHTML += `<li><img src=${src}></li>`;
+                                break;
+                            case typeArr[4]:
+                                aSecondUl[4].innerHTML += `<li><img src=${src}></li>`;
+                                break;
+                        }
+                    }
+                })();
+
+                //事件与动画
+                (function () {
+                    //设置默认first下第一个的li为show
+                    aheadLi = oHeadList.querySelectorAll("li");
+                    let  afirstLi = document.querySelectorAll("#wrap .content .firstUl>li"),
+                         index = 0;
+                    afirstLi[index].classList.add("show");  //默认选中all
+
+                    //循环添加鼠标选中事件
+                    for(let i=0,LiLen=afirstLi.length;i<LiLen;i++){
+                        aheadLi[i].onmouseenter = function () {
+                            if(index === i)return;
+                            aheadLi[index].classList.remove("active");
+                            afirstLi[index].classList.remove("show");
+                            index = i;
+                            this.classList.add("active");
+                            afirstLi[index].classList.add("show");
+                        }
+                    }
+                })();
+
+
+            })(
+                //数据源于数据库
+                [
+                    {
+                        id:0,
+                        src:"img/1.jpg",
+                        type:"剧好看"
+                    },
+                    {
+                        id:1,
+                        src:"img/2.jpg",
+                        type:"报尚名来"
+                    },
+                    {
+                        id:2,
+                        src:"img/3.jpg",
+                        type:"摩范先生"
+                    },
+                    {
+                        id:3,
+                        src:"img/4.jpg",
+                        type:"报料"
+                    },
+                    {
+                        id:4,
+                        src:"img/5.jpg",
+                        type:"报料"
+                    },
+                    {
+                        id:5,
+                        src:"img/6.jpg",
+                        type:"剧好看"
+                    },
+                    {
+                        id:6,
+                        src:"img/7.jpg",
+                        type:"剧好看"
+                    },
+                    {
+                        id:7,
+                        src:"img/8.jpg",
+                        type:"报料"
+                    },
+                    {
+                        id:8,
+                        src:"img/9.jpg",
+                        type:"报尚名来"
+                    },
+                    {
+                        id:9,
+                        src:"img/10.jpg",
+                        type:"摩范先生"
+                    },
+                    {
+                        id:10,
+                        src:"img/11.jpg",
+                        type:"摩范先生"
+                    },
+                    {
+                        id:11,
+                        src:"img/12.jpg",
+                        type:"报尚名来"
+                    },
+                ]
+            );
+
+                /*
+                  sencondUl内容
+                    <li class="show">
+                        <ul class="secondUl">
+                            <li><img src="img/1.jpg"></li>
+                            <li><img src="img/2.jpg"></li>
+                            <li><img src="img/3.jpg"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="secondUl">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="secondUl">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="secondUl">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="secondUl">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                 */
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

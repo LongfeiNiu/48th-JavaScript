@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:300px;
+                margin:50px auto;
+                border:1px solid #ccc;
+                border-radius: 20px;
+                font-size:14px;
+                user-select: none;
+            }
+            #wrap .list{
+                width:100%;
+                margin-top:20px;
+            }
+            #wrap .list li{
+                width:100%;
+                height:50px;
+                background: url("img/ckbg1.jpg") no-repeat 20px center;
+                line-height:50px;
+                text-indent: 6em;
+                color:white;
+                cursor: pointer;
+            }
+            #wrap .list li.click{
+                background-image: url("img/ckbg2.jpg");
+                text-indent: 3em;
+            }
+            #wrap .btn{
+                width:100%;
+                height:50px;
+                line-height:50px;
+            }
+            #wrap .btn .all{
+                margin-left:50px;
+                padding-left:30px;
+                background: url("img/ckbg1.jpg") no-repeat 0 center;
+                cursor:pointer;
+            }
+            #wrap .btn .all.click{
+                background-image: url("img/ckbg2.jpg")
+            }
+            #wrap .btn .reverse{
+                margin-left:50px;
+                font-size:14px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="list">
+                <!--<li></li>-->
+                <!--<li></li>-->
+            </ul>
+            <div class="btn">
+                <span class="all">全选</span>
+                <button class="reverse">反选</button>
+            </div>
+        </div>
+        
+        <script>
+
+            (function (data) {
+
+                let oList = document.querySelector("#wrap .list"),
+                    aLi = document.getElementsByTagName("li"),
+                    oAll = document.getElementsByClassName("all")[0],
+                    oRev = document.getElementsByClassName("reverse")[0],
+                    len = data.length,
+                    num = 0;
+
+                //定义num改变影响all的函数
+                function JudgeNum() {
+                    oAll.classList[num===len?"add":"remove"]("click");
+                }
+
+                //遍历数据，生成HTML结构
+                (function () {
+                    let color = ['#333','#666','#999','#bbb'],
+                        HTML = '',
+                        colorLen = color.length;
+                    for(let i=0;i<len;i++){
+                        HTML += `<li style="background-color: ${color[i%colorLen]}">${data[i].name}</li>`
+                    }
+                    oList.innerHTML = HTML;
+                })();
+
+                //给Li添加点击事件
+                (function () {
+                    for(let i=0;i<len;i++){
+                        aLi[i].onclick = function () {
+                            this.classList.toggle("click");
+                            //判断是否选中
+                            if(this.classList.contains("click")){
+                                num++;
+                            }else{
+                                num--;
+                            }
+                            //判断num改变全选状态
+                            JudgeNum();
+                        }
+                    }
+                })();
+
+                //全选,反选
+                (function () {
+                    //全选
+                    oAll.onclick = function () {
+                        this.classList.toggle("click");
+                        let bool = this.classList.contains("click");
+                        let str = bool?'add':'remove';
+                        for(let i=0;i<len;i++){
+                            aLi[i].classList[str]("click");
+                        }
+                        num = bool?len:0;
+                    }
+                    //反选
+                    oRev.onclick = function () {
+                        for(let i=0;i<len;i++){
+                            aLi[i].classList.toggle("click");
+                        }
+                        num = len-num;
+                        //判断num改变全选状态
+                        JudgeNum();
+                    }
+                })();
+
+            })(
+                //数据来源，数据库
+                [
+                    {
+                        id:0,
+                        name:"朱雀"
+                    },
+                    {
+                        id:1,
+                        name:"心艾"
+                    },
+                    {
+                        id:2,
+                        name:"发发"
+                    },
+                    {
+                        id:3,
+                        name:"七七"
+                    },
+                    {
+                        id:4,
+                        name:"岚岚"
+                    },
+                    {
+                        id:5,
+                        name:"艾米"
+                    },
+                    {
+                        id:6,
+                        name:"丫丫"
+                    },
+                    {
+                        id:7,
+                        name:"风屿"
+                    }
+                ]
+            );
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

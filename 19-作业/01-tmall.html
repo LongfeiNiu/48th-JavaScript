@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+
+            #side .car{
+                position:fixed;
+                right:0;
+                top:0;
+                bottom:36%;
+                z-index: 1;
+                width:35px;
+                height:100px;
+                margin: auto;
+                box-sizing: border-box; /*  弹性盒模型*/
+                background-color: black;
+            }
+            #side .car i{
+                display: block;
+                width:35px;
+                height:30px;
+                margin-top:8px;
+                background-image:url("img/cart1.png");
+            }
+            #side .car span{
+                display: block;
+                width:20px;
+                margin:0 auto;
+                color:white;
+                font-size:12px;
+                text-align:center;
+            }
+            #side .car:hover{
+                background-color: red;
+            }
+            #side .car:hover i{
+                background-image:url("img/cart.png");
+            }
+            #side .main{
+                position: fixed;
+                right:-35px;
+                width:35px;
+                height:100%;
+                background-color: black;
+                transition: right .5s;
+            }
+            #side .car:hover ~ .main{
+                right:0;
+            }
+            #side .main:hover{
+                right:0;
+            }
+            #side .main .list{
+                position: absolute;
+                top:0;
+                bottom:36%;
+                width:100%;
+                height:198px;
+                margin:auto;
+                box-sizing: border-box; /*  怪异盒模型*/
+            }
+            #side .main .list li{
+                position: relative;
+                width:100%;
+                height:35px;
+                margin-bottom: 8px;
+            }
+            #side .main .list li:first-child{
+                margin-top:3px;
+                margin-bottom:117px;
+            }
+            #side .main .list li:first-child::after{
+                position: absolute;
+                bottom:-10px;
+                left:0;
+                right:0;
+                content: "";
+                width:25px;
+                height:1px;
+                margin:auto;
+                background-color:#444;
+            }
+            #side .main .list li:nth-child(2)::after{
+                position: absolute;
+                top:-6px;
+                left:0;
+                right:0;
+                content: "";
+                width:25px;
+                height:1px;
+                margin:auto;
+                background-color:#444;
+            }
+            #side .main .list li i{
+                display: block;
+                width:35px;
+                height:35px;
+            }
+            #side .main .list li i:hover{
+                background-color:red;
+            }
+            #side .main .list li div{
+                position: absolute;
+                visibility: hidden;
+                top:0;
+                left:-120px;
+                width:90px;
+                height:35px;
+                background-color: #494949;
+                color:white;
+                font-size: 12px;
+                line-height: 35px;
+                text-align: center;
+                transition: left .5s;
+            }
+            #side .main .list li div::after{
+                position: absolute;
+                content: '';
+                top:0;
+                bottom:0;
+                right:-6px;
+                width:0;
+                height:0;
+                margin:auto;
+                border-style: solid;
+                border-width: 6px;
+                border-right:none;
+                border-color:transparent #494949;
+            }
+            #side .main .list li i:hover + div{
+                visibility: visible;
+                left:-90px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="side">
+            <div class="car">
+                <i></i>
+                <span>购物车</span>
+            </div>
+            <div class="main">
+                <ul class="list">
+                    <li>
+                        <i style="background-image: url('img/1.png')"></i>
+                        <div>会员权益</div>
+                    </li>
+                    <li>
+                        <i style="background-image: url('img/2.png')"></i>
+                        <div>我的资产</div>
+                    </li>
+                    <li>
+                        <i style="background-image: url('img/3.png')"></i>
+                        <div>我的收藏</div>
+                    </li>
+                    <li>
+                        <i style="background-image: url('img/4.png')"></i>
+                        <div>我看过的</div>
+                    </li>
+                    <li>
+                        <i style="background-image: url('img/5.png')"></i>
+                        <div>我要充值</div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        
+        <script>
+            
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
