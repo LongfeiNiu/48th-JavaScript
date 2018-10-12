@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                charCodeAt()
+                调用第几个字符的编码，
+
+                String.fromCharCode()
+                与之相反，从ASCII码到字符
+             */
+
+            let a = "阿A飞";
+            let b = `阿
+            飞`;
+
+            console.log(a.charCodeAt(1));
+
+            console.log(b.charCodeAt(1));  //换行码是 10
+
+            console.log(String.fromCharCode(39134));
+
+
+            //加密,利用ASCII码
+            let c = "小卑鄙我爱你";
+            let d = "";
+
+            for(let i=0,len=c.length;i<len;i++){
+                let code = c.charCodeAt(i)+520;
+                console.log(code);
+                d += String.fromCharCode(code);
+            }
+            console.log(d);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

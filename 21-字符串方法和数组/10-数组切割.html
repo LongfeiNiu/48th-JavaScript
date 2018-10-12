@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //数组切割，单个参数时，包含前面而不含后面的
+            let a = ['阿飞','无虑','小浪'];
+            /*
+            console.log(a.splice(1));  //从第1个切，后面的不要了
+            console.log(a);
+            */
+
+            //第二个参数表示切除几个
+            /*
+            console.log(a.splice(1,1));  //从第1个开始切除1个
+            console.log(a);
+            */
+
+            //添加与替换
+            a.splice(1,1,'朱雀','心艾');  //切除一个，替换了2个
+            console.log(a);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

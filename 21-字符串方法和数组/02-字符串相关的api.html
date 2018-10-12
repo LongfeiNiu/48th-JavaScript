@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            //字符串的包装对象有很多封装的api
+            let a = '阿飞';
+            //console.log(new String(a));   //可以打印包装对象属性为String的对象
+
+            //针对a的包装对象的charAt
+            console.log(a.charAt(1));         //取出字符串中的第几位字符
+            console.log(a[0]);  //a的包装对象有a的内容，对象访问时可以的，但是IE6,7不支持，最好用charAt
+
+            //包装对象不能赋值,没有意义；使用即消失，存不了
+            a[0]="5";
+
+            console.log(a[0]);
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

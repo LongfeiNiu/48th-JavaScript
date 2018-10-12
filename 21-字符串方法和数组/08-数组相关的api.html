@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+            let a = [3,4,5];
+            console.log(a);
+            a[0]=9;
+            console.log(a);
+            */
+
+
+            /*
+
+                push
+                    参数：任意数据
+                    功能：直接改变原数组
+                    返回值：返回改变后数组的长度
+                pop
+                    参数：no
+                    功能：改变原数组，删除最后一位
+                    返回值：删除的元素
+                shift
+                    功能：改变原数组，删除第一位
+                    返回值：删除的元素
+                unshift
+                    功能：改变原数组，从第一位添加
+                    返回值：数组长度
+             */
+
+            let a = ["阿飞","无虑"];
+
+            console.log(a.push("小浪","海文"));
+            console.log(a);
+            console.log(a.pop());
+            console.log(a);
+            console.log(a.shift());
+            console.log(a);
+            console.log(a.unshift("first"));
+            console.log(a);
+
+
+            //骚操作,
+            // pop()返回的是删除的最后一个函数，后面跟参数执行
+            let x = [5,function(x){alert(x)}];
+            x.pop()(x[0]);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

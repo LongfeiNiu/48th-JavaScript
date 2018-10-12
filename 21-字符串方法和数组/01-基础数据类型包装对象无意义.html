@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            //基础数据类型虽然可以点操作，但没有意义，拿不到包装对象；
+            //点操作本质上是针对数据的包装对象进行操作，每一次的包装对象都是新产生的对象，不能确定
+            //undefined null 等不能进行点操作，会报错的
+            /*
+            let a='阿飞';
+            a.index = 20;    //不能给字符串添加自定义属性，不会报错，显示undefined，这是操作的a的包装对象，用了即消失，存不下来
+            console.log(a,a.index);   //第二次的点操作是操作的全新的包装对象，用后即消失
+            */
+
+            /*
+            let b={};
+            b.index = 20;      //对象可以添加自定义属性
+            console.log(b);
+            */
+
+
+            let a = new String("阿飞");       //这里的a是字符串对象
+            a.index = 20;                       //a的包装对象是 new String()，可以添加自定义属性
+            console.log(a+"朱雀",a.index);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

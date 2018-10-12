@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*substring(x,y)  从第x位到第y位截取，x要，y不要*/
+            // slice可以倒着截取
+            let a="abc阿飞789456";
+
+            let b = a.substring(3,5);  //包含3，不包含5
+            console.log(b);
+
+            let bb=a.substring(5,3);   //没有前后要求，会自动调整
+            console.log(bb);
+
+            let c = a.substring(3);    //从3到结尾
+            console.log(c);
+
+            let d = a.substring(-2,3);   //没有负值，会认为0
+            console.log(d);
+
+            let e = a.slice(-5,-2);      //负值表示从后开始数，倒着数，要满足先后顺序
+            console.log(e);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
