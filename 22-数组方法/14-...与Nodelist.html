@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>0001</p>
+            <p>0002</p>
+            <p>0003</p>
+        </div>
+        
+        <script>
+
+            let aP = document.getElementsByTagName("p");
+
+            // 类数组不能用数组的遍历
+            // aP.forEach(function (x,y,z) {
+            //
+            // });
+
+            //ES5就有办法将 aP 先搞成数组，之后再使用forEach
+            //slice不传参数就不切割，数组切割，方法slice使用call改变切割对象执行，返回一个真数组
+            /*
+            let x = [].slice.call(aP);    //这是静态的
+            console.log(x);
+            x.forEach(function (node,index) {
+                node.onclick = function () {
+                    alert(index);
+                }
+            })
+            */
+            //ES5   类数组=>真数组遍历遍历
+            /*
+            [].slice.call(aP).forEach(function (node,index) {
+                node.onclick = function () {
+                    alert(index);
+                }
+            });
+            */
+
+            //ES6 ,  ...将Nodelist拆了，加上[]成为真数组
+            console.log([...aP]);
+            [...aP].forEach(function (n,i) {
+                n.onclick = function () {
+                    alert(i);
+                }
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

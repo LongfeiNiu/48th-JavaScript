@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:800px;
+                height:360px;
+                margin:50px auto;
+                border:1px solid #444;
+            }
+            #wrap .btn{
+                width:100%;
+                height:40px;
+                border-bottom: 1px dotted #494949;
+                font-size:0;
+                line-height:40px;
+                text-align: center;
+            }
+            #wrap .btn input{
+                width:150px;
+                font-size:14px;
+                vertical-align: middle;
+            }
+            #instead{
+                margin-left:50px;
+            }
+            #wrap .btn span{
+                display: inline-block;
+                width:50px;
+                height:20px;
+                margin-left:10px;
+                background-color: #333;
+                border:1px solid #444;
+                color:white;
+                font-size:14px;
+                line-height:20px;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            #wrap .btn span:last-child{
+                margin-left: 100px;
+            }
+            #wrap .content{
+                line-height:30px;
+                text-indent: 2em;
+            }
+            #wrap .content p span{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="btn">
+                <input type="text" id="search" name="search"><span class="btnS">搜索</span>
+                <input type="text" id="instead" name="instead"><span class="btnI">替换</span>
+                <span class="btnR">重置</span>
+            </div>
+            <div class="content">
+                <p>MDN处在MCP与MS之间，是由MDN管理模块MM、目录服务器DS(多目录服务器)、虚拟内容服务器VCS 以及若干个分布在网络中的PN 节点(图中表示为P1, P2, P3)构成的，主要功能是提供广域媒体内容分发业务。</p>
+                <p>在VoD点播中，MDN提供了VoD数据缓存与智能调度功能，有效地减低了MS的VoD数据请求，缓解了对媒体内容提供商(MCP)所构成的巨大数据读取和传输能力，极大地提高了MCP 所服务的MS 的数量，对于MCP 所能够服务的最终用户数量有很好的可扩展性。</p>
+                <p>MDN系统存储策略如图2所示，所有影片分为4个等级。0:表示最热门影片(HOT);1:表示较热门影片(WARM);2:表示较冷门的影片(COOL);3:表示冷门影片(COLD)。图中MS0, MS1, MS2, MS3 表示每一等级的影片存储在MS 上的百分比，P1, P2, P3 表示每一等级影片剩余部分存储在PN 上的百分比，可看出，热门影片全部由MS 存储。</p>
+            </div>
+        </div>
+        
+        <script>
+
+            (function () {
+                let tSearch = document.getElementById("search"),
+                    tInstead = document.getElementById("instead"),
+                    btnS = document.getElementsByClassName("btnS")[0],
+                    btnI = document.getElementsByClassName("btnI")[0],
+                    btnR = document.getElementsByClassName("btnR")[0],
+                    aP = document.getElementsByTagName("p"),
+                    constHtml=[];
+
+                //遍历，预存p标签内容
+                [...aP].forEach(function (oP,index) {
+                    constHtml.push(oP.innerText);      //仅获取文本
+                })
+
+                //搜索事件
+                btnS.onclick=function () {
+                    let value = tSearch.value,
+                        len=value.length;
+                    if(value === '')return;
+
+                    [...aP].forEach(function (oP,index) {
+                        //let html = constHtml[index]; //获取文本，静态不保存innerHTML
+                        let html = oP.innerText;      //动态可以保存
+
+                        for(let a=1,b=0;a>=0;b=a+len+13){
+                            a = html.indexOf(value,b);
+                            if(a === -1)break;        //找不到就退出循环
+                            let Ahtml = [...html];     //字符串转数组
+                            Ahtml.splice(a,len,`<span>${value}</span>`);  //数组切割与替换
+                            html = Ahtml.join("");      //数组转字符串
+                        }
+                        oP.innerHTML = html;
+                    })
+                };
+                
+                //替换事件
+                btnI.onclick = function () {
+                    let sValue = tSearch.value,         //搜索值
+                        iValue = tInstead.value,
+                        slen=sValue.length,
+                        ilen=iValue.length;
+                    if(sValue === '' || iValue === '')return;
+
+                    [...aP].forEach(function (oP,index) {
+                        //let html = constHtml[index]; //获取文本
+                        let html = oP.innerText;      //动态可以保存
+
+                        for(let a=1,b=0;a>=0;b=a+ilen+13){
+                            a = html.indexOf(sValue,b);
+                            if(a === -1)break;        //找不到就退出循环
+                            let Ahtml = [...html];     //字符串转数组
+                            Ahtml.splice(a,slen,`<span>${iValue}</span>`);  //数组切割与替换
+                            html = Ahtml.join("");      //数组转字符串
+                        }
+                        oP.innerHTML = html;          //
+                    })
+                }
+
+                //重置事件
+                btnR.onclick = function () {
+                    [...aP].forEach(function (oP,index) {
+                        oP.innerHTML = constHtml[index];
+                    })
+                }
+
+
+
+            })();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

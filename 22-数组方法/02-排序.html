@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            let a = [
+                {name:'阿飞',age:20},
+                {name:'朱雀',age:30},
+                {name:'丫丫',age:18},
+                {name:'心艾',age:80},
+                {name:'岚岚',age:22},
+                {name:'发发',age:22},
+                {name:'艾米',age:28}
+            ];
+
+            //a.sort();  无法直接对对象排序
+
+            a.sort(function (a,b) {
+                return b.age-a.age;   //后者减前者，降序
+            })
+
+            console.log(a);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /* 遍历
+                func:过滤
+                    生成一个过滤后的数组，return true留下，false过滤掉
+
+             */
+
+            let a=[10,20,5,7,89,41];
+            let b=a.filter(function (x,y,z) {
+                console.log(x,y,z);
+                return x>10;   //将x>10的留下，新生一个数组
+            });
+
+            console.log(a);  //不改变原数组
+            console.log(b);  //b是过滤后的数组
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

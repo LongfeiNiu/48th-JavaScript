@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //一般只是针对num类型数组排序，其他类型没有意义
+            // sort()从小到大排序，升序
+            // reverse()  反序，元素从后往前排，可以先升序再反序实现降序排列
+            // 返回值是排列完成之后的数组，
+            let a=[12,78,50,20,32,40,90];
+            /*
+            a.sort();
+            console.log(a);
+            a.reverse();
+            console.log(a);
+
+            console.log(a.sort() === a);  //改变之后还是a本身，相等
+
+            //降序
+            console.log(a.sort().reverse());
+            */
+
+            //JS二分法排序   a-b:a>b则交换，为升序          b-a:a<b则交换，为降序
+            //  负值需要不变    正值a，b交换
+            a.sort(function (a,b) {
+                return a-b;           //返回固定的正值，则取a，b时将交换位置改变a数组排序
+            })
+            console.log(a);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
