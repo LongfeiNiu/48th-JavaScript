@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                    //取整,floor接地气，往小了取整，正负一样
+                        console.log(Math.floor(2.5),Math.floor(-2.01));      //2    -3
+                    //向上取整
+                        console.log(Math.ceil(2.5),Math.ceil(-2.9));         //3    -2
+                    //四舍五入取整
+                        console.log(Math.round(4.49),Math.round(-4.6));
+                    //去小数点取整
+                        console.log(Math.trunc(-5.999991));
+             */
+
+            //向下往小了取整
+            function floor(num) {
+                let a = num*1;    //字符串转为number
+                let b = ''+a;     // b是Iterator，可以解析成单个元素
+                //查找小数点
+                let index = b.indexOf(".");   //获取小数点位置
+                if(index === -1 || (index+1)=== b.length)return a;
+                a = a>=0?b.substring(0,index)*1:b.substring(0,index)*1-1;   //根据正负，判断取整
+                return a;                         //a变整数
+            }
+
+            //向上往大了取整
+            function ceil(num) {
+                let a = num*1;    //字符串转为number
+                let b = ''+a;     // b是Iterator，可以解析成单个元素
+                //查找小数点
+                let index = b.indexOf(".");   //获取小数点位置
+                if(index === -1 || (index+1)=== b.length)return a;
+                a = floor(a+1);
+                return a;
+            }
+
+            //四射五入取整
+            function round(num) {
+                let a = num*1;    //字符串转为number
+                let b = ''+a;     // b是Iterator，可以解析成单个元素
+                //查找小数点
+                let index = b.indexOf(".");   //获取小数点位置
+                if(index === -1 || (index+1)=== b.length)return a;      //如果不是小数，或小数部分为空，返回a
+                if(a>0 && b.charAt(index+1)>=5){           //正，入
+                    a = b.substring(0,index)*1+1;
+                }else if((a>0 && b.charAt(index+1)<5) ||(a<0 && b.charAt(index+1)<5)){   //正，舍，   负，入
+                    a = b.substring(0,index)*1;
+                }else if(a<0 && b.charAt(index+1)>5){        //负，舍
+                    a = b.substring(0,index)*1-1;
+                }else if(a<0 && b.charAt(index+1)==5){           // -0.5要单读判断，.5时应该入，.5的小数比.5多时，只能舍
+                    if(a - b.substring(0,index)*1+0.5<0){
+                        a = b.substring(0,index)*1-1;
+                    }else{
+                        a = b.substring(0,index)*1;
+                    }
+                }
+                return a;
+            }
+
+            //去小数点取整
+            function trunc(num){
+                let a = num*1;    //字符串转为number
+                if(a>=0){
+                    return floor(a);
+                }else{
+                    return ceil(a);
+                }
+                /*
+                let b = ''+a;     // b是Iterator，可以解析成单个元素
+                //查找小数点
+                let index = b.indexOf(".");   //获取小数点位置
+                if(index === -1 || (index+1)=== b.length)return a;
+                a = b.substring(0,index)*1;   //根据正负，判断取整
+                return a;
+                */
+            }
+
+
+
+            console.log(-12.23,floor("-12.23"));
+            console.log(-12.23,ceil("-12.23"));
+            console.log(-12.23,trunc("-12.23"));
+            console.log(-12.23,round("-12.23"));
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

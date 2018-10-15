@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:200px;
+                height:300px;
+                margin:50px auto;
+                border:1px dotted #444;
+                text-align: center;
+                user-select: none;
+            }
+            #wrap .des{
+                width:200px;
+                background-color: #000;
+                color:white;
+                line-height:30px;
+                text-align:left;
+                text-indent: 2em;
+            }
+            #wrap .money{
+                width:100%;
+                height:40px;
+                background-color: gold;
+                line-height:40px;
+                text-align:center;
+                font-weight: bold;
+            }
+            #wrap .money span{
+                display: inline-block;
+                width:50px;
+                color:red;
+            }
+            #wrap button{
+                height:40px;
+                margin-top:10px;
+                background-color: black;
+                color:white;
+                cursor: pointer;
+            }
+            #wrap .now,#wrap .count{
+                margin-top:10px;
+            }
+            #wrap .now .result,#wrap .count .num{
+                display: inline-block;
+                width:65px;
+                color:green;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="des">
+                <li>10元一次抽奖：</li>
+                <li>一等奖150元</li>
+                <li>二等奖40元</li>
+                <li>三等奖10元</li>
+            </ul>
+            <p class="money">净收入<span class="rmb">0</span>元</p>
+            <button>点击抽奖</button>
+            <p class="now">本次获奖:<span class="result">谢谢参与</span></p>
+            <p class="count">参与次数:<span class="num">0</span></p>
+        </div>
+        
+        <script>
+            /*
+                彩票系统；
+                    一等奖 2%
+                    二等奖 10%
+                    三等奖 30%
+                    谢谢参与
+             */
+            (function () {
+                let oRMB = document.getElementsByClassName("rmb")[0],
+                    oResult = document.getElementsByClassName("result")[0],
+                    oNum = document.getElementsByClassName("num")[0],
+                    oButton = document.getElementsByTagName("button")[0],
+                    txtResult=[
+                        "一等奖",
+                        "二等奖",
+                        "三等奖",
+                        "谢谢参与"
+                    ],
+                    num = 0;
+
+                function rdm(m,n){
+                  return Math.floor(Math.random()*(n-m)+m);
+                };
+                    
+                oButton.onclick = function () {
+                    num++;
+                    oNum.innerHTML = num;
+                    let a = rdm(0,100);     //获得抽奖码
+
+                    let count=0;
+                    for(let i=0;i<43;i++){
+                        count++;
+                        if(a === rdm(0,100)){
+                            break;
+                        }
+                    }
+                    console.log(count);
+                    //判断count和奖项
+                    if(count === 43){     //没中奖
+                        oRMB.innerHTML -= 10;
+                        oResult.innerHTML = txtResult[3];
+                    }else if(count<=2){  //一等奖
+                        oRMB.innerHTML = oRMB.innerHTML*1+150;
+                        oResult.innerHTML = txtResult[0];
+                    }else if(count<=12){  //二等奖
+                        oRMB.innerHTML = oRMB.innerHTML*1+40;
+                        oResult.innerHTML = txtResult[1];
+                    }else if(count<=42){  //三等奖
+                        oResult.innerHTML = txtResult[2];
+                    }
+                }
+            })();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

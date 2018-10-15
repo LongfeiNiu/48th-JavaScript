@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                非数学对象
+                     parseInt(a,b)
+                        a   需要转换的数值
+                        b   进制（2,36）  10+26
+             */
+
+            console.log(parseInt("123abc"));   //返回字符串中的整数部分，遇到NaN停止 返回123
+
+            //第二个可选参数是进制
+            console.log(parseInt("ff",16));    //按16进制解析，结果是10进制255
+
+            /*
+                    parseFloat()返回带小数点的
+                        在底层parseFloat会先判断传入的参数类型，转换成字符串；
+                        如果传入对象，会默认调用对象的toString()方法
+             */
+            console.log(parseFloat("12.3254a"));
+
+            console.log({}.toString());   //  打印 "[object Object]"
+
+
+            //ES6次方简写
+            console.log(3**2);  //表示3的平方
+
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

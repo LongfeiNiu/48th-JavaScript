@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                Math 对象
+                    属性：
+                    方法：
+             */
+
+            //小数表示方式： 0表示正负   10表示小数点的位置为2  10.1010的整数部分为2，小数部分是1010/2^4,    10/16
+            //var a = 0 10 10.1010;    //表示 2.625
+
+            /*
+                Math.abs()
+                    1.传入的值是正确的，返回一个新的绝对值结果，字面量赋值
+                    2.传入的值是数字字符串，会取value值取绝对值
+                    3.单个数字元素的数组也会取值，多个数字元素也是NaN
+                    4.传入的值其他类型，返回NaN，表示not a number
+             */
+            //pow(x,y)表示x的y次方
+            console.log(Math.pow(2,10));
+            //开方,y小于1
+            console.log(Math.pow(256,1/2));
+            //过气的开二次方
+            console.log(Math.sqrt(256));
+
+            //取整,floor接地气，往小了取整，正负一样
+            console.log(Math.floor(2.5),Math.floor(-2.01));      //2    -3
+            //向上取整
+            console.log(Math.ceil(2.5),Math.ceil(-2.9));         //3    -2
+            //四舍五入取整
+            console.log(Math.round(4.49),Math.round(-4.6));
+            //去小数点取整
+            console.log(Math.trunc(-5.999991));
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

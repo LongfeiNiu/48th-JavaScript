@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                    Math.random()     返回一个[0,1)的数
+             */
+
+            //console.log(Math.random(),Math.round(Math.random()*10));
+
+            //  生成一个n到m的随机数,m取不到
+            const rdm = function(n=0,m=n+1){
+                return Math.floor((m-n)*Math.random()+n);
+            }
+            console.log(rdm(1,7));
+
+            /*
+                彩票系统；
+                    一等奖 2%
+                    二等奖 10%
+                    三等奖 30%
+                    谢谢参与
+             */
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
