@@ -18,19 +18,32 @@
         <div id="wrap"></div>
         
         <script>
+            (function () {
+                var a = 'global';
 
-            // 使用split()进行切割，返回一个包含分开特定字符前后元素的数组
-            let a = "阿飞，朱雀，心艾，岚岚，丫丫，艾米";
+                function foo() {
+                    console.log(this,this.a);
+                }
 
-            let b = a.split("，");
-            console.log(b);
+                var obj2 = {
+                    a:'0',
+                    foo:foo
+                }
 
-            console.log(b.join("php"))
-            // let c = a.split("");
-            // console.log(c);
+                var obj1={
+                    a:'X',
+                    obj2:obj2
+                }
 
+                obj1.obj2.foo();        // "0"
 
+                function bar(fn){
+                    fn();
+                }
 
+                bar(obj2.foo);     //  un
+
+            })();
         </script>
     </body>
 </html>

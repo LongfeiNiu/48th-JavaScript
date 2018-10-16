@@ -19,17 +19,17 @@
         
         <script>
 
-            // 使用split()进行切割，返回一个包含分开特定字符前后元素的数组
-            let a = "阿飞，朱雀，心艾，岚岚，丫丫，艾米";
+            let a={
+                name:'阿飞',
+                'age':18,
+                marry:true,
+                handsome:true
+            }
 
-            let b = a.split("，");
-            console.log(b);
-
-            console.log(b.join("php"))
-            // let c = a.split("");
-            // console.log(c);
-
-
+            //for in循环,遍历对象，可以是数组
+            for(let key in a){
+                console.log(key,":",a[key]);
+            }
 
         </script>
     </body>

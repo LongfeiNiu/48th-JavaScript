@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:500px;
+                height:300px;
+                margin:50px auto;
+                border:1px solid #303030;
+            }
+            #wrap .top{
+                width:100%;
+                height:40px;
+                line-height: 40px;
+                border-bottom:1px dotted pink;
+            }
+            #wrap .top input[type=text]{
+                width:80px;
+                margin-left:50px;
+            }
+            #wrap .top input[type=button]{
+                width:50px;
+                margin-left:10px;
+                cursor:pointer;
+            }
+            #wrap .bottom{
+                width:100%;
+                margin-top:5px;
+            }
+            #wrap .bottom p{
+                font-size:14px;
+                line-height:24px;
+                text-indent: 2em;
+            }
+            #wrap .bottom p b{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="top">
+                <input type="text" id="st" placeholder="查找内容">
+                <input type="button" id="search" value="查找">
+                <input type="text" id="it" placeholder="替换内容">
+                <input type="button" id="instead" value="替换">
+                <input type="button" id="reset" value="重置">
+            </div>
+
+            <div class="bottom">
+                <p>张家界是湖南省辖地级市，原名大庸市，辖2个市辖区（永定区、武陵源区）、2个县（慈利县、桑植县）。位于湖南西北部，澧水中上游，属武陵山区腹地。</p>
+                <p>张家界因旅游建市，是中国最重要的旅游城市之一，是湘鄂渝黔革命根据地的发源地和中心区域。 </p>
+                <p>1982年9月，张家界国家森林公园成为中国第一个国家森林公园。 1988年8月，武陵源风景名胜区列入第二批国家重点风景名胜区；1992年，由张家界国家森林公园等三大景区构成的武陵源自然风景区被联合国教科文组织列入《世界自然遗产名录》；2004年2月，被列为中国首批《世界地质公园》；2007年，被列入中国首批5A级景区。</p>
+            </div>
+        </div>
+        
+        <script>
+
+            let osBtn = document.getElementById("search"),
+                oiBtn = document.getElementById("instead"),
+                osTxt = document.getElementById("st"),
+                oiTxt = document.getElementById("it"),
+                orBtn = document.getElementById("reset"),
+                aBoP = document.querySelectorAll("#wrap .bottom p"),
+                constHtml=[],   //不变
+                actHtml=[];     //可变
+
+            //获取初始内容
+            [...aBoP].forEach((oBoP)=>{
+                constHtml.push(oBoP.innerHTML);
+            });
+
+            //可变
+            [...aBoP].forEach((oBoP)=>{
+                actHtml.push(oBoP.innerHTML);
+            });
+
+            //查找
+            osBtn.onclick = function () {
+                let val = osTxt.value;
+                if(!val)return;
+
+                [...aBoP].forEach((oBoP,index)=>{
+                    oBoP.innerHTML = actHtml[index].split(val).join(`<b>${val}</b>`);
+                })
+            };
+
+            //替换
+            oiBtn.onclick = function () {
+                let val1 = osTxt.value,
+                    val2 = oiTxt.value;
+                if(!val1 || !val2)return;
+
+                [...aBoP].forEach((oBoP,index)=>{
+                    let arr = actHtml[index].split(val1);
+                    oBoP.innerHTML = arr.join(`<b>${val2}</b>`);   //变色
+                    actHtml[index] = arr.join(val2);               //更新内容
+                })
+            };
+
+            //重置
+            orBtn.onclick = function () {
+                osTxt.value = oiTxt.value = '';
+                [...aBoP].forEach((oBoP,index)=>{
+                    oBoP.innerHTML = constHtml[index];
+                })
+            };
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

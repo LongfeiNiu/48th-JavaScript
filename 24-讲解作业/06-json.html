@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //json  是一个格式非常标准长得像对象的字符串
+            //通用字符串，基本上所有语言都能识别的字符串格式
+
+            //let a = '{"name":"阿飞","age":18,"marry":true}';
+
+            let a={
+                'name':'阿飞',
+                age:18,
+                marry:true
+            };
+
+            //将一个对象转为JSON格式  JSON.stringify() 反序列化
+            let b=JSON.stringify(a)
+            console.log(b);
+
+            //将JSON序列化，  JSON.parse()   解析成对象
+            let c = '{"a":10,"b":"狗蛋","c":true}';
+            //必须是标准严格的JSON格式才能解析，里面必须用双引号包起来""
+            console.log(JSON.parse(c));
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,17 +19,26 @@
         
         <script>
 
-            // 使用split()进行切割，返回一个包含分开特定字符前后元素的数组
-            let a = "阿飞，朱雀，心艾，岚岚，丫丫，艾米";
+            //对象的属性是无序的，一般按照字母先后顺序展示
+            let a={
+                name:'阿飞',
+                age:18,
+                marry:true
+            }
 
-            let b = a.split("，");
-            console.log(b);
+            console.log(a);  //这里a是引用，后面改了，这边也能相应
 
-            console.log(b.join("php"))
-            // let c = a.split("");
-            // console.log(c);
+            //增
+            a.GF = ['朱雀','丫丫','岚岚','茜茜'];
 
+            //改
+            a.age = 21;
 
+            //删除
+            delete a.marry;
+
+            //查找，是否存在
+            console.log('age' in a);
 
         </script>
     </body>

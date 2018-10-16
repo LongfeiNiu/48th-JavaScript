@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            let [a,b=10]=[5];
+            let {x:hh,y:tt=20} = {x:11};
+
+            // function fn(a,b=10) {
+            //
+            //     //ES5的函数默认值
+            //     // if(b === undefined){
+            //     //     b=10
+            //     // }
+            // }
+            //
+            // fn(5);
+
+
+            // function fn([a,b]) {
+            //     console.log(a,b,arguments);
+            // }
+            // fn([5]);
+
+            function fn({a=10,b=100}) {
+                console.log(a,b,arguments);
+            };
+            //fn({a:5});
+            //fn({a,b});
+            fn({});
+
+            //无实参取形参的默认值{x,y},有实参对应实参的默认值{x:10,y:30}
+            function ffn({x,y} = {x:10,y:30}) {
+                console.log(x,y);
+            }
+            ffn();     //10  30
+            ffn({});   //un un
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

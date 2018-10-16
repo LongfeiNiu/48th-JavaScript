@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                ES6     箭头函数
+                    () =>
+             */
+            /*      形参  返回值
+            let fn = v => v;
+            //ES5写法如下
+            var fn = function (v) {
+                return v;
+            }
+            */
+
+            /*加法写法
+            var fn = function (a,b) {
+                return a+b;
+            }
+
+            let fn = (a,b) => {a+b};
+            */
+
+            /*函数内容较多
+            var fn=function (a,b) {
+                let c = a+2;
+                let d = b-3;
+                return(c+d);
+            }
+            let fn = (a,b)=>{
+                let c = a+2;
+                let d = b-3;
+                return(c+d);
+            }
+            */
+
+            /*返回对象时，再加()
+            var fn = function () {
+                return {a:10,b:20};
+            }
+            let fn = () => ({a:10,b:20})
+            */
+
+            /*
+            document.onclick = function () {
+                console.log(this);
+            }
+            */
+
+            //通常用在回调函数内，方便使用
+            let arr=[1,2,3];
+            arr.forEach((value,key)=>{
+                console.log(value);
+            });
+            let b = arr.map(v=>v*v);  //结果平方返回
+            console.log(b);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
