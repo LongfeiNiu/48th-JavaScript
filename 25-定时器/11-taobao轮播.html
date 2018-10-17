@@ -29,7 +29,7 @@
                 left:0;
                 width:1000%;
                 height:100%;
-                transition: left .3s;
+                transition-property: left;
             }
             #wrap .img li{
                 position: relative;
@@ -37,7 +37,7 @@
                 width:10%;
                 height:100%;
             }
-            #wrap .img li:nth-child(2) .bg{
+            #wrap .img li:nth-child(3) .bg{
                 position: absolute;
                 left:0;
                 tpo:0;
@@ -46,20 +46,20 @@
                 background-image: url("img/02.png");
                 z-index:3;
             }
-            #wrap .img li:nth-child(2)>img{
+            #wrap .img li:nth-child(3)>img{
                 position: absolute;
                 left:0;
                 tpo:0;
                 width:280px;
                 height:280px;
             }
-            #wrap .img li:nth-child(2) .gif{
+            #wrap .img li:nth-child(3) .gif{
                 position: absolute;
                 top:45px;
                 right:100px;
                 z-index:3;
             }
-            #wrap .img li:nth-child(2) .shortitle{
+            #wrap .img li:nth-child(3) .shortitle{
                 position: absolute;
                 right:12px;
                 top:105px;
@@ -68,7 +68,7 @@
                 font-size:32px;
                 font-weight: bold;
             }
-            #wrap .img li:nth-child(2) .promoname{
+            #wrap .img li:nth-child(3) .promoname{
                 position: absolute;
                 right:75px;
                 top:195px;
@@ -76,20 +76,20 @@
                 color:white;
                 font-size:22px;
             }
-            #wrap .img li:nth-child(4){
+            #wrap .img li:nth-child(5){
                 background-image:url("img/04.jpg");
                 background-repeat:no-repeat;
                 background-size:268px 268px;
                 background-position:6px 6px;
             }
-            #wrap .img li:nth-child(4) .title{
+            #wrap .img li:nth-child(5) .title{
                 position: absolute;
                 top:45px;
                 right:85px;
                 color:#2d2b28;
                 font-size:24px;
             }
-            #wrap .img li:nth-child(4) .shortitle{
+            #wrap .img li:nth-child(5) .shortitle{
                 position: absolute;
                 top:112px;
                 right:10px;
@@ -100,7 +100,7 @@
                 -1px 0 0 white,-1px 1px 0 white,-1px -1px 0 white,0 -1px 0 white,
                 0px 1px 0 white,0 0 0 white,1px 0 0 white,1px -1px 0 white,1px 1px 0 white;
             }
-            #wrap .img li:nth-child(4) .des{
+            #wrap .img li:nth-child(5) .des{
                 position: absolute;
                 top:190px;
                 right:100px;
@@ -168,6 +168,9 @@
         <div id="wrap">
             <ul class="img">
                 <li>
+                    <img src="img/05.webp">
+                </li>
+                <li>
                     <img src="img/01.webp">
                 </li>
                 <li>
@@ -191,6 +194,9 @@
                 <li>
                     <img src="img/05.webp">
                 </li>
+                <li>
+                    <img src="img/01.webp">
+                </li>
             </ul>
             <ul class="tab">
                 <li class="active"></li>
@@ -212,45 +218,76 @@
                     aImgLi = document.querySelectorAll("#wrap .img li"),        //做不到无缝
                     oLeft = document.querySelector("#wrap .left"),
                     oRight = document.querySelector("#wrap .right"),
-                    len = aTabLi.length,
-                    lastIndex=0,
+                    len = aImgLi.length-1,
+                    lastIndex=1,
                     timer='';
+
+                //做一个定时器动画
+                window.requestAnimationFrame = window.requestAnimationFrame || function (fn){setTimeout(fn,1000/60);};
+                window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+
+                oImg.style.left = '-'+lastIndex*100+'%';    //初始是显示第一个
 
                 //封装动作事件
                 function move(x) {
                     aTabLi[x].classList.remove("active");
-                    aTabLi[lastIndex].classList.add("active");
-                    oImg.style.left = '-'+lastIndex*100+'%';
+                    oImg.style.transitionDuration = .3+'s';    //动画时间
+                    oImg.style.left = '-'+lastIndex*100+'%';   //动画步骤
+                    if(lastIndex === len){      //到达最后一个了！len = 6
+                        requestAnimationFrame(function () {
+                            //偷天换日，改到第一个
+                            lastIndex=1;
+                            aTabLi[0].classList.add("active");
+                        });
+                        //坐标移动该怎么不被动画发现呢,延时吧，等于duration 0.3s
+                        setTimeout(function () {
+                            oImg.style.left = '-'+lastIndex*100+'%';
+                            oImg.style.transitionDuration = 0+'s';
+                        },300);
+                    }else if(lastIndex === 0){  //到达第0个了！len-1 = 5
+                        requestAnimationFrame(function () {
+                            //偷天换日，改到第一个
+                            lastIndex=len-1;
+                            aTabLi[4].classList.add("active");
+                        });
+                        //坐标移动该怎么不被动画发现呢,延时吧，等于duration 0.3s
+                        setTimeout(function () {
+                            oImg.style.left = '-'+lastIndex*100+'%';
+                            oImg.style.transitionDuration = 0+'s';
+                        },300);
+                    }else{
+                        aTabLi[lastIndex-1].classList.add("active");
+                    }
                 }
 
                 //tab点击事件
                 [...aTabLi].forEach((oTabLi,index)=>{
                     oTabLi.onclick = function () {
-                        if(index === lastIndex)return;
-                        let x = lastIndex;
-                        lastIndex = index;
+                        if(index === lastIndex-1)return;
+                        let x = lastIndex-1;
+                        lastIndex = index+1;
                         move(x);
                     }
                 });
 
                 //left点击事件 , lastIndex = 0 1 2 3 4
                 oLeft.onclick = function () {
-                    let x = lastIndex --;
-                    if(lastIndex<0) lastIndex=len-1;
+                    let x = lastIndex-1;    // [0,4]
+                    lastIndex --;
                     move(x);
                 }
 
                 //right点击事件
                 oRight.onclick = function () {
-                    let x = lastIndex++;
-                    if(lastIndex === len) lastIndex=0;
+                    let x = lastIndex-1; //x从0开始
+                    lastIndex++;
                     move(x);
                 }
 
                 //定时器
                 timer = setInterval(function () {
-                    let x = lastIndex++;
-                    if(lastIndex === len) lastIndex=0;
+                    let x = lastIndex-1; //x从0开始
+                    lastIndex++;
                     move(x);
                 },3000);
 
@@ -261,8 +298,8 @@
                 //继续
                 oWrap.onmouseleave=function () {
                     timer = setInterval(function () {
-                        let x = lastIndex++;
-                        if(lastIndex === len) lastIndex=0;
+                        let x = lastIndex-1; //x从0开始
+                        lastIndex++;
                         move(x);
                     },3000);
                 }
