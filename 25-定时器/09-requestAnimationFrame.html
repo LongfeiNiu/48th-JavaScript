@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: relative;
+                left:0;
+                width:100px;
+                height:100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                H5出的新的API
+                requestAnimationFrame()   不需要第二个参数，间隔是浏览器的刷新频率,单次执行
+                主要是让动画很流畅，浏览器准备好就刷新
+
+                CSS3关于动画的API底层都是它
+
+                取消
+                canselAnimationFrame()
+             */
+
+            let oW = document.getElementById("wrap");
+            let start=0;
+            function m(){
+                start += 2;
+                oW.style.left = start+'px';
+                requestAnimationFrame(m);
+            }
+
+            requestAnimationFrame(m);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

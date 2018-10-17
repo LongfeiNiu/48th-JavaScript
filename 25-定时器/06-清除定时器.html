@@ -19,19 +19,11 @@
         
         <script>
 
-            //作用域链，操作变量时，一层层的作用域查找变量声明的地方，
-            // 如果没有找到，调用变量会报错，如果是赋值，在非严格模式下，变量成为windows的属性
+            let x = setTimeout(function(){console.log("a")},2000);
 
-            var x=10;
-            function a() {
-                x=15;       //本作用域找不到，去父级作用域找，找到后并赋值
-                var y=5;    //局部作用域
-                return x+y;
-            }
+            let y = setTimeout(function(){console.log("b")},2000);
 
-            console.log(a());
-            console.log(x);     //全局变量被修改了，因此是15
-
+            clearTimeout(y);      //清除编号为2的定时器
         </script>
     </body>
 </html>

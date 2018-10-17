@@ -18,19 +18,15 @@
         <div id="wrap"></div>
         
         <script>
+            /*
+                setInterval   循环定时
+             */
 
-            //作用域链，操作变量时，一层层的作用域查找变量声明的地方，
-            // 如果没有找到，调用变量会报错，如果是赋值，在非严格模式下，变量成为windows的属性
-
-            var x=10;
-            function a() {
-                x=15;       //本作用域找不到，去父级作用域找，找到后并赋值
-                var y=5;    //局部作用域
-                return x+y;
+            let num=0;
+            let fn = function () {
+                console.log(++num);
             }
-
-            console.log(a());
-            console.log(x);     //全局变量被修改了，因此是15
+            setInterval(fn,1000/60);       //最小时间间隔最多是60次每秒，
 
         </script>
     </body>

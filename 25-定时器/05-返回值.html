@@ -19,18 +19,16 @@
         
         <script>
 
-            //作用域链，操作变量时，一层层的作用域查找变量声明的地方，
-            // 如果没有找到，调用变量会报错，如果是赋值，在非严格模式下，变量成为windows的属性
-
-            var x=10;
-            function a() {
-                x=15;       //本作用域找不到，去父级作用域找，找到后并赋值
-                var y=5;    //局部作用域
-                return x+y;
-            }
-
-            console.log(a());
-            console.log(x);     //全局变量被修改了，因此是15
+            /*
+                   返回值是按定时器出现顺序从1号开始的编号，作用是用来清除定时器的
+                   编号不区分作用域
+             */
+            let x = setTimeout(function(){alert(3);},50000);
+            let y = setTimeout(function(){alert(4);},60000);
+            let z = setTimeout(function(){alert(5);},70000);
+            let w = setInterval(function(){alert(6);},80000);
+            let v = setInterval(function(){alert(7);},90000);
+            console.log(x,y,z,w,v);       // 1 2 3 4 5
 
         </script>
     </body>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                setTimeout  一次执行定时器
+                    param1:函数
+                    param2:数字(毫秒单位)
+             */
+            /*
+            setTimeout(function () {
+                alert("timeout!");
+            },1000);
+            */
+
+            /*
+            let fn = function () {
+                alert(1);
+                return function () {
+                    alert(3);
+                }
+            };
+            setTimeout(fn(),1000);    //不能是返回值，第一个参数是函数
+            */
+
+            /*
+            let str = "let a=10;alert(a);";    //可以接收字符串参数，当成JS代码来读
+            setTimeout(str,2000);
+            */
+
+            let fn = function () {
+                alert(4);
+            };
+            setTimeout("fn()",1500);         //默认在全局中执行引号的内容，作用域在全局
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
