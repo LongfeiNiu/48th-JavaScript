@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*Date类
+                new Date()
+                    本地此时此刻的日期对象/时间戳
+             */
+
+            let d = new Date();     //获取的是对象
+            console.dir(d);
+
+            //以下API返回数字   number
+            console.log(d.getFullYear());         //得到  年
+            console.log(d.getMonth()+1);          //得到  月（从0开始计数，应该+1返回）
+            console.log(d.getDate());             //日
+            console.log(d.getHours());            //时
+            console.log(d.getUTCHours());         //0时区  UTC
+            console.log(d.getMinutes());          //分
+            console.log(d.getSeconds());          //秒
+            console.log(d.getDay());              //星期   星期日是0
+
+            console.log("====================");
+
+            console.log(d.toUTCString());
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

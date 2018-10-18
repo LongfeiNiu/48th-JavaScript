@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //无参是获取，有参是设置
+            //let x=new Date(2018,8-1,8,1,1,1);    //月份从0开始的，所以设置8月应输入7
+            //let x=new Date(2018);    //只有一个参数时，会被认为是毫秒时间戳，从1970年开始加
+            // let x=new Date(2018,5-1);  //默认1日，0时0分0秒
+            // console.log(x);
+
+            let a = new Date().getTime();
+
+            console.log(new Date(a-3600000));   //打印一个小时前的时间
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

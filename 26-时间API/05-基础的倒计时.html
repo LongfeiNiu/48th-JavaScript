@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            p{
+                text-align: center;
+                font-size:50px;
+                border-bottom:1px dotted #303030;
+            }
+            div{
+                margin-top:50px;
+                text-align:center;
+            }
+            span{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>404 页面未找到~~</p>
+        <div><span>8</span>秒后，返回 <a href="">主页</a></div>
+        
+        <script>
+
+            (function () {
+                let oS = document.querySelector("div span");
+                let oVal = 8;
+
+                setInterval(function () {
+                    oS.innerHTML = --oVal;
+                    if(oVal === 1){
+                        window.location.href = "http://web.tanzhouedu.com";
+                    }
+                },1000)
+
+            })();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

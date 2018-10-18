@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            let x = new Date();  //日期对象可以做减法，会自动调用getTime进行相减
+
+            //console.log(x.getTime());      //以毫秒为单位，1970年到现在,number
+
+            // setTimeout(function () {
+            //     let y=new Date();
+            //     console.log(y-x);         //单位是毫秒，
+            // },3000);
+
+            //setTimeout不是精准的计时
+            setInterval(function () {
+                let y=new Date();
+                console.log(y-x);
+                x=y;
+            },50);      //周期很小，则误差较大
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

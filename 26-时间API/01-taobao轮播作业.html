@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                overflow: hidden;
+                position: relative;
+                width:520px;
+                height:280px;
+                margin:50px auto;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            #wrap .img{
+                position: absolute;
+                top:0;
+                left:-100%;
+                width:1000%;
+                height:100%;
+                transition: left .3s;
+            }
+            #wrap .img.on{
+                transition: left .0s;
+            }
+            #wrap .img li{
+                position: relative;
+                float:left;
+                width:10%;
+                height:100%;
+            }
+            #wrap .img li:nth-child(3) .bg{
+                position: absolute;
+                left:0;
+                tpo:0;
+                width:100%;
+                height:100%;
+                background-image: url("img/02.png");
+                z-index:3;
+            }
+            #wrap .img li:nth-child(3)>img{
+                position: absolute;
+                left:0;
+                tpo:0;
+                width:280px;
+                height:280px;
+            }
+            #wrap .img li:nth-child(3) .gif{
+                position: absolute;
+                top:45px;
+                right:100px;
+                z-index:3;
+            }
+            #wrap .img li:nth-child(3) .shortitle{
+                position: absolute;
+                right:12px;
+                top:105px;
+                z-index:3;
+                color:white;
+                font-size:32px;
+                font-weight: bold;
+            }
+            #wrap .img li:nth-child(3) .promoname{
+                position: absolute;
+                right:75px;
+                top:195px;
+                z-index:3;
+                color:white;
+                font-size:22px;
+            }
+            #wrap .img li:nth-child(5){
+                background-image:url("img/04.jpg");
+                background-repeat:no-repeat;
+                background-size:268px 268px;
+                background-position:6px 6px;
+            }
+            #wrap .img li:nth-child(5) .title{
+                position: absolute;
+                top:45px;
+                right:85px;
+                color:#2d2b28;
+                font-size:24px;
+            }
+            #wrap .img li:nth-child(5) .shortitle{
+                position: absolute;
+                top:112px;
+                right:10px;
+                color:#2d2b28;
+                font-size:28px;
+                font-weight: bold;
+                text-shadow: -2px 0 0 white,0 -2px 0 white,2px 0 0 white,0 2px 0 white,
+                -1px 0 0 white,-1px 1px 0 white,-1px -1px 0 white,0 -1px 0 white,
+                0px 1px 0 white,0 0 0 white,1px 0 0 white,1px -1px 0 white,1px 1px 0 white;
+            }
+            #wrap .img li:nth-child(5) .des{
+                position: absolute;
+                top:190px;
+                right:100px;
+                color:white;
+                font-size:24px;
+            }
+            #wrap .tab{
+                position: absolute;
+                left:0;
+                right:0;
+                bottom:15px;
+                z-index:5;
+                width:80px;
+                margin:auto;
+                background-color: rgba(255,255,255,.3);
+                border-radius: 10px;
+                font-size:0;
+                text-align:center;
+            }
+            #wrap .tab li{
+                float: left;
+                width:10px;
+                height:10px;
+                margin:3px;
+                border-radius: 10px;
+                background-color: white;
+                cursor:pointer;
+            }
+            #wrap .tab li.active{
+                background-color: #ff5000;
+            }
+            #wrap>span{
+                display: none;
+                z-index:5;
+                position: absolute;
+                top:0;
+                bottom: 0;
+                width:30px;
+                height:30px;
+                margin:auto;
+                background-color: rgba(0,0,0,.3);
+                border-radius: 30px;
+                color:#fff;
+                font-size:22px;
+                line-height:30px;
+                cursor: pointer;
+            }
+            #wrap:hover>span{
+                display: block;
+            }
+            #wrap>span:hover{
+                background-color: rgba(0,0,0,.5);
+            }
+            #wrap .left{
+                left:-12px;
+                text-indent: .5em;
+            }
+            #wrap .right{
+                right:-12px;
+                text-indent: .1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="img">
+                <li>
+                    <img src="img/05.webp">
+                </li>
+                <li>
+                    <img src="img/01.webp">
+                </li>
+                <li>
+                    <div class="bg"></div>
+                    <img src="img/02.jpg">
+                    <div class="gif">
+                        <img src="img/02.gif">
+                    </div>
+                    <div class="shortitle">白鞋街拍韩版板鞋</div>
+                    <div class="promoname">粉丝专属价</div>
+                </li>
+                <li>
+                    <img src="img/03.jpg">
+                </li>
+                <li>
+                    <img src="img/04.png">
+                    <span class="title">秋上新</span>
+                    <div class="shortitle">韩版百搭高帮白鞋</div>
+                    <div class="des">天猫</div>
+                </li>
+                <li>
+                    <img src="img/05.webp">
+                </li>
+                <li>
+                    <img src="img/01.webp">
+                </li>
+            </ul>
+            <ul class="tab">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span class="left">&lt;</span>
+            <span class="right">&gt;</span>
+        </div>
+        
+        <script>
+            (function () {
+                //定义变量
+                let oWrap = document.getElementById("wrap"),
+                    aTabLi = document.querySelectorAll("#wrap .tab li"),
+                    oImg = document.querySelector("#wrap .img"),
+                    aImgLi = document.querySelectorAll("#wrap .img li"),        //做不到无缝
+                    oLeft = document.querySelector("#wrap .left"),
+                    oRight = document.querySelector("#wrap .right"),
+                    tabLen = aTabLi.length,    //[0,4]
+                    len = aImgLi.length,       //[0,6]
+                    lastIndex=0,               //[-1,5] ; -1 0%; 0 -100%; 1 -200%; 2 -300%; 3 -400%； 4 -500%； 5 -600%;
+                    timer='';
+
+                //封装动作事件
+                function move(idx) {
+                    //图片移动
+                    oImg.classList.remove("on");    //有动画时间
+                    oImg.style.left = '-'+(idx+1)*100+'%';   //动画步骤
+
+                    //lastIndex判断赋值
+                    if(idx < 0){
+                        setTimeout(()=>{   //第
+                            oImg.classList.add("on");  //无动画时间
+                            oImg.style.left = '-'+(len-2)*100+'%';   //动画步骤
+                        },300);
+                        idx=tabLen-1;
+                    }else if(idx >= tabLen){
+                        setTimeout(()=>{
+                            oImg.classList.add("on");  //无动画时间
+                            oImg.style.left = '-'+100+'%';   //动画步骤
+                        },300);
+                        idx=0;
+                    }
+
+                    //Tab动作
+                    aTabLi[lastIndex].classList.remove("active");      //清除上一个选中
+                    lastIndex = idx;
+                    aTabLi[lastIndex].classList.add("active");        //重新选中
+                }
+
+                //tab点击事件
+                [...aTabLi].forEach((oTabLi,index)=>{
+                    oTabLi.onclick = function () {
+                        if(index === lastIndex)return;
+                        move(index);
+                    }
+                });
+
+                //left点击事件 , lastIndex = 0 1 2 3 4
+                oLeft.onclick = function () {
+                    move(lastIndex-1);
+                }
+
+                //right点击事件
+                oRight.onclick = function () {
+                    move(lastIndex+1);
+                }
+
+                //定时器
+                timer = setInterval(function () {
+                    move(lastIndex+1);
+                },3000);
+
+                //停止
+                oWrap.onmouseenter=function () {
+                    clearInterval(timer);
+                }
+                //继续
+                oWrap.onmouseleave=function () {
+                    timer = setInterval(function () {
+                        move(lastIndex+1);
+                    },3000);
+                }
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

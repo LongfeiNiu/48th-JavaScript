@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                margin:50px;
+                font-size:30px;
+            }
+            #wrap span{
+                color:#f00;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            (function () {
+                let oW = document.getElementById("wrap");
+
+                let x = new Date(2019,2-1,5);  //过年时间
+
+                function fn(){
+                    let d = x - new Date();    //差了多少秒
+
+                    let DD = Math.floor(d/1000/60/60/24);   //天
+                    let HH = Math.floor(d/1000/60/60%24);
+                    let MM = Math.floor(d/1000/60%60);
+                    let SS = Math.floor(d/1000%60);
+
+                    if(DD<10) DD = '0'+DD;
+                    if(HH<10) HH = '0'+HH;
+                    if(MM<10) MM = '0'+MM;
+                    if(SS<10) SS = '0'+SS;
+
+                    oW.innerHTML = `距离过年还有 <span>${DD}</span> 天 <span>${HH}</span> 小时 <span>${MM}</span> 分 <span>${SS}</span> 秒；`;
+                };
+                fn();
+
+                setInterval(fn,1000);
+            })();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
