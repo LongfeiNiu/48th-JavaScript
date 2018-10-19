@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:50px;
+                height:50px;
+                margin-left:300px;       /*百分比在IE显示百分比,要转成px*/
+                background-color: pink;
+                opacity: .8;
+                filter:alpha(opacity=80);    /*标准IE浏览器的兼容，opacity 0-100 */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script src="move.js"></script>
+        <script>
+
+            var oW = document.getElementById("wrap");
+
+            //Move(oW,"marginLeft",300,3);
+            Move(oW,"width",500,3);
+            Move(oW,"height",500,3);
+            Move(oW,"opacity",0,.01);       //opacity没有单位
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

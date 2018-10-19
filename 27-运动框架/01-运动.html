@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                left:0;
+                top:0;
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+
+        </div>
+        
+        <script>
+            (function () {
+                let oWrap = document.getElementById("wrap");
+                let startVal = 0;
+
+                function m() {
+                    startVal +=3;
+                    oWrap.style.left = startVal + 'px';
+                    requestAnimationFrame(m);          //推荐，保证前一个动画执行完成后，进入下一次动画
+                    //setTimeout(m,1000/60);
+                }
+                m();
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
