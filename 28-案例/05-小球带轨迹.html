@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述">
+    <meta name="author" content="Danew">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+
+        #wrap{
+            position: relative;
+            width: 498px;
+            height:498px;
+            margin:50px auto 0;
+            border:1px solid #bbb;
+            border-radius: 50%;
+        }
+        #wrap span{
+            position: absolute;
+            top:-5px;
+            left:245px;
+            width:10px;
+            height:10px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+        #wrap .shadow{
+            position: absolute;
+            left:0;
+            top:0;
+            width: 498px;
+            height:498px;
+        }
+        #wrap .shadow span{
+            width:6px;
+            height:6px;
+            opacity: .5;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <span></span>
+        <div class="shadow"></div>
+    </div>
+
+    <script>
+
+        (function () {
+
+            let oS = document.querySelector("#wrap span"),
+                sd = document.querySelector("#wrap .shadow");
+            let startDeg = 90,
+                r = 250;
+
+            function ran() {
+                let[r,g,b]=[
+                    Math.floor(Math.random()*256),
+                    Math.floor(Math.random()*256),
+                    Math.floor(Math.random()*256),
+                ];
+                return `rgb(${r},${g},${b})`;
+            };
+
+
+            function m() {
+                startDeg --;
+                r-=.1;
+                let rad= startDeg/180*Math.PI,
+                    x = 250+r*Math.cos(rad)-5,
+                    y = 250-r*Math.sin(rad)-5;
+                oS.style.left = `${x}px`;
+                oS.style.top = `${y}px`;
+                sd.innerHTML += `<span style="background-color:${ran()};
+                                    left:${x+2}px;
+                                    top:${y+2}px;"></span>`;
+                requestAnimationFrame(m);
+            };
+            requestAnimationFrame(m);
+
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
