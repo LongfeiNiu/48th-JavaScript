@@ -16,7 +16,6 @@
                 width:300px;
                 height:60px;
                 margin:50px auto 0;
-                border:1px dotted #ccc;
                 font-size:0;
                 text-align: center;
                 line-height:40px;
@@ -24,17 +23,17 @@
                 perspective: 800px;
             }
             #wrap .time{
+                overflow: hidden;
                 position: relative;
                 float:left;
                 vertical-align: middle;
                 transform-style: preserve-3d;
-
             }
             #wrap .time span{
                 float: left;
                 width:25px;
                 height:40px;
-                margin:5px;
+                margin:0 5px;
                 background-image:linear-gradient(#444 0%,#444 50%,black 50%,black 100%);
                 border-radius:10px;
                 color:white;
@@ -46,12 +45,12 @@
                 position: absolute;
                 left:0;
                 top:0;
+                transform-origin: top;
                 transform: rotateX(180deg);
             }
             #wrap>span{
                 float:left;
                 height:40px;
-                margin-top:5px;
                 font-size:18px;
                 vertical-align: middle;
             }
@@ -90,9 +89,7 @@
         
         <script>
             (function () {
-                let aTime = document.getElementsByClassName("time"),
-                    aS = document.querySelectorAll("#wrap .time span"),
-                    deg=0;
+                let aS = document.querySelectorAll("#wrap .time span");
 
                 function date(){
                     let h = new Date().getHours(),
@@ -113,29 +110,27 @@
 
                 function now(){
                     let n = date();
-                    deg -= 180;
-                    //if(deg%720 === 0) deg=-0;
 
                     //6个时间窗口，每个窗口有2个
-                    [...aTime].forEach(function (oT,index) {
-                        if(parseInt(aS[index*2].innerHTML) !== parseInt(n[index])){
-                            aS[index*2+1].innerHTML = n[index];
-                            aS[index*2+1].style.transitionDuration = `.5s`;
-                            aS[index*2+1].style.transform = `rotateX(${deg}deg)`;
-                            requestAnimationFrame(()=>aS[index*2].innerHTML = n[index]);
+                    for(let i=0;i<6;i++){
+                        //只改变时间变化的模块
+                        if(parseInt(aS[i*2].innerHTML) !== parseInt(n[i])){
+                            aS[i*2+1].innerHTML = n[i];
+                            aS[i*2+1].style.transitionDuration = `.9s`;
+                            aS[i*2+1].style.transform = `rotateX(0)`;
+
+                            //等待动画执行完毕，立即做
                             setTimeout(()=>{
-                                deg = 180;
-                                aS[index*2+1].style.transitionDuration = `.0s`;
-                                aS[index*2+1].style.transform = `rotateX(${deg}deg)`;
-                            },500);
+                                aS[i*2].innerHTML = n[i];
+                                aS[i*2+1].style.transitionDuration = `.0s`;
+                                aS[i*2+1].style.transform = `rotateX(180deg)`;
+                            },900);
                         }
-                    })
+                    }
 
                 }
                 now();     //初始
                 setInterval(now,1000);
-
-
             })();
         </script>
     </body>
