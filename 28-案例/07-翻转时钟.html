@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:300px;
+                height:60px;
+                margin:50px auto 0;
+                border:1px dotted #ccc;
+                font-size:0;
+                text-align: center;
+                line-height:40px;
+                user-select: none;
+                perspective: 800px;
+            }
+            #wrap .time{
+                position: relative;
+                float:left;
+                vertical-align: middle;
+                transform-style: preserve-3d;
+
+            }
+            #wrap .time span{
+                float: left;
+                width:25px;
+                height:40px;
+                margin:5px;
+                background-image:linear-gradient(#444 0%,#444 50%,black 50%,black 100%);
+                border-radius:10px;
+                color:white;
+                font-size:18px;
+                text-align:center;
+                vertical-align: middle;
+            }
+            #wrap .time span:last-child{
+                position: absolute;
+                left:0;
+                top:0;
+                transform: rotateX(180deg);
+            }
+            #wrap>span{
+                float:left;
+                height:40px;
+                margin-top:5px;
+                font-size:18px;
+                vertical-align: middle;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="time hh">
+                <span></span>
+                <span>0</span>
+            </div>
+            <div class="time hl">
+                <span></span>
+                <span>0</span>
+            </div>
+            <span>:</span>
+            <div class="time mh">
+                <span></span>
+                <span>0</span>
+            </div>
+            <div class="time ml">
+                <span></span>
+                <span>0</span>
+            </div>
+            <span>:</span>
+            <div class="time sh">
+                <span></span>
+                <span>0</span>
+            </div>
+            <div class="time sl">
+                <span></span>
+                <span>0</span>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                let aTime = document.getElementsByClassName("time"),
+                    aS = document.querySelectorAll("#wrap .time span"),
+                    deg=0;
+
+                function date(){
+                    let h = new Date().getHours(),
+                        m = new Date().getMinutes(),
+                        s = new Date().getSeconds();
+                    if(h<10) h='0'+h;
+                    if(m<10) m='0'+m;
+                    if(s<10) s='0'+s;
+                  return [
+                      (h-h%10)/10,
+                      h%10,
+                      (m-m%10)/10,
+                      m%10,
+                      (s-s%10)/10,
+                      s%10,
+                  ];
+                };
+
+                function now(){
+                    let n = date();
+                    deg -= 180;
+                    //if(deg%720 === 0) deg=-0;
+
+                    //6个时间窗口，每个窗口有2个
+                    [...aTime].forEach(function (oT,index) {
+                        if(parseInt(aS[index*2].innerHTML) !== parseInt(n[index])){
+                            aS[index*2+1].innerHTML = n[index];
+                            aS[index*2+1].style.transitionDuration = `.5s`;
+                            aS[index*2+1].style.transform = `rotateX(${deg}deg)`;
+                            requestAnimationFrame(()=>aS[index*2].innerHTML = n[index]);
+                            setTimeout(()=>{
+                                deg = 180;
+                                aS[index*2+1].style.transitionDuration = `.0s`;
+                                aS[index*2+1].style.transform = `rotateX(${deg}deg)`;
+                            },500);
+                        }
+                    })
+
+                }
+                now();     //初始
+                setInterval(now,1000);
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

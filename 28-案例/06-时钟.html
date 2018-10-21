@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:300px;
+                height:60px;
+                margin:50px auto 0;
+                border:1px dotted #ccc;
+                font-size:0;
+                text-align: center;
+                line-height:40px;
+            }
+            #wrap ul{
+                float:left;
+                vertical-align: middle;
+            }
+            #wrap ul li{
+                float: left;
+                width:25px;
+                height:40px;
+                margin:5px;
+                background-image:linear-gradient(#444 0%,#444 50%,black 50%,black 100%);
+                border-radius:10px;
+                color:white;
+                font-size:18px;
+                text-align:center;
+                vertical-align: middle;
+            }
+            #wrap span{
+                float:left;
+                height:40px;
+                margin-top:5px;
+                font-size:18px;
+                vertical-align: middle;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="time h">
+                <li>0</li>
+                <li>0</li>
+            </ul>
+            <span>:</span>
+            <ul class="time m">
+                <li>0</li>
+                <li>0</li>
+            </ul>
+            <span>:</span>
+            <ul class="time s">
+                <li>0</li>
+                <li>0</li>
+            </ul>
+        </div>
+        
+        <script>
+            (function () {
+                let oH = document.getElementsByClassName("h")[0],
+                    oM = document.getElementsByClassName("m")[0],
+                    oS = document.getElementsByClassName("s")[0];
+
+                function data(){
+                    let h = new Date().getHours(),
+                        m = new Date().getMinutes(),
+                        s = new Date().getSeconds();
+                    if(h<10) h='0'+h;
+                    if(m<10) m='0'+m;
+                    if(s<10) s='0'+s;
+                  return [h,m,s];
+                };
+
+                function now(){
+                    let n = data();
+                    oH.innerHTML = `<li>${(n[0]-n[0]%10)/10}</li><li>${n[0]%10}</li>`;
+                    oM.innerHTML = `<li>${(n[1]-n[1]%10)/10}</li><li>${n[1]%10}</li>`;
+                    oS.innerHTML = `<li>${(n[2]-n[2]%10)/10}</li><li>${n[2]%10}</li>`;
+                }
+                now();     //初始
+                setInterval(now,200);
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
