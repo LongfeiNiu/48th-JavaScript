@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>555</p>
+            <p>666</p>
+        </div>
+        <div class="box"></div>
+        <script>
+
+            //只有父级节点才能删除子节点
+
+            let oW = document.getElementById("wrap");
+            let oBox = document.getElementsByClassName("box")[0];
+            let oP = document.getElementsByTagName("p")[1];
+
+            //父级删除了子节点，但变量oP 仍保留了被删除的节点
+            oW.removeChild(oP);
+
+            document.onclick = function () {
+                oBox.appendChild(oP);       //oP仍可以使用
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

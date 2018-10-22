@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:500px;
+                height:110px;
+                margin:50px auto;
+            }
+            #wrap div{
+                float: left;
+            }
+            #wrap .HH,#wrap .MM,#wrap .SS{
+                overflow: hidden;
+                width:92px;
+                height:60px;
+            }
+            #wrap div p{
+                position: relative;
+                top:0;
+                float: left;
+                width:40px;
+                margin:0 3px;
+                color:white;
+                font-family: Dialog;
+                font-size:30px;
+                line-height:60px;
+                text-align: center;
+            }
+            #wrap div p.top{
+                top:-60px;
+            }
+            #wrap div p.tran{
+                transition: top .5s;
+            }
+            #wrap div p span{
+                display: block;
+                width:40px;
+                height:60px;
+                background:linear-gradient(#444 50%,#3a3a3a 50%);
+                border-radius: 10px;
+            }
+            #wrap div.a{
+                width:30px;
+                height: 60px;
+                text-align: center;
+                font-family: Dialog;
+                font-size:30px;
+                line-height:60px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="HH">
+                <p><span class="first">0</span><span class="second">0</span></p>
+                <p><span class="first">0</span><span class="second">0</span></p>
+            </div>
+            <div class="a">:</div>
+            <div class="MM">
+                <p><span class="first">0</span><span class="second">0</span></p>
+                <p><span class="first">0</span><span class="second">0</span></p>
+            </div>
+            <div class="a">:</div>
+            <div class="SS">
+                <p><span class="first">0</span><span class="second">0</span></p>
+                <p><span class="first">0</span><span class="second">0</span></p>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                let aP = [...document.querySelectorAll("#wrap p")],
+                    aFirstSpan = [...document.querySelectorAll("#wrap .first")],
+                    aSecondSpan = [...document.querySelectorAll("#wrap .second")];
+
+                function getTimeStr() {
+                    let nowD = new Date();
+                    let HH = nowD.getHours(),
+                        MM = nowD.getMinutes(),
+                        SS = nowD.getSeconds();
+
+                    HH = HH<10?'0'+HH:HH+'';
+                    MM = MM<10?'0'+MM:MM+'';
+                    SS = SS<10?'0'+SS:SS+'';
+                    return [...HH,...MM,...SS];
+                }
+
+                function showTime(){
+                    let d = getTimeStr();
+                    aFirstSpan.forEach((ele,index)=>{
+                        ele.innerHTML = d[index];
+                    });
+
+                    //循环的主题部分
+                    return function(){
+                        let t = getTimeStr();
+                        t.forEach((value,index)=>{
+                            if(value === aFirstSpan[index].innerHTML)return;  //只针对改变了的时间
+                            aSecondSpan[index].innerHTML = t[index];
+                            aP[index].classList.add("tran");
+                            aP[index].classList.add("top");
+                            setTimeout(function () {
+                                aFirstSpan[index].innerHTML = t[index];
+                                aP[index].classList.remove("tran");
+                                aP[index].classList.remove("top");
+                            },500)
+                        });
+                    };
+                }
+
+                setInterval(showTime(),1000);
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

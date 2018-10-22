@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>阿飞</p>
+            <p>朱雀</p>
+        </div>
+        <div id="box">
+
+        </div>
+        
+        <script>
+
+            let oBox = document.getElementById("box");
+            let aP = document.getElementsByTagName("p");
+
+            //转移子元素,原子元素的属性和方法不会改变
+            oBox.appendChild(aP[0]);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

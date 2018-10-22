@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            阿飞飞
+            <p>pp</p>
+            <p id="on">gg</p>
+            <a href="#">123</a>
+        </div>
+        
+        <script>
+            let oW = document.getElementById("wrap");
+            let oN = document.getElementById("on");
+            let oP = document.querySelector("p");
+
+            oP.onclick = function(){    //节点的变化不影响其操作和属性
+                alert(5);
+            }
+
+            //创建文本节点对象
+            let text = document.createTextNode("朱雀");
+            //console.dir(text);
+
+            //创建元素节点对象
+            let oDiv = document.createElement("div");
+
+            //从后面添加子节点    appendChild
+            oW.appendChild(text);
+            //oW.appendChild(oDiv);
+
+            //在某个子元素的前面添加  (a,b)  a是新元素节点
+            //oW.insertBefore(oDiv,oP);
+
+            //放在子元素第一位
+            oW.insertBefore(oDiv,oW.children[0]);   //oW.childNodes[0] 所有的第一位
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
