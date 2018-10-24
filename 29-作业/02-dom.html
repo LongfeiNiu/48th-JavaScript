@@ -17,10 +17,11 @@
     <body>
         <div id="wrap" title="789" afei="阿飞">
             阿飞飞
-            <p></p>
+            <p>456</p>
             <p></p>
             <!--注释节点-->
         </div>
+        <div class="content">我是子节点吗？</div>
         
         <script>
 
@@ -30,7 +31,8 @@
                 文本节点的nodeType是   3     nodeName是 #Text        nodeValue=文本内容
                 注释节点              8     nodeName是 #comment     nodeValue=注释内容
              */
-            let oW = document.getElementById("wrap");
+            let oW = document.getElementById("wrap"),
+            oC = document.getElementsByClassName("content")[0];
 
             console.dir(oW);
             console.log(oW.nodeType);       //1  元素节点
@@ -38,6 +40,8 @@
 
             console.log(oW.childNodes);     //子节点
 
+
+           // console.log(typeof oC.childNodes[0].nodeValue);
 
             oW.attributes[2].nodeValue = '朱雀';   //不建议这样修改，应该坐标是不确定的
             console.log(oW.attributes[2]);        // afei='朱雀'

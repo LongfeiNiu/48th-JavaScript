@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                overflow: hidden;
+                width:100%;
+                height:580px;
+                background-image: linear-gradient( #8cc1de 0%,#f9a886 100%);
+            }
+            .clearfix::after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .fl{
+                float:left;
+            }
+            .fr{
+                float: right;
+            }
+            #wrap .content{
+                width:800px;
+                height: 530px;
+                margin:50px auto;
+            }
+            #wrap .content .target{
+                width:50%;
+                height:100%;
+                background-color: white;
+            }
+            #wrap .content .show{
+                width:50%;
+                height:100%;
+                background-color:rgba(0,0,0,.5);
+            }
+            #wrap .content .target .title{
+                margin-top:50px;
+                padding:20px;
+            }
+            #wrap .content .target .title p{
+                padding-right:20px;
+                color:#f9a886;
+            }
+            #wrap .content .target .title a{
+                color:black;
+                text-decoration: none;
+            }
+            #wrap .content .target .title a:hover{
+                color:red;
+            }
+            #wrap .content .target ul{
+                margin-left:10px;
+            }
+            #wrap .content .target ul li{
+                float: left;
+                padding:0 5px;
+                margin:10px;
+                border:1px solid #ccc;
+                color:#999;
+                line-height: 30px;
+            }
+            #wrap .content .target ul li span{
+                padding-right:6px;
+                border-right: 1px solid #ccc;
+            }
+            #wrap .content .target ul li:hover i{
+                color:red;
+            }
+            #wrap .content .target ul li i{
+                padding:4px;
+                cursor: pointer;
+            }
+            #wrap .content .show ul{
+                margin:70px 20px;
+            }
+            #wrap .content .show ul li{
+                float:left;
+                padding:5px;
+                margin:10px;
+                border:1px solid #ccc;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="content clearfix">
+                <div class="target fl">
+                    <div class="title">
+                        <p class="fl">热门目的地:</p>
+                        <a href="#">马来西亚</a>
+                        <a href="#">泰国</a>
+                        <a href="#">三亚</a>
+                        <a href="#">新西兰</a>
+                        <a href="#">云南</a>
+                    </div>
+                    <ul class="clearfix">
+                        <!--<li>-->
+                            <!--<span></span>-->
+                            <!--<i></i>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+                <div class="show fr">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                let aA = [...document.getElementsByTagName("a")],
+                oTarUl = document.querySelector("#wrap .content .target ul"),
+                oShowUl = document.querySelector("#wrap .content .show ul"),
+                arrayIndex=[];
+
+
+                function nodeFunc(index){
+                    //不能重复添加
+                    if (arrayIndex.includes(index))return;
+                    arrayIndex.push(index);
+
+                    //左边的添加
+                    let oLi = document.createElement("li");
+                    let oSpan = document.createElement("span");
+                    let oText = document.createTextNode(aA[index].childNodes[0].nodeValue);
+                    oSpan.appendChild(oText);
+                    let oI = document.createElement("i");
+                    let oX = document.createTextNode("x");
+                    oI.appendChild(oX);
+                    oLi.appendChild(oSpan);
+                    oLi.appendChild(oI);
+                    oTarUl.appendChild(oLi);
+
+                    //右边的
+                    let rLi = document.createElement("li"),
+                        rText = document.createTextNode(oText.nodeValue);
+                    rLi.appendChild(rText);
+                    oShowUl.appendChild(rLi);
+
+                    //删除事件
+                    oI.onclick = function () {
+                        oTarUl.removeChild(oLi);
+                        oShowUl.removeChild(rLi);
+                        arrayIndex.pop(index);
+                    }
+                };
+
+
+                //遍历对象
+                aA.forEach((ele,index)=>{
+                    ele.onclick = function () {
+                        nodeFunc(index);
+                    }
+                });
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
