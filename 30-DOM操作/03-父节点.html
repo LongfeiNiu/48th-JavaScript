@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p id="btn">4545454</p>
+        </div>
+        
+        <script>
+            /*
+                父节点
+             */
+
+            let oBtn = document.getElementById("btn"),
+                oW = document.getElementById("wrap");
+
+            console.log(oBtn.parentNode);
+            console.log(oW.parentNode);
+
+            //自删除
+            //oBtn.parentNode.removeChild(oBtn);
+
+            console.log(oBtn.offsetParent);       //定位父级，离他最近的拥有定位的父级，都没有的时候就是body
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

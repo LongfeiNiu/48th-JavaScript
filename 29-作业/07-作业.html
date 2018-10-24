@@ -123,38 +123,48 @@
                 let aA = [...document.getElementsByTagName("a")],
                 oTarUl = document.querySelector("#wrap .content .target ul"),
                 oShowUl = document.querySelector("#wrap .content .show ul"),
-                arrayIndex=[];
+                ifAdd = [];
 
 
                 function nodeFunc(index){
-                    //不能重复添加
-                    if (arrayIndex.includes(index))return;
-                    arrayIndex.push(index);
+                    if(!ifAdd[index])ifAdd[index] = {};    //创建对象
 
-                    //左边的添加
-                    let oLi = document.createElement("li");
-                    let oSpan = document.createElement("span");
-                    let oText = document.createTextNode(aA[index].childNodes[0].nodeValue);
-                    oSpan.appendChild(oText);
-                    let oI = document.createElement("i");
-                    let oX = document.createTextNode("x");
-                    oI.appendChild(oX);
-                    oLi.appendChild(oSpan);
-                    oLi.appendChild(oI);
-                    oTarUl.appendChild(oLi);
+                    if(ifAdd[index].bool) return;   //不能重复添加
 
-                    //右边的
-                    let rLi = document.createElement("li"),
-                        rText = document.createTextNode(oText.nodeValue);
-                    rLi.appendChild(rText);
-                    oShowUl.appendChild(rLi);
+                    let data = ifAdd[index];
+                    //如果未创建，就创建对象
+                    if(!data.oLeft){
+                        //创建左边
+                        let oLi = document.createElement("li");
+                        let oSpan = document.createElement("span");
+                        let oText = document.createTextNode(aA[index].childNodes[0].nodeValue);
+                        oSpan.appendChild(oText);
+                        let oI = document.createElement("i");
+                        let oX = document.createTextNode("x");
+                        oI.appendChild(oX);
+                        oLi.appendChild(oSpan);
+                        oLi.appendChild(oI);
+                        data.oLeft = oLi;
 
-                    //删除事件
-                    oI.onclick = function () {
-                        oTarUl.removeChild(oLi);
-                        oShowUl.removeChild(rLi);
-                        arrayIndex.pop(index);
+                        //右边的
+                        let rLi = document.createElement("li"),
+                            rText = document.createTextNode(oText.nodeValue);
+                        rLi.appendChild(rText);
+                        data.oRight = rLi;
+
+                        //删除事件
+                        oI.onclick = function () {
+                            oTarUl.removeChild(oLi);
+                            oShowUl.removeChild(rLi);
+                            ifAdd[index].bool = false;     //允许再次添加
+                        }
                     }
+
+                    //添加对象
+                    oTarUl.appendChild(data.oLeft);
+                    oShowUl.appendChild(data.oRight);
+                    //已经添加
+                    ifAdd[index].bool = true;
                 };
 
 

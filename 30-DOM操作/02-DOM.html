@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>11</p>
+            <p>22</p>
+            <p>33</p>
+        </div>
+        
+        <script>
+
+            let oW = document.getElementById("wrap");
+            /*
+
+            let yinyong = oW.children;     //是动态的更新，根据儿子变化而变化，
+
+            console.log(oW.firstChild);         //第一个子节点，文本节点->换行符
+            console.log(oW.firstElementChild);  //第一个元素子节点，  <p>11</p>
+            console.log(oW.children[0]);        //第一个元素子节点，  <p>11</p>
+            */
+
+            var aChild = oW.children;
+
+            var p1 = aChild[0];
+            var p2 = aChild[1];
+            var p3 = aChild[2];
+
+            /*
+            console.log(p1.nextSibling);   //下一个节点（文本换行符）
+
+            //标准浏览器
+            console.log(p1.nextElementSibling);   //下一个兄弟元素(如果没有，打印null)
+            console.log(p2.nextElementSibling);   //
+            console.log(p3.nextElementSibling);   //没有返回null
+
+            */
+
+            console.log(getNextSibing(p1));
+            console.log(getNextSibing(p2));
+            console.log(getNextSibing(p3));
+
+
+            //IE兼容，只有nextSibing,下一个兄弟元素节点
+            function getNextSibing(ele) {
+                if(ele.nextElementSibling !== undefined){
+                    return ele.nextElementSibling;
+                }else{
+                    return ele.nextSibling;        //IE的
+                }
+            }
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

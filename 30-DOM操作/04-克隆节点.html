@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p class="gg">745545</p>
+        </div>
+
+        <div id="btn">444</div>
+        
+        <script>
+            //节点具有唯一性，只有clone可以   默认不复制里面的内容，参数为true内容也克隆,  事件不能复制
+            let oP = document.getElementsByClassName("gg")[0],
+            oBtn = document.getElementById("btn");
+
+            oP.onclick =function () {alert(1);};       //事件不能clone
+
+            //oBtn.appendChild(oP);
+            let clone = oP.cloneNode(true);            //克隆获得一个新的节点对象
+
+            oBtn.appendChild(clone);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
