@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                overflow: hidden;
+                width:100px;
+                height:100px;
+                margin:4px;
+                padding:3px;
+                border:7px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            ssssss
+        </div>
+        
+        <script>
+
+            /*
+            number类型
+
+                clientHeight/clientWidth
+                offsetHeight/offsetWidth
+                scrollHeight/scrollWidth
+
+            */
+
+            let oWrap = document.getElementById("wrap");
+
+            console.log(oWrap.clientWidth);   //width + padding
+            console.log(oWrap.offsetWidth);   //width + padding + border
+
+            //scrollWidth  元素占用的宽度，生成滚动条,内容不超出时数值等于clientWidth
+            console.log(oWrap.scrollWidth);   //如果有超出部分，正确的反映出超过之后的宽度，不管有没有加超出隐藏
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                overflow-y:auto ;     /*y竖直方向有滚动条*/
+                width:300px;
+                height:500px;
+                background-color: pink;
+                margin:50px auto;
+            }
+            #wrap p{
+                height:2000px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p></p>
+        </div>
+        
+        <script>
+
+            let oW = document.getElementById("wrap");
+
+            oW.onclick = function(){
+                console.log(oW.scrollTop);   //oW元素竖直方向的滚动高度
+            }
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

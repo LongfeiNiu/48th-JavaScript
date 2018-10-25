@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                left: 0;
+                top:0;
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            let oW = document.getElementById("wrap");
+
+            oW.onmousedown = function (ev) {
+                //获取鼠标初始的位置
+                let sX = ev.clientX;
+                let sY = ev.clientY;
+                //获取按下时，盒子的位置
+                let sLeft = oW.offsetLeft;
+                let sTop = oW.offsetTop;
+                document.onmousemove = function (eve) {
+                    //获取鼠标当前的位置
+                    let mX = eve.clientX;
+                    let mY = eve.clientY;
+
+                    //计算鼠标位置的变化量
+                    let x = mX - sX;
+                    let y = mY - sY;
+
+                    //盒子当前的位置 = 盒子按下的位置 + 变化量
+                    oW.style.left = sLeft + x + 'px';
+                    oW.style.top = sTop + y + 'px';
+                };
+            };
+
+            document.onmouseup = function () {
+                console.log("up");
+                this.onmousemove = null;
+            }
+
+            
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

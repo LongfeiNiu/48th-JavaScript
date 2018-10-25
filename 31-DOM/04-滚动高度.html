@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body style="height:2000px;">
+        <div id="wrap"></div>
+        
+        <script>
+
+            document.onclick = function () {
+
+                //页面滚动高
+                console.log(document.documentElement.scrollTop);
+                //document.body.scrollTop  谷歌弃用了，但是手机可能还未改
+
+                //最好这样写去获取页面的滚动高
+                console.log(document.body.scrollTop || document.documentElement.scrollTop);  //保险起见
+
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

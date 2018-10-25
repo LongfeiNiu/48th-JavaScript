@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                /*position: relative;*/
+                margin:50px;
+            }
+            p{
+                width:10px;
+                height:10px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            8888
+            <p></p>
+        </div>
+        
+        <script>
+            /*
+                    只有距离定位父级的左值和上值
+             */
+
+            let oP = document.querySelector("#wrap p");
+
+            //wrap没加position，则定位父级是body
+            console.log(oP.offsetLeft);    //到定位父级的距离
+            console.log(oP.offsetTop);     //到定位父级的距离
+
+            //获取元素到文档body的距离
+            function getOffset(ele) {
+                let dis = {
+                    top:0,left:0
+                };
+                while(ele !== document.body){
+                    dis.top += ele.offsetTop;
+                    dis.left += ele.offsetLeft;
+                    ele = ele.offsetParent;         //定位父级
+                }
+                return dis;
+            }
+
+            console.log(getOffset(oP));
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

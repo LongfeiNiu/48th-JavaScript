@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                event事件对象
+                    事件函数执行时，第一个形参就是事件对象
+                    存储着和该次事件相关的一些信息
+                    IE8及以下浏览器，使用event全局变量来表示事件对象
+
+                该对象里面比较重要的一些属性
+                    clientX/clientY  事件触发时，鼠标距离可视区的距离
+                    pageX/pageY      鼠标距离文档的位置(IE8 不兼容)
+             */
+
+            /*
+            document.onclick = function (event) {
+                console.log(event);
+            }
+            */
+
+            //IE的事件函数没有形参
+            /*
+            document.onclick = function () {
+                let event;
+                console.log(window.event);         //全局变量
+            }
+            */
+
+            //兼容
+            document.onclick = function (ev) {
+                ev = ev || window.event;
+                console.log(ev);         //全局变量
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

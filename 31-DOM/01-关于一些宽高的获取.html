@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                获取页面显示区的宽高，IE8及以下不兼容
+             */
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
+
+            document.body;
+            document.head;
+            document.title;
+            document.documentElement;   //获取html元素节点
+            console.log(document.documentElement === document.querySelector("html"));
+
+            //下面的IE兼容
+            console.log(document.documentElement.clientWidth);    //html页面宽度
+            console.log(document.documentElement.clientHeight);   //html页面高度
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
