@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                top:300px;
+                left:400px;
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+            #wrap .drag div{
+                position: absolute;
+                width:100%;
+                height:100%;
+            }
+            #wrap .drag .n{
+                top:0;
+                left:0;
+                height:5px;
+                /*background-color: #43c052;*/
+                cursor:n-resize;
+            }
+            #wrap .drag .ne{
+                top:0;
+                right:0;
+                width:5px;
+                height:5px;
+                /*background-color: #f00;*/
+                cursor:ne-resize;
+            }
+            #wrap .drag .e{
+                top:0;
+                right:0;
+                width:5px;
+                /*background-color: #43c052;*/
+                cursor:e-resize;
+            }
+            #wrap .drag .se{
+                bottom:0;
+                right:0;
+                width:5px;
+                height:5px;
+                /*background-color: #f00;*/
+                cursor:se-resize;
+            }
+            #wrap .drag .s{
+                bottom:0;
+                left: 0;
+                height:5px;
+                /*background-color: #43c052;*/
+                cursor:s-resize;
+            }
+            #wrap .drag .sw{
+                bottom:0;
+                left:0;
+                width:5px;
+                height:5px;
+                /*background-color: #f00;*/
+                cursor:sw-resize;
+            }
+            #wrap .drag .w{
+                top:0;
+                left:0;
+                width:5px;
+                /*background-color: #43c052;*/
+                cursor:w-resize;
+            }
+            #wrap .drag .nw{
+                left:0;
+                top:0;
+                width:5px;
+                height:5px;
+                /*background-color: #f00;*/
+                cursor:nw-resize;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="drag">
+                <div class="n"></div>
+                <div class="e"></div>
+                <div class="s"></div>
+                <div class="w"></div>
+                <div class="ne"></div>
+                <div class="sw"></div>
+                <div class="se"></div>
+                <div class="nw"></div>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+
+                let oW = document.getElementById("wrap"),
+                    aDrag = [...document.querySelectorAll("#wrap .drag div")];
+
+                aDrag.forEach((ele,index)=>{
+                    //点击时触发移动事件
+                    ele.onmousedown = function (ev) {
+                        //记录点击时的x和y坐标
+                        let xS = ev.clientX,
+                            yS = ev.clientY;
+                        //记录拖动前的宽高
+                        let [widthS,heightS,topS,leftS] = [
+                            oW.offsetWidth,
+                            oW.offsetHeight,
+                            oW.offsetTop,
+                            oW.offsetLeft
+                        ];
+                        //拖放事件
+                        document.onmousemove = function (event) {
+                            //默认四个属性
+                            let [width,height,left,top]=[widthS,heightS,leftS,topS];
+
+                            //计算位移
+                            let _x = event.clientX-xS,
+                                _y = event.clientY-yS;
+
+                            //分别确定位置
+                            switch (index) {
+                                case 0:                     //n
+                                    height = Math.max(height-_y,10);
+                                    top = Math.min(top+_y,topS+heightS-10);
+                                    break;
+                                case 1:                     //E
+                                    width = Math.max(width+_x,10);
+                                    break;
+                                case 2:                     //S
+                                    height = Math.max(height+_y,10);
+                                    break;
+                                case 3:                     //w
+                                    width = Math.max(width-_x,10);
+                                    left = Math.min(left+_x,leftS+widthS-10);
+                                    break;
+                                case 4:                    //ne
+                                    height = Math.max(height-_y,10);
+                                    width = Math.max(width+_x,10);
+                                    top = Math.min(top+_y,topS+heightS-10);
+                                    break;
+                                case 5:                  //sw
+                                    height = Math.max(height+_y,10);
+                                    width = Math.max(width-_x,10);
+                                    left = Math.min(left+_x,leftS+widthS-10);
+                                    break;
+                                case 6:                  //se
+                                    width = Math.max(width+_x,10);
+                                    height = Math.max(height+_y,10);
+                                    break;
+                                case 7:                 //nw
+                                    height = Math.max(height-_y,10);
+                                    width = Math.max(width-_x,10);
+                                    left = Math.min(left+_x,leftS+widthS-10);
+                                    top = Math.min(top+_y,topS+heightS-10);
+                                    break;
+                            }
+
+                            oW.style.width = width+'px';
+                            oW.style.height = height+'px';
+                            oW.style.top = top + 'px';
+                            oW.style.left = left + 'px';
+                        }
+                    }
+                    //清除移动事件
+                    ele.onmouseup = function () { document.onmousemove = null;}
+
+                });
+            })();
+
+            /*
+                //e
+                if(index === 1){
+                    oW.style.width = widthS+_x+'px';
+                }
+                //s
+                if(index === 2){
+                    oW.style.height = heightS+_y+'px';
+                }
+                //se
+                if(index === 6){
+                    oW.style.width = widthS+_x+'px';
+                    oW.style.height = heightS+_y+'px';
+                }
+             */
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

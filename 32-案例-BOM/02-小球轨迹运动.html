@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                z-index: 1;
+                left:0;
+                top:0;
+                width:50px;
+                height:50px;
+                background-color:pink;
+                border-radius: 50%;
+            }
+            .shadow{
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+                height:100%;
+            }
+            .shadow p{
+                position: absolute;
+                width:35px;
+                height:35px;
+                background-color:pink;
+                transform-origin: center center;
+                transform: scale(1);
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <div class="shadow"></div>
+        
+        <script>
+            (function () {
+                let oW  =document.getElementById("wrap"),
+                    oShadow = document.getElementsByClassName("shadow")[0],
+                    stepX = 8,
+                    stepY = 9;
+
+                //初始时的位置
+                let left = oW.offsetLeft,
+                    top = oW.offsetTop;
+
+                //最大边距
+                let MaxLeft = window.innerWidth-50,
+                    MaxTop = window.innerHeight-50;
+
+                window.onresize = function () {
+                    MaxLeft = window.innerWidth-50;
+                    MaxTop = window.innerHeight-50;
+                }
+
+                !function m() {
+                    left += stepX;
+                    top += stepY;
+                    //left
+                    if(left>=MaxLeft){
+                        left=MaxLeft;
+                        stepX = -stepX;
+                    }
+                    if(left<=0){
+                        left=0;
+                        stepX = -stepX;
+                    }
+                    //top
+                    if(top>=MaxTop){
+                        top = MaxTop;
+                        stepY = -stepY;
+                    }
+                    if(top<0){
+                        top = 0;
+                        stepY = -stepY;
+                    }
+
+                    oW.style.left = left+'px';
+                    oW.style.top = top+'px';
+                    //拖尾
+                    createShadow(left,top);
+
+                    requestAnimationFrame(m);
+                }();
+
+                //生成拖尾
+                function createShadow(left,top) {
+                    let oP = document.createElement("p");
+                    oP.style.left = left+7+'px';
+                    oP.style.top = top+7+'px';
+                    oP.style.transition = "transform .8s,opacity .8s";
+                    //这里的timeout相当于另定义一个css的动作
+                    setTimeout(()=>{
+                        oP.style.transform = 'scale(0)';
+                        oP.style.opacity = '0';
+                    });
+                    setTimeout(()=>{
+                        oShadow.removeChild(oP);
+                    },800);
+                    oShadow.appendChild(oP);
+                }
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

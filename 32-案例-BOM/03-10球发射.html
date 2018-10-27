@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            div.box{
+                position: absolute;
+                left:0;
+                top:0;
+                width:100px;
+                height:100px;
+                background-color: #db3a45;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+
+        
+        <script>
+            (function () {
+                let aBox = [...document.getElementsByClassName("box")];
+
+                //最大边距
+                let MaxLeft,MaxTop ;
+                window.onresize = (function s() {
+                    MaxLeft = window.innerWidth-100;
+                    MaxTop = window.innerHeight-100;
+                    return s;
+                })();
+
+                //步长
+                let step = [
+                    {
+                        stepX:3,
+                        stepY:4,
+                    },
+                    {
+                        stepX:5,
+                        stepY:6,
+                    },
+                    {
+                        stepX:6,
+                        stepY:7,
+                    },
+                    {
+                        stepX:7,
+                        stepY:8,
+                    },
+                    {
+                        stepX:8,
+                        stepY:9,
+                    },
+                    {
+                        stepX:9,
+                        stepY:10,
+                    },
+                    {
+                        stepX:10,
+                        stepY:11,
+                    },
+                    {
+                        stepX:11,
+                        stepY:12,
+                    },
+                    {
+                        stepX:12,
+                        stepY:13,
+                    },
+                    {
+                        stepX:13,
+                        stepY:14,
+                    },
+                ];
+
+                aBox.forEach((ele,index)=>{
+                    ball(ele,index);
+                });
+
+                //rgb函数
+                function color() {
+                    let r = Math.floor(Math.random()*256),
+                        g = Math.floor(Math.random()*256),
+                        b = Math.floor(Math.random()*256);
+                    return `rgb(${r},${g},${b})`;
+                }
+
+                //小球运动函数
+                function ball(ele,index) {
+                    //初始位置
+                    let left = ele.offsetLeft,
+                        top = ele.offsetTop;
+
+                    !function m() {
+                        //步长
+                        left += step[index].stepX;
+                        top += step[index].stepY;
+                        //left
+                        if(left>=MaxLeft){
+                            left=MaxLeft;
+                            ele.style.backgroundColor = color();
+                            step[index].stepX = -step[index].stepX;
+                        }
+                        if(left<=0){
+                            left=0;
+                            ele.style.backgroundColor = color();
+                            step[index].stepX = -step[index].stepX;
+                        }
+                        //top
+                        if(top>=MaxTop){
+                            top = MaxTop;
+                            ele.style.backgroundColor = color();
+                            step[index].stepY = -step[index].stepY;
+                        }
+                        if(top<0){
+                            top = 0;
+                            ele.style.backgroundColor = color();
+                            step[index].stepY = -step[index].stepY;
+                        }
+                        ele.style.left = left+'px';
+                        ele.style.top = top+'px';
+                        requestAnimationFrame(m);
+                    }();
+                }
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
