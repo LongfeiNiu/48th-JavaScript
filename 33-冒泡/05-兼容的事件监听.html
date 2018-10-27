@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            var oW = document.getElementById("wrap");
+
+            //元素的事件
+            var fn = addEvent(oW,'click',function () {
+                this.style.backgroundColor = 'red';
+            });
+
+            //文档双击移除事件
+            addEvent(document,"dblclick",function () {
+                removeEvent(oW,'click',fn);
+            })
+
+            //滚轮事件
+            addEvent(oW,'mousewheel',function () {
+                console.log('我滚动了');
+            })
+
+
+            //添加监听事件
+            function addEvent(ele,eType,callback,capture) {
+
+                //主流浏览器
+                if(ele.addEventListener){
+
+                    //兼容一下火狐的滚轮事件
+                    if(eType === 'mousewheel' && document.createElement("div").onmousewheel === undefined){
+                        eType = 'DOMMouseScroll';
+                    }
+
+                    ele.addEventListener(eType,callback,capture);
+
+                    return callback;
+                }else{
+                    //处理ie的this指向，ie低版本不支持bind
+                    var codeCall = function(){
+                        callback.call(ele);
+                    }
+                    ele.attachEvent('on'+eType,codeCall);
+
+                    return codeCall;
+                }
+            }
+
+            //移除事件
+            function removeEvent(ele,eType,callback,capture) {
+                ele.removeEventListener? ele.removeEventListener(eType,callback,capture)
+                                        : ele.detachEvent(eType,callback);
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

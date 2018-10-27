@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:200px;
+                height:200px;
+                border:1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            var oW = document.getElementById("wrap");
+
+            //DOM 0级事件,   相同名字的事件被覆盖，只能监听一个事件
+            /*
+            oW.onclick = function () {
+                console.log(1);
+            };
+            oW.onclick = function () {
+                console.log(2);
+            };
+            */
+
+
+            /*
+                 事件监听（默认事件冒泡）
+                    用到事件的地方最好就是使用 DOM2级来监听
+
+                 监听事件
+                    主流浏览器         事件类型  "click"
+                        ele.addEventListener(事件类型，回调方法，捕获|冒泡)
+                        1.this指向节点本身
+                        2.捕获与冒泡
+                            默认是false  冒泡事件
+                            true为捕获，与冒泡的顺序相反，从最大父级到子级开始(也能使用阻止冒泡的方式)
+
+                    ie浏览  ie8       事件类型  "onclick"
+                        oW.attachEvent(事件类型，回调方法)
+                        1.this不再指向节点本身，指向window
+                        ie8没有事件捕获，默认是冒泡事件
+
+                 移除事件
+                    主流浏览器
+                        ele.removeEventListener(事件类型，回调方法，捕获|冒泡);
+
+                    IE8
+                        ele.detachEvent(事件类型，回调方法);
+
+             */
+            //事件监听DOM   2级事件
+            //IE8
+            /*
+            oW.attachEvent("onclick",function (e) {
+                e = e||window.event;
+                console.log(this);      //this 不再指向监听事件的节点本身
+                console.log(e);
+            });
+            */
+
+            /* 主流浏览器
+            oW.addEventListener("click",function () {
+                console.log("我又监听了一次点击事件，理解一下DOM 2级事件");
+            })
+            */
+
+            var callback = function () {
+                console.log(1);
+            };
+
+            oW.addEventListener("click",callback);
+
+            //文档双击，注销事件
+            //该事件必须事先用变量保存，removeEventListener的参数必须与添加事件监听的参数一样，才能移除
+            document.ondblclick = function () {
+                oW.removeEventListener('click',callback);
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

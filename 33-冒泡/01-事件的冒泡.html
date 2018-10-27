@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #box{
+                float: left;
+                padding:10px;
+                border:1px solid #ccc;
+            }
+            #box1{
+                width:100px;
+                height:100px;
+                border:1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            box1
+            <div id="box1">
+                box2
+            </div>
+        </div>
+        
+        <script>
+            /*
+                事件的冒泡
+                    子元素触发了事件  如果父元素也有同类型的事件的话，父元素也会触发
+                    触发的顺序是从子级开始，向父级方向
+
+                    冒泡的触发顺序
+                    box2 -> box1 -> body -> html
+
+                    冒泡触发顺序
+                        从子元素开始到窗口，（从儿子到爸爸）window
+
+                    阻止冒泡   event.stopPropagation()  阻止传播   IE不兼容
+                    box2  box1
+             */
+            var box = document.getElementById("box"),
+                box1 = document.getElementById("box1");
+
+            document.onclick = function(){
+                console.log("我也触发了事件");
+            }
+
+            box.onclick = function () {
+                console.log(1);
+            }
+            box1.onclick = function (event) {
+
+                event = event ||window.event;
+
+                //event.stopPropagation();       //冒泡停止(主流浏览器)
+
+                console.log(2);
+
+                //ie阻止冒泡的   属性
+                //event.cancelBubble = true;
+
+                //兼容性写法
+                event.stopPropagation ? event.stopPropagation():event.cancelBubble=true;
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:200px;
+                height:200px;
+                border: 1px solid #ccc;
+                overflow-y: scroll;
+            }
+            .box{
+                height:500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="box"></div>
+        </div>
+        
+        <script>
+
+            let oW = document.getElementById("wrap");
+            /*
+                    谷歌以及ie
+                    event.wheelDelta   滚动的幅度
+                        -120  下滚
+                        120   上滚
+
+                    火狐的  滚动事件名都不一样
+                        DOMMouseScroll  只能通过DOM 二级事件监听
+                        event.detail   滚动的幅度
+                            3  下滚
+                            -3 上滚
+
+                    只有谷歌和ie有onmousewheel事件属性，默认值为null
+                    火狐根本就没有onmousewheel属性，为undefined
+             */
+
+            /*
+            oW.addEventListener("mousewheel",function (e) {
+                console.log(e.wheelDelta);
+            })
+            */
+
+            //只能通过创建一个新的节点来判断兼容
+            if(document.createElement("div").onmousewheel === null){
+                console.log("谷歌");
+            }else{
+                console.log("火狐");
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:200px;
+                height:200px;
+                border: 1px solid #ccc;
+                overflow-y: scroll;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+            <p>默认行为</p>
+        </div>
+        
+        <script>
+            //事件的默认行为是右边鼠标显示的可选事件  oncontextmenu
+
+            /*
+                阻止默认行为
+                    DOM 0级在事件里面直接  return false，
+                    DOM 2级
+                        主流浏览器
+                            event.preventDefault();
+                        ie
+                            event.returnValue = false;
+
+            */
+
+
+            //DOM 0级在事件里面直接  return false，
+            /*
+            document.oncontextmenu = function () {
+
+                return false;
+            }
+            */
+
+            //DOM 2级   preventDefault
+            /*
+            document.addEventListener('contextmenu',function (e) {
+                e.preventDefault();
+            })
+            */
+
+            //IE8
+            /*
+            document.attachEvent('oncontextmenu',function (e) {
+                e = e||window.event;
+                e.returnValue = false;
+            })
+            */
+
+            //阻止默认的滚轮事件
+            document.addEventListener('mousewheel',function (e) {
+                e.preventDefault();
+            })
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
