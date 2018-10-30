@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            body{
+                overflow: hidden;
+            }
+            #wrap{
+                position: absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+            }
+            #wrap p{
+                position: absolute;
+                left:50px;
+                top:50px;
+                width:80px;
+                height:80px;
+                background-image: radial-gradient(white ,red );
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            (function () {
+                let oW = document.getElementById("wrap");
+
+                //生成10个小球
+                (function () {
+                    //节点片段，暂时存放节点的对象
+                    let oF = document.createDocumentFragment();
+
+                    //生成十个小球,一次性append进oW内，省的渲染多次
+                    for(let i=0;i<10;i++){
+                        let oP = document.createElement("p");
+                        oF.appendChild(oP);
+                    }
+                    oW.appendChild(oF);
+                })();
+
+                //运动
+                (function () {
+                    let aP = [...oW.children];
+                    let MaxL,MaxT;
+
+                    window.onresize = (function r(){
+                        MaxL = window.innerWidth - 80;
+                        MaxT = window.innerHeight - 80;
+                        return r;
+                    })();
+
+                    //随机初始速度
+                    let speedArr = [];
+                    aP.forEach((ele,index)=>{
+                        speedArr[index] = {
+                            stepX : Math.floor(Math.random()*10+3),
+                            stepY : Math.floor(Math.random()*10+3)
+                        };
+                    });
+
+                    //随机颜色
+                    function changeColor(ele) {
+                        let [r,g,b] = [
+                            Math.floor(Math.random()*256),
+                            Math.floor(Math.random()*256),
+                            Math.floor(Math.random()*256)
+                        ];
+                        ele.style.backgroundImage = `radial-gradient(white,rgb(${r},${g},${b}))`;
+                    }
+
+                    //遍历运动
+                    !function m(){
+
+                        aP.forEach((ele,index)=>{
+                            let left = ele.offsetLeft + speedArr[index].stepX;
+                            let top = ele.offsetTop + speedArr[index].stepY;
+
+                            if(left >= MaxL){
+                                left = MaxL;
+                                speedArr[index].stepX = -speedArr[index].stepX;
+                                changeColor(ele);
+                            }
+                            if(left <=0){
+                                left = 0;
+                                speedArr[index].stepX = -speedArr[index].stepX;
+                                changeColor(ele);
+                            }
+                            if(top>=MaxT){
+                                top = MaxT;
+                                speedArr[index].stepY = - speedArr[index].stepY;
+                                changeColor(ele);
+                            }
+                            if(top<=0){
+                                top = 0;
+                                speedArr[index].stepY = - speedArr[index].stepY;
+                                changeColor(ele);
+                            }
+                            ele.style.left = left+'px';
+                            ele.style.top = top + 'px';
+                        });
+
+                        requestAnimationFrame(m);
+                    }();
+
+                })();
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

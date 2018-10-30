@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: relative;
+                width:400px;
+                height:500px;
+                margin:20px auto;
+                overflow: hidden;
+                user-select: none;
+            }
+            #wrap .content{
+                position: absolute;
+                left:0;
+                top:0;
+                width:370px;
+                font-size:14px;
+            }
+            #wrap .content li{
+                width:100%;
+                padding:5px 0 5px 10px;
+                margin-bottom:1px;
+                background-color:#eeeef0;
+                line-height:30px;
+            }
+            #wrap .scrollbar{
+                position: absolute;
+                right:0;
+                top:0;
+                width:20px;
+                height:496px;
+                background-color: #ccc;
+                background-color:rgba(200,200,200,.5);
+                border-radius: 10px;
+                border:2px solid #aaa;
+                box-shadow: 0 0 20px #ccc ;
+            }
+            #wrap .scrollbar .bar{
+                position: absolute;
+                left:0;
+                top:0;
+                width:20px;
+                height:80px;
+                background-color: white;
+                border-radius:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <ul class="content">
+                <li>
+                    <p>1. It is never too old to learn.</p>
+                    <p>活到老，学到老。</p>
+                </li>
+                <li>
+                    <p>2. There is no royal road to learning.</p>
+                    <p>学问无坦途。书山有路勤为径,学海无涯苦作舟.</p>
+                </li>
+                <li>
+                    <p>3. A man becomes learned by asking questions.</p>
+                    <p>不耻下问才能有学问。</p>
+                </li>
+                <li>
+                    <p>4. A young idler, an old beggar.</p>
+                    <p>少壮不努力，老大徒伤悲。</p>
+                </li>
+                <li>
+                    <p>5. Study to be what you wish to seem. </p>
+                    <p>学习可成为你所理想的人物。</p>
+                </li>
+                <li>
+                    <p>6. By reading we enrich the mind, by conversation we polish it.</p>
+                    <p>读书使人充实，交谈使人精明。</p>
+                </li>
+                <li>
+                    <p>7. Books and friends should be few but good.</p>
+                    <p>读书如交友，应求少而精。</p>
+                </li>
+                <li>
+                    <p>8. Readingis to the mind while exercise to the body.</p>
+                    <p>读书健脑，运动强身。</p>
+                </li>
+                <li>
+                    <p>9. A good beginning makes a good ending.</p>
+                    <p>良好的开端就是成功的一半。 善始者善终。</p>
+                </li>
+                <li>
+                    <p>10. No matter how bad your heart has been broken, the world doesn’t stop for your grief. The sun comes right back up the next day.</p>
+                    <p>不管你有多痛苦，这个世界都不会为你停止转动。太阳照样升起。</p>
+                </li>
+                <li>
+                    <p>11. Experience is the mother of wisdom.</p>
+                    <p>实践出真知。</p>
+                </li>
+                <li>
+                    <p>12. Don't trouble trouble until trouble troubles you.</p>
+                    <p>不要自寻烦恼。</p>
+                </li>
+                <li>
+                    <p>13. Everybody dies, but not everybody lives.</p>
+                    <p>人人都会死，但非人人都曾活过。</p>
+                </li>
+                <li>
+                    <p>14. Doing is better than saying.</p>
+                    <p>行胜于言。</p>
+                </li>
+                <li>
+                    <p>15. Commitment in many, can do. It is just a lie.</p>
+                    <p>承诺再多，都做不到。那也只不是是谎言。</p>
+                </li>
+                <li>
+                    <p>16. No cross, no crown.</p>
+                    <p>不经历风雨，怎能见彩虹。</p>
+                </li>
+            </ul>
+            <div class="scrollbar">
+                <div class="bar"></div>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                var oW = document.getElementById("wrap"),
+                    oContent = document.querySelector("#wrap .content"),
+                    oScroll = document.querySelector("#wrap .scrollbar"),
+                    oBar = document.querySelector("#wrap .bar"),
+                    docMove= function () {};
+
+                //内容区的滚动事件
+                createEvent(oW,"mousewheel",function (event) {
+                    event = event||window.event;       //兼容IE
+                    var sT = oContent.offsetTop;
+                    var dir = 0;
+                    var top = 0;
+                    if(event.detail){    //火狐
+                        dir = event.detail / 3;         //下滑
+                    }else{               //谷歌和IE
+                        dir = event.wheelDelta / -120;  //下滑值
+                    }
+                    if(dir>0){
+                        top = Math.max((sT-dir*50),-756);
+                    }else{
+                        top = Math.min((sT-dir*50),0)
+                    }
+                    oContent.style.top = top + 'px';
+                    oBar.style.top = -top/1.82 + 'px';
+                    event.stopPropagation ? event.stopPropagation():(event.cancelBubble=true);
+                },false);
+
+                //自定义滚轮区的点击事件
+                createEvent(oScroll,'click',function (event) {
+                    event = event||window.event;
+                    var y_ = event.clientY - oBar.offsetHeight/2 - oW.offsetTop;
+                    if(y_<=0) y_=0;
+                    if(y_>=416)y_=416;
+                    oBar.style.top = y_+'px';
+                    oContent.style.top = -y_*1.82 + 'px';
+                    //阻止子级冒泡
+                    event.stopPropagation ? event.stopPropagation():(event.cancelBubble=true);
+                },true);
+
+                //自定义滚轮的滚动(点击时拖放)
+                createEvent(oBar,'mousedown',function (event) {
+                    event = event||window.event;
+                    var sT = oBar.offsetTop;
+                    var sY = event.clientY;
+                    var top = 0;
+                    docMove = createEvent(document,'mousemove',function (event) {
+                        event = event||window.event;
+                        var _Y = event.clientY - sY;
+                        if(_Y>0) top = Math.min((sT+_Y),416);
+                        if(_Y<0) top = Math.max((sT+_Y),0);
+                        oBar.style.top = top+'px';
+                        oContent.style.top = -top*1.82 + 'px';
+                    })
+                })
+
+                //清除移动事件
+                createEvent(document,'mouseup',function (){
+                    removeEvent(document,'mousemove',docMove);
+                });
+
+                //双击清除移动事件
+                createEvent(document,"dblclick",function () {
+                    removeEvent(document,'mousemove',docMove);
+                });
+
+
+
+                //生成监听事件
+                function createEvent(ele,eType,callback,capture) {
+
+                    if(ele.addEventListener){     //主流
+                        //兼容火狐的滚动事件
+                        if(eType === 'mousewheel' && document.createElement("div").onmousewheel === undefined){
+                            eType = "DOMMouseScroll";
+                        }
+                        //生成监听
+                        ele.addEventListener(eType,callback,capture);
+                        return callback;
+                    }else{             //IE8
+                        var codeCall = function(){
+                            callback.call(ele);
+                        }
+                        ele.attachEvent('on'+eType,codeCall);
+                        return codeCall;
+                    }
+                }
+                
+                //清除事件
+                function removeEvent(ele,eType,callback,capture) {
+                    if(ele.removeEventListener){
+                        //兼容火狐的滚动事件
+                        if(eType === 'mousewheel' && document.createElement("div").onmousewheel === undefined){
+                            eType = "DOMMouseScroll";
+                        }
+                        ele.removeEventListener(eType,callback,capture);
+                    }else{
+                        ele.detachEvent("on"+eType,callback);
+                    }
+                }
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

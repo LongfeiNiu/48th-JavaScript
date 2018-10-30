@@ -70,7 +70,7 @@
             //移除事件
             function removeEvent(ele,eType,callback,capture) {
                 ele.removeEventListener? ele.removeEventListener(eType,callback,capture)
-                                        : ele.detachEvent(eType,callback);
+                                        : ele.detachEvent("on"+eType,callback);
             }
 
         </script>
