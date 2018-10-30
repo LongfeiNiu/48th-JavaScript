@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <form action="" method="" id="form">
+            <input type="text" name="user">
+            <input type="radio" name="sex">
+            <input type="radio" name="sex">
+            <input type="submit">
+            <select name="gg" id="h">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </form>
+
+        <div id="wrap">
+            文字文字文字文字文字文字文字文字
+        </div>
+        <script>
+            /*
+                输入框的onchange，判断获取焦点时与失去焦点时的差异
+                oninput  响应实时变化事件
+
+             */
+
+            let oForm = document.getElementById("form");
+            /*
+            oForm.user.onchange = function () {
+                console.log(1);
+            }
+            */
+            /*
+            oForm.user.oninput= function () {
+                console.log(1);
+            }
+            */
+            oForm.gg.onchange=function () {
+                console.log("选项发生了改变",oForm.gg.value);
+            }
+
+            //onselectstart  选中文字时，触发事件
+            document.getElementById("wrap").onselectstart = function () {
+                console.log(2);
+                return false;        //阻止默认操作
+            }
+
+            //表单的提交事件，提交后跳转一个页面
+            oForm.onsubmit = function () {
+                console.log("提交");
+
+                return false;    //拒绝提交（用于判断是否满足提交条件）
+            }
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

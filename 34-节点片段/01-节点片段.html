@@ -26,8 +26,8 @@
                 position: absolute;
                 left:50px;
                 top:50px;
-                width:80px;
-                height:80px;
+                width:100px;
+                height:100px;
                 background-image: radial-gradient(white ,red );
                 border-radius: 50%;
             }
@@ -59,8 +59,8 @@
                     let MaxL,MaxT;
 
                     window.onresize = (function r(){
-                        MaxL = window.innerWidth - 80;
-                        MaxT = window.innerHeight - 80;
+                        MaxL = window.innerWidth - 100;
+                        MaxT = window.innerHeight - 100;
                         return r;
                     })();
 
@@ -68,8 +68,8 @@
                     let speedArr = [];
                     aP.forEach((ele,index)=>{
                         speedArr[index] = {
-                            stepX : Math.floor(Math.random()*10+3),
-                            stepY : Math.floor(Math.random()*10+3)
+                            stepX : Math.floor(Math.random()*12+4),
+                            stepY : Math.floor(Math.random()*12+4)
                         };
                     });
 

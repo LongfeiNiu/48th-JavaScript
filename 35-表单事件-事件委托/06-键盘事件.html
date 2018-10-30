@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+              按键按下：  keydown  keypress
+                    keydown在keypress之前触发
+                    down响应所有按键
+                    press事件只响应能键入值的按键，enter也能响应，不响应功能键（退格，上下左右）
+              按键抬起：  keyup
+                    按键抬起时响应
+             */
+
+            document.onkeydown = function () {
+                console.log("处于按下去状态ing");
+            }
+
+            document.onkeypress = function(){
+                console.log("press");
+            }
+
+            document.onkeyup = function () {
+                console.log("按键抬起了！");
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

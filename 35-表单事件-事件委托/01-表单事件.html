@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>阿飞飞的博客</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <a href="" id="x">455454</a>
+        <form action="" method="" id="form">
+            <input type="text" name="user">
+            <input type="radio" name="sex">
+            <input type="radio" name="sex">
+            <input type="submit">
+        </form>
+        
+        <script>
+
+            //表单是 .name 就能直接获取对象
+            // name相同，获取的是相同name的数组
+            // checkbox多选框，name不要一样
+            /*
+            let oForm = document.getElementById("form");
+
+            console.log(oForm.sex);
+            oForm.user.value = "阿飞飞";
+            */
+
+            /*
+                onfocus   焦点事件
+                onblur    失去焦点事件
+                    并不是所有的元素都能添加焦点事件，只有能获得焦点的元素才能添加焦点事件
+
+                    页面tab键能获得焦点的元素（document,a,window,以及表单相关的元素可以）
+             */
+            let ox = document.getElementById("x");
+            // x.onfocus = function () {
+            //     console.log("我获得焦点了");
+            // }
+            // x.onblur = function () {
+            //     console.log("嘤嘤，我失去焦点了");
+            // }
+
+            //window的焦点事件
+            window.onfocus = function () {
+                //console.log(1);
+                document.title = "乌龙阁的博客";
+            }
+            window.onblur = function () {
+                //console.log(2);           //进入控制台也会触发
+                document.title = "握草，出BUG！快来看看啊";
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述">
+    <meta name="author" content="Danew">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+
+        #wrap{
+            position: absolute;
+            left:200px;
+            top:200px;
+            width:100px;
+            height:100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+
+    <script>
+        let oW = document.getElementById("wrap");
+        let ifDown = {
+            65:{
+                bool:false,
+                timer:null,
+                setTimer(){
+                    oW.style.left = oW.offsetLeft-5+'px';
+                    this.timer = requestAnimationFrame(this.setTimer.bind(this));
+                },
+                clearTimer(){
+                    cancelAnimationFrame(this.timer);
+                }
+            },
+            87:{
+                bool:false,
+                timer:null,
+                setTimer(){
+                    oW.style.top = oW.offsetTop-5+'px';
+                    this.timer = requestAnimationFrame(this.setTimer.bind(this));
+                },
+                clearTimer(){
+                    cancelAnimationFrame(this.timer);
+                }
+            },
+            83:{
+                bool:false,
+                timer:null,
+                setTimer(){
+                    oW.style.top = oW.offsetTop+5+'px';
+                    this.timer = requestAnimationFrame(this.setTimer.bind(this));
+                },
+                clearTimer(){
+                    cancelAnimationFrame(this.timer);
+                }
+            },
+            68:{
+                bool:false,
+                timer:null,
+                setTimer(){
+                    oW.style.left = oW.offsetLeft+5+'px';
+                    this.timer = requestAnimationFrame(this.setTimer.bind(this));
+                },
+                clearTimer(){
+                    cancelAnimationFrame(this.timer);
+                }
+            }
+        }
+
+        //按下启动定时
+        document.onkeydown = function (ev) {
+            let keyCode = ev.keyCode;
+            if(!ifDown[keyCode]) return;
+            ifDown[keyCode].bool || ifDown[keyCode].setTimer();
+            ifDown[keyCode].bool = true;
+        };
+
+        //抬起清除定时
+        document.onkeyup = function (ev) {
+            let keyCode = ev.keyCode;
+            if(!ifDown[keyCode]) return;
+            ifDown[keyCode].clearTimer();
+            ifDown[keyCode].bool = false;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

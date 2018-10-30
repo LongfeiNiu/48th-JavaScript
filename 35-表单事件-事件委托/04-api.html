@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <form action="" method="" id="form">
+            <input type="text" name="user">
+            <input type="text" name="user1">
+            <input type="text" name="user2">
+        </form>
+
+        <button id="btn">
+            按钮
+        </button>
+        
+        <script>
+
+            let oForm = document.getElementById("form");
+            let oBtn = document.getElementById("btn")
+
+            /*  API
+                focus()   加焦点
+                blur()    失去焦点
+                submit()  提交api
+
+             */
+            // oBtn.onclick = function () {
+            //     oForm.user.focus();
+            // }
+            let aInp = [...oForm.children];      //动态的
+            aInp.forEach((ele,index)=>{
+                ele.oninput = function () {
+                    if(this.value.length >= 5){        //大于5个离开
+                        this.disabled = true;
+                        aInp[index+1] && aInp[index+1].focus();    //存在则转移到下一个焦点
+                    }
+                };
+                ele.onblur = function () {
+                    if(this.value.length<5){        //不满5个不能离开
+                        this.focus();
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

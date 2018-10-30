@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                left:200px;
+                top:200px;
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            let oW = document.getElementById("wrap");
+            document.onkeydown = function (ev) {
+                let keyCode = ev.keyCode;
+                switch (keyCode) {
+                    case 65:   //a
+                        oW.style.left = oW.offsetLeft-5+'px';
+                        break;
+                    case 87:    //w
+                        oW.style.top = oW.offsetTop-5+'px';
+                        break;
+                    case 83:   //s
+                        oW.style.top = oW.offsetTop+5+'px';
+                        break;
+                    case 68:   //d
+                        oW.style.left = oW.offsetLeft+5+'px';
+                        break;
+                }
+            };
+
+            //运动
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
