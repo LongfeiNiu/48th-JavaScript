@@ -1,0 +1,520 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>牛龙飞的个人主页</title>
+        <meta name="keywords" content="个人主页">
+        <meta name="description" content="欢迎学习Web开发的小伙伴一起进步">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            a{
+                color:white;
+                text-decoration: none;
+            }
+            .fl{
+                float:left;
+            }
+            .fr{
+                float: right;
+            }
+            .clearfix::after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+            #Website{
+                width:100%;
+            }
+            #head{
+                width:100%;
+                background-image: linear-gradient( #8cc1de 0%,#f9a886 100%);
+            }
+            #head .title{
+                position: relative;
+                width:1200px;
+                height:70px;
+                padding-top:10px;
+                margin: 0 auto;
+            }
+            #head .title .logo{
+               float:left;
+                width:220px;
+                height:60px;
+                background: url("img/logo.png") no-repeat;
+            }
+            #head .title .menu{
+                float: right;
+                color:white;
+                line-height:60px;
+            }
+            #head .title .menu li{
+                float: left;
+                margin-left:50px;
+            }
+            #head .title .menu li a:hover{
+                color:red;
+                cursor:pointer;
+            }
+            /*轮播图*/
+            #head .page{
+                overflow: hidden;
+                position: relative;
+                width:1200px;
+                height:636px;
+                margin: 0 auto;
+            }
+            #head .page .view{
+                position: absolute;
+                left:0;
+                top:0;
+                width:1000%;
+                height:100%;
+            }
+            #head .page .view.on{
+                transition: left .5s;
+            }
+            #head .page .view li{
+                float: left;
+                width:10%;
+                height:100%;
+                text-align:center;
+            }
+            #head .page .view li img{
+                width:100%;
+                height:100%;
+            }
+            #head .page .btn{
+                position: absolute;
+                left:0;
+                right:0;
+                bottom: 50px;
+                width:150px;
+                margin:auto;
+                text-align: center;
+            }
+            #head .page .btn::after{
+                content: "";
+                display: block;
+                clear:both;
+            }
+            #head .page .btn li{
+                float: left;
+                width:13px;
+                height:13px;
+                margin:0 5px;
+                border:2px solid white;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            #head .page .btn li.on{
+                background-color: #ff6600;
+            }
+            #head .page .desc{
+                position: absolute;
+                left:100px;
+                top:200px;
+                width:300px;
+                height:100px;
+                background-color: rgba(0,0,0,0.5);
+                color:white;
+            }
+            #head .page .desc span{
+                font-size: 30px;
+                font-weight: bold;
+                line-height: 50px;
+            }
+            #head .page .desc p{
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                line-height: 24px;
+            }
+            /*main start*/
+            #main{
+                width:100%;
+                background-color: #ececec;
+            }
+            #main .maincontent{
+                width:1200px;
+                padding:20px 0;
+                margin:0 auto;
+            }
+            #main .left,#main .center{
+                width:390px;
+                padding-right: 10px;
+            }
+            #main .right{
+                width:400px;
+            }
+            #main h3{
+                color:#f5ae54;
+                font-size:24px;
+                line-height:40px;
+            }
+            #main .left span{
+                display: block;
+                color:#113f6c;
+                padding-bottom: 5px;
+                font-size: 24px;
+                font-weight: bold;
+                line-height:30px;
+            }
+            #main .left img{
+                float: left;
+                width:124px;
+                height:167px;
+                padding-right: 10px;
+            }
+            #main .left p{
+                width:250px;
+                font-size: 16px;
+                line-height: 22px;
+            }
+            #main .left p.on{
+                width: auto;
+            }
+            #main .center p{
+                line-height: 22px;
+            }
+            #main .list{
+
+            }
+            #main .list li{
+                float: left;
+                width:98px;
+                height:98px;
+                margin: 10px 40px;
+                border:1px solid #f9a886;
+            }
+            #main .list li a{
+                display: block;
+                width:100%;
+                height:100%;
+                line-height: 98px;
+                font-size: 0;
+            }
+            #main .center .list li a img{
+                width:100%;
+                height:100%;
+            }
+            #main .right .list li a img{
+                width:100%;
+                vertical-align: middle;
+            }
+            /*footer start*/
+            #footer{
+                width:100%;
+                height:120px;
+                background-color: #2d3237;
+            }
+            #footer .content{
+                width:1200px;
+                height:100%;
+                margin:0 auto;
+            }
+            #footer .content .list{
+                width:100%;
+                padding:12px 0;
+                border-bottom:1px solid #3b424c;
+            }
+            #footer .content .list li{
+                position: relative;
+                float: left;
+                margin-right: 30px;
+            }
+            #footer .content .list li::after{
+                content: "";
+                position: absolute;
+                top:2px;
+                right:-15px;
+                width:2px;
+                height:16px;
+                background-color: #939393;
+            }
+            #footer .content .list li:last-child::after{
+                width:0;
+            }
+            #footer .content .list li a{
+                color:#939393;
+                transition: color .5s;
+            }
+            #footer .content .list li a:hover{
+                color:#06aaff;
+            }
+            #footer .content .desc{
+                padding-top: 12px;
+                color:#939393;
+                font-size: 14px;
+                line-height:22px;
+            }
+            #footer .content .desc a{
+                float: left;
+                padding-left: 20px;
+                color: #939393;
+                transition: color .5s;
+            }
+            #footer .content .desc a:hover{
+                color:#06aaff;
+            }
+            /*备案*/
+            #footer .content .beian{
+                float: left;
+                width:300px;
+                padding:5px 0;
+            }
+            #footer .content .beian a{
+                display:inline-block;
+                height:20px;
+                font-size: 14px;
+                line-height:22px;
+            }
+            #footer .content .beian a p{
+                float:left;
+                margin-left: 10px;
+                color:#939393;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="Website">
+            <!--头部-->
+            <div id="head">
+                <!--标题区域-->
+                <div class="title">
+                    <a href="http://www.suda.edu.cn/" target="_blank"><h1 class="logo"></h1></a>
+                    <ul class="menu">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">自序</a></li>
+                        <li><a href="#">案例</a></li>
+                        <li><a href="#">预留</a></li>
+                        <li><a href="#">预留</a></li>
+                    </ul>
+                </div>
+                <!--轮播图区域-->
+                <div class="page">
+                    <!--图片-->
+                    <ul class="view"></ul>
+                    <!--可点击切换-->
+                    <ul class="btn"></ul>
+                    <!--网站描述-->
+                    <div class="desc">
+                        <span>牛龙飞个人网站</span>
+                        <p>牛龙飞，信息与通信工程专业，苏州大学在读硕士</p>
+                    </div>
+                </div>
+            </div>
+            <!--内容区域-->
+            <div id="main">
+                <div class="maincontent clearfix">
+                    <div class="left fl">
+                        <h3>ABOUT ME</h3>
+                        <span>牛龙飞</span>
+                        <img src="img/me.jpg" alt="">
+                        <p class="fl">信息与通信工程硕士，苏州大学电子信息学院2017级研究生。本科就读于苏州大学，荣获苏州大学优秀毕业生。</p>
+                        <p class="fl">主修课程：模电、数电、电路分析、信号与系统、单片机、电磁场与电磁波、微波技术与天线、通信原理、计算机网络等。</p>
+                        <p class="fl on">自学编程语言：C、C++、Java、HTML、CSS、JavaScript、Matlab等。</p>
+                        <p class="fl on">已发论文:《Design of remote database service system for wearable devices》;AEIT-2018。</p>
+                    </div>
+                    <div class="center fl">
+                        <h3>WELCOME</h3>
+                        <p>本网站是个人学习全栈开发以来第一次上线实践，用于理解计算机网络开发。当前页面是基于原生JS的静态页面，有待进一步优化与更新。</p>
+                        <p>如下网页案例是个人学习制作，（纯属静态，并无任何功能）；特此声明，本案例不参与任何交互！</p>
+                        <p>版权所有、欢迎指正：1434340050@qq.com。</p>
+                        <h3>PROJECT</h3>
+                        <ul class="list">
+                            <li>
+                                <a href="http://www.phyth.cn/demo14.html" target="_blank"><img src="img/image01.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href="http://www.phyth.cn/demo13.html" target="_blank"><img src="img/image02.png" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right fl">
+                        <h3>TOOLS</h3>
+                        <ul class="list">
+                            <li>
+                                <a href="http://www.w3school.com.cn/" target="_blank"><img src="img/w3c.png" alt=""></a>
+                            </li>
+                            <li>
+                                <a href="http://www.php.cn/" target="_blank"><img src="img/php.png" alt=""></a>
+                            </li>
+                        </ul>
+                        <h3>BGM</h3>
+                        <audio src='img/sudananshannan.mp3' controls autoplay loop></audio>
+                    </div>
+                </div>
+            </div>
+            <!--尾部区域-->
+            <div id="footer">
+                <div class="content">
+                    <ul class="list clearfix">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">联系站长</a></li>
+                        <li><a href="#">留言板</a></li>
+                        <li><a href="#">预留</a></li>
+                        <li><a href="#">举报电话</a></li>
+                    </ul>
+                    <div class="desc clearfix">
+                        <p class="fl">Copyright©2018 牛龙飞 by phyth.cn 版权所有</p>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备18058656号</a>
+                    </div>
+                    <div class="beian">
+                        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050502000551">
+                            <img src="img/beian.png" style="float:left;"/>
+                            <p>苏公网安备 32050502000551号</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            (function () {
+                //轮播图
+                (function (data) {
+                    let oPage = document.querySelector("#head .page"),
+                        oView = document.querySelector("#head .page .view"),
+                        oBtn = document.querySelector("#head .page .btn"),
+                        pValue = document.querySelector("#head .page .desc p"),
+                        len = data.length,           //控制显示的图片数量
+                        ballWidth = 27,                 //按钮球的大小
+                        vleft = oPage.offsetWidth
+                    ;
+                    pContent = [
+                        "牛龙飞，信息与通信工程专业，苏州大学在读硕士",
+                        "这是一个正在建设中的个人主页",
+                        "好了，我暂时就会这些，等我慢慢更新吧！"
+                    ];
+                    //轮播图模板
+                    let Li = document.createElement("li"),
+                        img = new Image(),
+                        tmpImg = document.createDocumentFragment(),      //节点片段
+                        tmpBtn = document.createDocumentFragment()
+                    ;
+                    //生成轮播图内容
+                    for(let i=0;i<len;i++){
+                        let newImg = img.cloneNode(),
+                            newImgLi = Li.cloneNode(),
+                            newBtnLi = Li.cloneNode()
+                        ;
+                        newImg.src = data[i].src;
+                        newImgLi.appendChild(newImg);
+                        tmpImg.appendChild(newImgLi);
+                        tmpBtn.appendChild(newBtnLi);
+                    }
+                    //末尾再加入第一个
+                    let newImg=img.cloneNode(),
+                        newImgLi = Li.cloneNode();
+                    newImg.src = data[0].src;
+                    newImgLi.appendChild(newImg);
+                    tmpImg.appendChild(newImgLi);
+                    //刷新页面
+                    oView.appendChild(tmpImg);
+                    oBtn.appendChild(tmpBtn);
+                    oBtn.children[0].className = "on";     //默认选中第一个
+                    oBtn.style.width = ballWidth*len+"px"; //限制btn区域的宽度
+
+                    //按钮的点击事件
+                    (function () {
+                        let aBtn = [...oBtn.children],     //按钮
+                            lastIndex = 0,                 //默认从0开始
+                            count=0,
+                            timer=null
+                        ;
+                        //遍历添加点击事件
+                        aBtn.forEach((ele,index)=>{
+                            ele.addEventListener("click",function () {
+                                if(index === lastIndex) return;
+                                move(index);
+                            },false);
+                        })
+
+                        //定义移动函数
+                        function move(idx) {
+                            //添加动画
+                            oView.classList.add("on");
+                            //移动oView
+                            oView.style.left = -vleft*idx+"px";
+                            //隐藏动画
+                            if(idx>=len){
+                                setTimeout(function () {
+                                    oView.classList.remove("on");
+                                    oView.style.left = 0+'px';
+                                },500);
+                                idx=0;
+                            }
+                            //清除上一次的标记
+                            aBtn[lastIndex].classList.remove("on");
+                            //更新赋值
+                            lastIndex=idx;
+                            //添加新的标记
+                            aBtn[lastIndex].classList.add("on");
+                            //改变内容
+                            pValue.textContent = pContent[idx%3] ;
+                        }
+
+                        //定时器
+                        timer = setInterval(function () {
+                            move(lastIndex+1);
+                        },3000);
+
+                        //清除定时器
+                        oBtn.addEventListener("mouseenter",function () {
+                            clearInterval(timer);
+                        },false);
+
+                        //启用定时器
+                        oBtn.addEventListener("mouseleave",function () {
+                            timer = setInterval(function () {
+                                move(lastIndex+1);
+                            },3000);
+                        })
+                    })();
+
+                })([
+                    {
+                        id:1,
+                        src:"img/xhuanshi.jpg",
+                    },
+                    {
+                        id:2,
+                        src:"img/timg.jpg",
+                    },
+                    {
+                        id:3,
+                        src:"img/zhonglou.jpg",
+                    },
+                ]);
+
+                (function () {
+                    window.onfocus = function () {
+                        document.title = "牛龙飞的个人主页";
+                    }
+                    window.onblur = function () {
+                        document.title = "握草，出BUG！快来看看啊";
+                    }
+                })();
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
