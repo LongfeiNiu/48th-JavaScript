@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                \转义符号
+             */
+            //console.log("阿飞\"love\"朱雀\n123456\t789021");
+
+
+            //转义符号将有特殊意义的字符变成没有特殊意义
+            /*
+            let str = "/\\";
+            let a=/\/\\/;          //用转义字符"\"转义"/"和"\"
+            console.log(a.test(str));
+            */
+
+
+            /*
+                转义符号配合一些字母使用，有非常独特的意思
+                    \s   各种空格， \t  \n  \r  " "
+                    \S   非空格，\s的补集
+
+                    \d   数字
+                    \D   \d的补集
+
+                    \w   数字、字母、下划线   一般匹配用户名的
+                    \W
+
+                    \b  连词符 起始  结束  （空格 以及 除了\w之外  所有内容都是独立部分）
+                    \B
+             */
+            // let a = /\s/;
+            // let s = "   ";
+
+            // let a=/\d\d/;        //连续两个数字
+            // let s="fffff79pppp";
+
+            // let a = /\w/;
+            // let s = "abc";
+
+            /*  算作"afei"独立的字符
+                    "I am afei-1"
+                    "I am afei阿飞"
+                    "I am afei.abc"
+
+                \b只能用于匹配英文，中文本身就不独立，不能使用\b独立匹配
+             */
+            let a = /\bafei\b/;    //要匹配独立的部分
+            let s = "I am afei.abc";   //可以   "afeihui"就不行
+            console.log(a.test(s));
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

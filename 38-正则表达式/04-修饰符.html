@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                修饰符(写在//后面
+                    i   不区分大小写
+                    g   全局匹配
+                    m   换行匹配
+             */
+            // let a = /g/i;
+            // let s = "G";
+            // console.log(a.test(s));
+
+
+            /*
+                .match()
+                字符串.match(正则)
+                寻找匹配的内容，拿到并组成一个数组返回，否则返回null
+             */
+            let a = /xx/ig;
+            let s = "XxgfxxhxXx";     //xXx只能识别前两个
+            console.log(s.match(a));  //加了g后是纯粹的数组，没有别的属性
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

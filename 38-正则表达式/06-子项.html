@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                子项 ( )
+             */
+
+            // let a = /(ab)+/;    //不加括号，只能匹配abbbb
+            // let s = "abababab";
+
+            // let a = /gg(ab)+f(f)/g;    //加了括号的子项也会打印出来,使用全局g，则不打印子项
+            // let s = "ababggababffababa";
+
+
+            //利用子项，只获取子项中的号码
+            let a = /阿飞：(\d{11})/;
+            let s = "阿飞：12121212321，朱雀：32321232123";
+            console.log(s.match(a),s.match(a)[1]);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
