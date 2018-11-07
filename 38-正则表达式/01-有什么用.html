@@ -23,9 +23,22 @@
                     对象
                     配合一些api来验证字符串
              */
-            let str="456阿飞789朱雀12";   //["456","789,"12"]
+            let a="456阿飞789朱雀12";   //["456","789,"12"]
+            let b="454sjjdsiaodao5454";
+            let c="sds45sd45s21a";
 
-            console.log(fn(str));
+            console.log(fn(a));
+            console.log(fn(b));
+            console.log(fn(c));
+            console.log("*************************");
+            console.log(zz(a));
+            console.log(zz(b));
+            console.log(zz(c));
+
+            function zz(str) {
+                return str.match(/\d+/g);
+            }
+
             function fn(str) {
                 let len = str.length;
                 let s ="";

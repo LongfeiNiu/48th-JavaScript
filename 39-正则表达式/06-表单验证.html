@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: relative;
+                width:430px;
+                height:550px;
+                margin:50px auto 0;
+                background-color: #00baff;
+            }
+            #wrap .title{
+                height:40px;
+                line-height: 40px;
+                background-color: #008ccf;
+                color:white;
+                font-size: 24px;
+                text-align: center;
+                font-weight: bold;
+            }
+            #wrap input{
+                display: inline-block;
+                width:250px;
+                height:40px;
+                padding-left: 20px;
+                margin-left: 80px;
+                margin-top:20px;
+            }
+            #wrap input.error{
+                border: 2px solid red;
+            }
+            #wrap input.ok{
+                border:2px solid #479552;
+            }
+            #wrap img{
+                display: none;
+                width:30px;
+                height:30px;
+                vertical-align: middle;
+            }
+            #wrap input[type=submit]{
+                width:270px;
+                padding:0;
+                background-color: #008ccf;
+                outline-style: none;
+                color:white;
+                font-weight: bold;
+                cursor:pointer;
+            }
+            #wrap label{
+                overflow: hidden;
+                display: block;
+                height:0;
+                margin-left: 80px;
+                color:red;
+                font-size: 12px;
+            }
+            #alert{
+                position: absolute;
+                left: 0;
+                right:0;
+                top:0;
+                bottom:100px;
+                visibility: hidden;
+                width:150px;
+                height:40px;
+                margin: auto;
+                background-color: black;
+                color:white;
+                text-align: center;
+                line-height: 40px;
+                opacity: 0;
+                transition: bottom .4s,opacity .5s ;
+            }
+            #alert.on{
+                visibility:visible;
+                bottom: 0;
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p class="title">注册</p>
+            <form action="" method="" id="form">
+                <input type="text" name="name" id="name" placeholder="请输入您的用户名">
+                <img src="img/yes.png">
+                <label for="name">错误：用户名以字母开头，长度为6~16位</label>
+                <input type="password" name="pwd" id="pwd" placeholder="请输入您的密码">
+                <img src="img/yes.png">
+                <label for="name">错误：注意密码长度为6~18位</label>
+                <input type="password" name="repwd" id="repwd" placeholder="请再次输入您的密码">
+                <img src="img/yes.png">
+                <label for="name">错误：两次密码输入不一致</label>
+                <input type="text" name="phonenumb" id="phonenumb" placeholder="请输入您的手机号">
+                <img src="img/yes.png">
+                <label for="name">错误：手机号格式不正确</label>
+                <input type="text" name="qq" id="qq" placeholder="请输入您的QQ号">
+                <img src="img/yes.png">
+                <label for="name">错误：QQ号码格式不正确</label>
+                <input type="text" name="mail" id="mail" placeholder="请输入您的邮箱">
+                <img src="img/yes.png">
+                <label for="name">错误：邮箱格式不对，请重新输入</label>
+                <input type="submit" value="提交" id="submit">
+                <div id="alert">请先输入密码!</div>
+            </form>
+        </div>
+        
+        <script>
+            (function () {
+                let aLabel = document.querySelectorAll("#wrap label"),
+                    aImg = document.querySelectorAll("#wrap img"),
+                    oName = document.getElementById("name"),
+                    oPwd = document.getElementById("pwd"),
+                    oRepwd = document.getElementById("repwd"),
+                    oPnumb = document.getElementById("phonenumb"),
+                    oQQ = document.getElementById("qq"),
+                    oMail = document.getElementById("mail"),
+                    alert = document.getElementById("alert")
+                ;
+
+                //验证规则
+                let reg={
+                    //用户名
+                    name:/^[a-z]\w{5,15}$/i,
+                    //密码
+                    pwd:/^[\w~`!@#$%^&*()\-+=[\]{}'";:,.<>/?\\]{6,18}$/,
+                    //手机号
+                    tel:/^1[3-9]\d{9}$/,
+                    //qq
+                    qq:/^[1-9]\d{4,9}$/,
+                    //邮箱
+                    mail:/^[a-z1-9_]\w{0,17}@[0-9a-z]{2,}(\.[a-z]{2,6}){1,2}$/i
+                };
+                let isCheck=[];
+
+                //定义添加验证函数
+                function addCheckEvent(ele,reg,index) {
+                    //输入时,取消对勾
+                    ele.addEventListener("focus",function () {
+                        aImg[index].style.display = "none";
+                    })
+
+                    //离开时验证
+                    ele.addEventListener("blur",function () {
+                        if(!ele.value)return;       //未填写则返回
+                        //验证成功
+                        if(reg.test(ele.value)){
+                            ele.className="ok";     //绿框
+                            isCheck[index]=true;    //表示验证过
+                            aImg[index].style.display = "inline-block"; //对勾
+                            aLabel[index].style.height = 0+'px';        //错误不提示
+                        }else{
+                            ele.className="error";  //红框
+                            isCheck[index]=false;   //未验证通过
+                            aImg[index].style.display = "none";       //不显示对勾
+                            aLabel[index].style.height = 16+'px';     //提示错误
+                            ele.focus();            //锁定焦点
+                        }
+                    });
+                }
+
+                //1. 验证用户名
+                addCheckEvent(oName,reg.name,0);
+
+                //2.验证密码
+                addCheckEvent(oPwd,reg.pwd,1);
+
+                //3.二次密码focus
+                oRepwd.addEventListener("focus",function () {
+                    //先取消对勾
+                    aImg[2].style.display = "none";
+                    //判断第一次密码输入状态
+                    if(!oPwd.value){       //密码未输入
+                        setTimeout(function () {
+                            alert.classList.add("on");  //动画提示
+                            oPwd.focus();
+                        });
+                        setTimeout(function () {
+                            alert.classList.remove("on"); //定时消失
+                        },2000);
+                    }
+                })
+                //二次密码验证blur
+                oRepwd.addEventListener("blur",function () {
+                    if(!oRepwd.value)return;     //未填写则返回
+
+                    if(isCheck[1]){     //第一次密码已经验证
+                        if(oRepwd.value === oPwd.value){   //密码一样
+                            oRepwd.className="ok";              //绿框
+                            isCheck[2]=true;                    //表示验证过
+                            aImg[2].style.display = "inline-block"; //对勾
+                            aLabel[2].style.height = 0+'px';        //错误不提示
+                        }else{                               //不通过
+                            oRepwd.className="error";              //绿框
+                            isCheck[2]=false;                    //表示验证过
+                            aImg[2].style.display = "none"; //对勾
+                            aLabel[2].style.height = 16+'px';        //错误不提示
+                            oPwd.focus();                    //锁定第一次输入密码
+                        }
+                    }else{              //第一次密码不正确
+                        oPwd.focus();
+                    }
+                })
+
+                //4.验证手机号
+                addCheckEvent(oPnumb,reg.tel,3);
+
+                //5.验证QQ号
+                addCheckEvent(oQQ,reg.qq,4);
+
+                //6.验证邮箱
+                addCheckEvent(oMail,reg.mail,5);
+
+            })();
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

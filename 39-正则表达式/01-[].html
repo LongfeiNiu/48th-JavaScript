@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                |   或者
+                []  字符集,一个字符集只匹配一个字符
+                    [a-z]  字符区间（"-"在"[]"内有了特殊意义）
+                    [abc]  或者的意思
+                    [^abc] 放在正则字符的首位，表示除了这些，（不放在首位表示一个单纯的字符）
+                    [{}?*.+()] 这些原来有特殊意义的字符放在[]内没有了特殊意义，就是单纯的字符
+
+                    [a-z]
+                    [A-Z]所有的字母
+
+             */
+
+            // let a = /abc|edf/g;       //或者匹配
+            // let s = "edfabcedfabc";
+
+            // let a = /(阿飞|朱雀)老师/g;       //用子级匹配，加外面公用的
+            // let s = "朱雀老师美，阿飞老师帅";
+
+            //let a = /1|2|3|4|5|6|7/g;      //1或者7中的任何一个
+            //let a = /[1-7]{5}/g;             //区间，代表1到7之间任何一个
+
+            //ascii码的匹配，注意要有前后顺序
+            // let a = /[2-B]/g;
+            // let s = "23456789:;C<=>?@AB";
+
+            //unicode字符编码也能匹配
+            // let a = /[阿-飞]/g;      //意义不大
+            // let s = "阿飞老师";
+
+
+            // let a = /[abc0-9]/g;       //a或b或c，0到9
+            // let s = "2345abc";
+
+            //匹配所有的数字和字母
+            // let a = /[a-zA-Z0-9]/g;
+            // let s = "2345abcAfejnfjGHjfbj";
+
+            // let a = /[^abc]/g;       //除了，取反只能放在首位
+            // let s = "2345abcAfejnfjGHjfbj";
+
+            let a = /[{}?*./+()[\]\-]/g;       //字符集内的字符失去了特殊意义
+            let s = "2345abcAfejnfjGHjfbj";
+            console.log(s.match(a));
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

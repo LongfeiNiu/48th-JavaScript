@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                起止字符
+                   ^    起始位置
+                   $    结束位置
+             */
+
+            let a = /^abc$/;      //只能匹配"abc",空格都不可以有
+            //let s = "gabcgg";   //必须是a起始的字符串才能匹配
+            let s = "gabcgg";
+            console.log(s.match(a));
+
+
+            //
+            /(a|^)bc/
+            "ddabcdd"
+            "bcjfjfjfjfj"
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

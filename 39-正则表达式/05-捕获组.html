@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            // let a = /a(b)(c)/;
+            // let s = "abc";
+            // console.log(a.test(s));
+
+            /*
+            let a = /(阿飞|朱雀)老师/;
+            let s = "abc阿飞老师";
+            let s1 = "abc朱雀老师";
+            a.test(s);
+            s1.match(a);
+            console.log(RegExp.$1);      //离它最近一次正则结果的子项1
+            console.log(RegExp.$9);      //最多存9个子项
+            */
+
+            //
+            // let a = /\d{2}/;
+            // let s = "784454";
+
+            //捕获组，1表示重复第1个子项
+            //let a = /(\d)\1/;   //捕获组，重复子项   aa bb
+            //let a = /(\d\d)\1/; //捕获组，重复子项   abab
+            //let a = /(\d(\d))\1\2/; //捕获组，重复子项   ababb
+            //let a = /(\d\d)\1{9}/; //捕获组，可以用量词   abab
+            let a = /(\d(\d))\2\1/; //捕获组，重复子项   abbab
+            let s = "797994545545";
+
+            console.log(s.match(a));
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

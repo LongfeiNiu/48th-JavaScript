@@ -25,6 +25,10 @@
 
             let d = new Date();     //获取的是对象
             console.dir(d);
+            //
+            console.log(d.getTime());
+            let t = new Date(d.getTime());
+            console.log(t);
 
             //以下API返回数字   number
             console.log(d.getFullYear());         //得到  年
