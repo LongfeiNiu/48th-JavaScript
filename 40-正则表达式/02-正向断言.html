@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                断言，JS只有正向断言，放在后面，括号不算子项
+                    (?=a)    格式限定后面紧接着必须是a，但不希望匹配结果中有a
+                    (?!a)    格式限定后面紧接着不能是a
+             */
+
+            // let r = /abcd/;
+            // let s = "sssammabcdcsc";
+
+             // let r = /(阿飞|朱雀)老师，\1老师/;
+             // let s = "阿飞老师，阿飞老师";
+
+            /*
+            let r = /Window(?=XP)/;   //希望格式是WindowXP，但不希望结果中有XP，所有用?    这个()不是子项
+            let s = "WindowXPx";
+            */
+            let r = /Window(?!XP)/;   //不希望格式是Window后接着XP，?!  这个()不是子项
+            let s = "Window111";
+
+            console.log(s.match(r));
+            console.log(RegExp.$1);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

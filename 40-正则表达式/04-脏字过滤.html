@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <input type="text">
+            <button class="btn">发送</button>
+            <ul></ul>
+        </div>
+        
+        <script>
+            let Btn = document.getElementsByClassName("btn")[0],
+                Input = document.getElementsByTagName("input")[0],
+                oU = document.getElementsByTagName("ul")[0]
+            ;
+
+            Btn.onclick = function () {
+                let str = Input.value;
+                if(str === "")return;
+
+                let reg=/傻[,./<>\-+=\d]*逼|草|操|cao|艹|你[爸妈]|王八蛋|/g;
+
+                str = str.replace(reg,($0)=>{
+                    let s="";
+                    [...$0].forEach(()=>s+="□")
+                    return s;
+                })
+
+                let oLi = document.createElement("li");
+                oLi.innerText = str;
+                oU.appendChild(oLi);
+                Input.value="";
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

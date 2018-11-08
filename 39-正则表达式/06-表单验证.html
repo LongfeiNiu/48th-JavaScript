@@ -153,7 +153,13 @@
 
                     //离开时验证
                     ele.addEventListener("blur",function () {
-                        if(!ele.value)return;       //未填写则返回
+                        if(!ele.value){
+                            ele.className="";
+                            ele.className="";
+                            aImg[index].style.display = "none";       //不显示对勾
+                            aLabel[index].style.height = 0+'px';        //错误不提示
+                            return;
+                        };       //未填写则返回
                         //验证成功
                         if(reg.test(ele.value)){
                             ele.className="ok";     //绿框
@@ -179,7 +185,7 @@
                 //3.二次密码focus
                 oRepwd.addEventListener("focus",function () {
                     //先取消对勾
-                    aImg[2].style.display = "none";
+                    //aImg[2].style.display = "none";
                     //判断第一次密码输入状态
                     if(!oPwd.value){       //密码未输入
                         setTimeout(function () {
@@ -193,7 +199,12 @@
                 })
                 //二次密码验证blur
                 oRepwd.addEventListener("blur",function () {
-                    if(!oRepwd.value)return;     //未填写则返回
+                    if(!oRepwd.value){
+                        oRepwd.className="";
+                        aImg[2].style.display = "none"; //对勾
+                        aLabel[2].style.height = 0+'px';        //错误不提示
+                        return;
+                    };     //未填写则返回
 
                     if(isCheck[1]){     //第一次密码已经验证
                         if(oRepwd.value === oPwd.value){   //密码一样
@@ -208,8 +219,6 @@
                             aLabel[2].style.height = 16+'px';        //错误不提示
                             oPwd.focus();                    //锁定第一次输入密码
                         }
-                    }else{              //第一次密码不正确
-                        oPwd.focus();
                     }
                 })
 

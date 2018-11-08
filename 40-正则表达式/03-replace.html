@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                replace
+                    str.replace(正则,字符串|函数);
+                    替换匹配到的内容变成第二个参数的内容
+                    （如果是字符串直接替换，如果是函数，替换返回值）
+             */
+            let reg = /(阿飞|风屿|海文)(老师|先生|大大)/g;
+            let str = "阿飞老师是个纯粹的大猪蹄，风屿先生真自恋，海文大大脾气不好";
+
+            // let newStr = str.replace(reg,"小浪");
+            // let newStr = str.replace(reg,(...rest)=>{
+            //     //经过了很多运算之后，得到用来替换的字符串
+            //     console.log(rest);
+            //     return '小浪';
+            // });
+            let newStr = str.replace(reg,(a,b,c)=>{
+                //经过了很多运算之后，得到用来替换的字符串
+                console.log(a,b,c); //a表示正则形参，b表示第一个子项
+                return '小浪'+c+c.slice(1);
+            });
+            console.log(newStr);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: relative;
+                width: 420px;
+                height: 540px;
+                background: #0cf;
+                margin: 50px auto 0;
+            }
+            #wrap h2{
+                width:100%;
+                height:40px;
+                background: #09c;
+                color:#fff;
+                font-size:20px;
+                line-height: 40px;
+                text-align: center;
+            }
+            #wrap ul{
+                width:100%;
+            }
+            #wrap ul li{
+                overflow: hidden;
+                z-index: 1;
+                position: relative;
+                height:42px;
+                margin:23px 0;
+                transition: height .3s;
+            }
+            #wrap ul li.wrong{
+                height: 62px;
+            }
+            #wrap ul li.right{
+                height: 42px;
+            }
+            #wrap ul li input{
+                display: block;
+                width:270px;
+                height:40px;
+                margin:0 auto;
+                outline: none;
+                border:1px solid #ccc;
+                text-indent: 15px;
+            }
+            #wrap ul li input:focus{
+                border-color: pink;
+            }
+            #wrap ul li.wrong input{
+                border-color: red;
+            }
+            #wrap ul li.right input{
+                border-color: #00ae00;
+            }
+            #wrap ul li p.tip{
+                height:20px;
+                margin-left:75px;
+                color:#fb0021;
+                font-size:12px;
+                line-height:20px;
+            }
+            #wrap ul li p.pass{
+                display: none;
+                position: absolute;
+                right:46px;
+                top:10px;
+                width:20px;
+                height:20px;
+                background-color: #4bba68;
+                border-radius: 10px;
+                box-shadow: 1px 1px 5px #000 ;
+                color:white;
+                font-size: 12px;
+                font-weight: bold;
+                text-align: center;
+                line-height:20px;
+            }
+            #wrap ul li.right p.pass{
+                display: block;
+            }
+            #tip{
+                position: absolute;
+                z-index:0;
+                top:40%;
+                left:50%;
+                width:150px;
+                height:40px;
+                margin-top:-20px;
+                margin-left:-75px;
+                text-align: center;
+                background-color: #000;
+                color:#fff;
+                font-size:12px;
+                text-align: center;
+                line-height: 40px;
+                font-weight: bold;
+                opacity: 0;
+                transition: opacity .3s,top .3s;
+            }
+            #tip.show{
+                z-index: 99;
+                opacity: 1;
+                top:50%;
+            }
+            #sub{
+                display: block;
+                width:270px;
+                height:40px;
+                background-color: #09c;
+                border:1px solid #ccc;
+                outline: none;
+                margin:0 auto;
+                color:#fff;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <h2>注册</h2>
+            <ul>
+                <li>
+                    <input type="text" name="user" class="first" placeholder="请输入您的用户名">
+                    <p class="tip">错误：用户名格式不正确</p>
+                    <p class="pass">√</p>
+                </li>
+                <li>
+                    <input type="password" name="pwd" class="first" placeholder="请输入您的密码">
+                    <p class="tip">错误：密码格式不正确</p>
+                    <p class="pass">√</p>
+                </li>
+                <li>
+                    <input type="password" class="second" placeholder="请再次输入您的密码">
+                    <p class="tip">错误：两次密码输入不一致</p>
+                    <p class="pass">√</p>
+                </li>
+                <li>
+                    <input type="text" name="tel" class="first" placeholder="请输入您的手机号">
+                    <p class="tip">错误：手机号格式不正确</p>
+                    <p class="pass">√</p>
+                </li>
+                <li>
+                    <input type="text" name="qq" class="first" placeholder="请输入您的QQ号">
+                    <p class="tip">错误：QQ号格式不正确</p>
+                    <p class="pass">√</p>
+                </li>
+                <li>
+                    <input type="text" name="email" class="first" placeholder="请输入您的邮箱">
+                    <p class="tip">错误：邮箱格式不正确</p>
+                    <p class="pass">√</p>
+                </li>
+            </ul>
+            <div id="tip">请先填写密码！！</div>
+            <input id="sub" type="submit" value="提交">
+        </div>
+        
+        <script>
+            (function () {
+                //验证规则
+                let reg={
+                    //用户名
+                    user:/^[a-z]\w{5,15}$/i,
+                    //密码
+                    pwd:/^[\w~`!@#$%^&*()\-+=[\]{}'";:,.<>/?\\]{6,18}$/,
+                    //手机号
+                    tel:/^1[3-9]\d{9}$/,
+                    //qq
+                    qq:/^[1-9]\d{4,9}$/,
+                    //邮箱
+                    mail:/^[a-z1-9_]\w{0,17}@[0-9a-z]{2,}(\.[a-z]{2,6}){1,2}$/i
+                };
+
+                let oInput = document.querySelectorAll("#wrap input.first"),
+                    rePass = document.querySelector("#wrap input.second"),
+                    oTip = document.getElementById("tip")
+                ;
+                
+                //给first添加事件
+                [...oInput].forEach(ele=>{
+                    ele.addEventListener('blur',function () {
+                        let val = this.value;
+                        if(val === ""){
+                            empty.call(this);
+                            if(this.name === 'pwd'){
+                                rePass.value="";
+                                empty.call(rePass);
+                            }
+                            return;
+                        }else if(reg[this.name].test(val)){
+                            right.call(this);
+                            this.name === 'pwd' &&   pwd.call(this);
+                        }else{
+                            wrong.call(this);
+                        }
+                    });
+                });
+                
+                //给second添加事件
+                rePass.addEventListener("focus",function () {
+                    if(!oInput[1].value){
+                        oTip.classList.add("show");
+                        oInput[1].focus();
+                        setTimeout(function () {
+                            oTip.classList.remove("show");
+                        },2000);
+                    }
+                });
+                //验证
+                rePass.addEventListener("blur",function () {
+                    let val = this.value;
+                    if(val ===""){
+                        empty.call(this);
+                    }else if(val === oInput[1].value){
+                        right.call(this);
+                    }else{
+                        wrong.call(this);
+                        oInput[1].focus();
+                    }
+                });
+
+                //前后密码验证
+                function pwd() {
+                    let val1 = this.value;
+                    let val2 = rePass.value;
+                    if(val2 === val1){
+                        right.call(rePass);
+                    }else if(val2){
+                        wrong.call(rePass);
+                    }
+                }
+
+
+                //值为空的操作
+                function empty() {
+                    let parentLiClassList = this.parentNode.classList;
+                    parentLiClassList.remove("right","wrong");
+                }
+                //验证正确的操作
+                function right() {
+                    let parentLiClassList = this.parentNode.classList;
+                    parentLiClassList.add("right");
+                    parentLiClassList.remove("wrong");
+                }
+                //验证失败的操作
+                function wrong() {
+                    let parentLiClassList = this.parentNode.classList;
+                    parentLiClassList.remove("right");
+                    parentLiClassList.add("wrong");
+                }
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
