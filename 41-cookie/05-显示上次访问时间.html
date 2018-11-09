@@ -62,7 +62,7 @@
                 function showText(lastTime) {
                     if(lastTime){
                         let date = new Date(lastTime-0);
-                        return `欢迎访问本站!您上次访问本站的时间为:${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()},${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                        return `欢迎访问本站!您上次访问本站的时间为:${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()},${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
                     }else{
                         return "您是第一次访问本站哟！";
                     }

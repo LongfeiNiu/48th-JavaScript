@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            let Cookie = {
+                set(obj,day){
+                    let d = new Date();
+                    d.setDate(d.getDate()+day);
+
+                    Object.entries(obj).forEach(([key,value])=>{
+                        document.cookie = `${key}=${value};expires=${d.toUTCString()}`;
+                    })
+                },
+                get(val){
+                    if(!val){   //不传值则返回全部cookie的对象
+                        let json = document.cookie;
+                        let obj={};
+                        while(json){
+                            let reg = /(^|\s)(\w+)=([^;]+)(;|$)/;
+                            let arr = json.match(reg);
+                            json= json.split(arr[0])[1].toString();
+                            obj[RegExp.$2]=RegExp.$3;
+                        }
+                        return obj;
+                    }else{
+                        let json = document.cookie;
+                        let reg = new RegExp("(^|\\s)"+val+"=([^;]+)(;|$)");
+                        reg.test(json);
+                        return RegExp.$2;
+                    }
+                },
+                remove(val){
+                    this.set({
+                        [val]:""
+                    },-1);
+                }
+            };
+
+
+            // Cookie.set({
+            //     name:"peter",
+            //     age:18,
+            //     sex:"男"
+            // },2);
+
+            console.log(Cookie.get());;
+
+            //console.log(document.cookie);
+            Cookie.remove("sex");
+            console.log(Cookie.get());;
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
