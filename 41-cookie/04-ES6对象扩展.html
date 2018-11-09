@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            // var a = 'name';
+            // var obj={
+            //     //a : '阿飞'
+            // };
+            // obj[a] = "name";
+
+            //ES6写法 ,属性名的变量写法
+            /*
+            let a = "name";
+            let obj= {
+                [a]:"阿飞"
+            };
+            console.log(obj);
+            */
+
+            let afei= {
+                name :"阿飞",
+                age:18,
+                sex:0
+            };
+
+            console.log(Object.keys(afei));        //提取对象所有属性名，返回数组
+            console.log(Object.values(afei));      //提取对象所有值，返回数组
+            console.log(Object.entries(afei));     //提取对象的键值，返回二位数组
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

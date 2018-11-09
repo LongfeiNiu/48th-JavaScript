@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            欢迎访问本站!您上次访问本站的时间为:2018-11-10,20:50:20
+        </div>
+        
+        <script>
+            //封装的cookie
+            let Cookie ={
+                //设置
+                set(mJson,day) {
+                    //设置过期时间
+                    let date = new Date(new Date().getTime()+day*24*3600*1000).toUTCString();
+                    /*  过时了的ES5写法，不推荐
+                    for(let key in mJson){
+                        document.cookie = `${key}=${mJson[key]};expires=${date}`;
+                    }
+                    */
+                    Object.entries(mJson).forEach(([key,value])=>{
+                        document.cookie = `${key}=${value};expires=${date}`;
+                    })
+                },
+                //获取
+                get(key) {
+                    let str = document.cookie;
+
+                    // /(^|\s)aaa=([^;]+)(;|$)/
+                    let reg = new RegExp("(^|\\s)"+key+"=([^;]+)(;|$)");
+                    reg.test(str);
+                    return RegExp.$2;       //匹配不成功返回""
+                },
+                //删除
+                remove(key) {
+                    Cookie.set({
+                        [key]:""    //清空
+                    },-1);
+                }
+            };
+
+            (function () {
+                //lastTime存储上一次的时间
+                let oW = document.getElementById("wrap");
+
+                let lastTime = Cookie.get("lastTime");
+                let date = new Date().getTime();
+
+                function showText(lastTime) {
+                    if(lastTime){
+                        let date = new Date(lastTime-0);
+                        return `欢迎访问本站!您上次访问本站的时间为:${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()},${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    }else{
+                        return "您是第一次访问本站哟！";
+                    }
+                }
+
+                oW.innerText = showText(lastTime) ;
+                Cookie.set({
+                    lastTime:date
+                },9999);
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

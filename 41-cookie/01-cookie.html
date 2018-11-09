@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                适合小数据的存储，字符串缓存，存在本地的
+                1.不同的浏览器存放的cookie位置不一样，也是不能通用的
+                2.cookie的存储是以域名形式进行区分的
+                3.cookie的数据可以设置名字的
+                4.一个域名下存放的cookie的个数是有限制的，不同的浏览器存放的个数不一样
+                5.每个cookie存放的内容大小也是有限制的，不同的浏览器存放大小不一样
+                    本地文件不支持cookie，火狐浏览器支持，通过Webstorm打开支持
+             */
+
+            /*
+                如果不给cookie设置过期时间，那么浏览器关闭之后，cookie就清除了
+
+                在存储本地cookie肯定是需要设置过期时间的
+                expires  一个日期对象转换成的字符串，默认是UTC时间
+             */
+            //每条cookie都需要但是设置，不支持一次赋值设置多个cookie
+            //document.cookie = "user=阿飞;pwd=123";     没用的
+
+            //let date = new Date(2018,10,9,22,0,0);
+            //document.cookie = "user=阿飞;expires="+date.toUTCString(); //date转成UTC时间进行赋值
+
+            let date = new Date(new Date().getTime()-7*24*3600*1000);
+            document.cookie = "goudan=阿飞;expires="+date.toUTCString(); //date转成UTC时间进行赋值
+            document.cookie = "pwd=123";
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
