@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                原型
+                prototype  是一个对象数据类型
+                它是构造函数的一个属性
+
+                每一个实例都共享这个原型的属性
+             */
+
+            //构造函数
+            function Teacher(id,name,age) {
+                this.id = id;
+                this.name=name;
+                this.age=age;
+            }
+
+            //console.dir(Teacher);
+            //Teacher.prototype.x = 10;     //原型也是对象
+
+            Teacher.prototype.showID=function () {       //所有实例公用一个showID属性
+                alert(this.id);
+            }
+
+
+            var afei = new Teacher(1111,'阿飞',18);       //  实例
+            var zhuque = new Teacher(2222,'朱雀',20);
+
+            /*
+            console.log(afei);
+            console.log(afei.x,zhuque.x,afei.__proto__===zhuque.__proto__);
+            console.log(afei.__proto__ === Teacher.prototype);
+            */
+
+            //afei.showID();
+            console.log(afei.showID === zhuque.showID);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

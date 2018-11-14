@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                OOP
+                封装  继承  多态
+             */
+
+            var afei = teacher(1111,'阿飞',18);
+            var zhuque = teacher(2222,'朱雀',20);
+
+            //封装一个对象函数
+            function teacher(id,name,age) {
+                var o = {};
+                o.id = id;
+                o.name=name;
+                o.age=age;
+                o.showID = function () {      //堆内存占用了多个
+                    alert(this.id);
+                }
+                return o;
+            }
+
+            // var afei = {
+            //     id:1234,
+            //     name:'阿飞',
+            //     age:18,
+            //     shoID:function () {
+            //         alert(this.id);
+            //     }
+            // }
+            //
+            // var zhuque = {
+            //     id:1235,
+            //     name:'朱雀',
+            //     age:20,
+            //     shoID:function () {
+            //         alert(this.id);
+            //     }
+            // }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

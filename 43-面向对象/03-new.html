@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            var afei = new Teacher(1111,'阿飞',18);
+            var zhuque = new Teacher(2222,'朱雀',20);
+
+            console.log(afei.showID === zhuque.showID);  //false
+
+            //构造函数  / 类
+            function Teacher(id,name,age) {
+                this.id = id;
+                this.name=name;
+                this.age=age;
+                this.showID = function () {      //堆内存占用了多个
+                    alert(this.id);
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

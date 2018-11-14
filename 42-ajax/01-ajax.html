@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                Ajax
+                    异步的javascript和xml
+                        同步
+                            一心一意
+                        异步
+                            三心二意
+                    功能
+                    无刷新页面的情况下，实现与后台的数据交互，同时在页面进行更新
+                跨域
+                    默认不允许跨域请求资源
+                    安全问题
+                    前端能不能请求到数据，是后端说了算
+
+
+             */
+
+            //创建  ajax对象
+            const ajax = new XMLHttpRequest();
+            //监听状态的改变
+            /*
+                0~4
+                    0   初始化状态  ajax已经被创建
+                    1   open()方法已经调用
+                    2   send()方法已调用
+                    3   所有的响应已经收到
+                    4   http响应已经完全接收
+             */
+            ajax.onreadystatechange = function(){
+                if(ajax.readyState === 4 & ajax.status === 200){
+                    //前端 就能够接收到数据了
+                    //console.log(ajax.response);
+                    //把对应的数据  转换成对应的数据类型
+                    console.log(JSON.parse(ajax.response));
+                }
+            }
+            //路径不能出现中文
+            //本地测试
+            //ajax.open('get','./data.php',true);      //通过什么样的方式，向什么样的后端服务器  发送什么的请求(true表示异步)
+            //ajax.send();                             //执行请求命令
+
+            //真实服务器， 数据先行， 数据驱动视图
+            ajax.open('get','http://www.tanzhouweb.com/48/data.php',true);
+            ajax.send();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

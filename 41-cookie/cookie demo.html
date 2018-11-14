@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="黑衣的网页">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;user-select:none;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        </style>
+    </head>
+    <body>
+        <div class=""></div>
+        
+        <script>
+            let Cookie={
+                set(object,data){
+                    // let nowtime=new Date().getTime()+(24*60*60*1000)*data;//现在国际时间---毫秒
+                    // let time=new Date(nowtime);//现在国际时间---文字
+                    // console.log(time.toUTCString());//现在我们当地的时间--文字
+                    let time=new Date(new Date().getTime()+(24*60*60*1000)*data).toUTCString();
+                    Object.entries(object).forEach(([key,value])=>{
+                        document.cookie=`${key}=${value};expires=${time}`;
+                    })
+                },
+                get(key){
+                    // let str=document.cookie;
+                    // let reg=new RegExp("(^|\\s)"+key+"=([^|;]*)(;|$)");//参数进来，所以用RegExp
+                    // reg.test(str);
+                    //new RegExp("(^|\\s)"+key+"=([^;]*)(;|$)").test(document.cookie);
+                    //return RegExp.$2;
+
+                    if(key){
+						console.log(1);
+                        new RegExp("(^|\\s)"+key+"=([^;]*)(;|$)").test(document.cookie);
+                        return RegExp.$2;
+                    }else{
+                        // console.log(1);
+                        let str=document.cookie;
+                        console.log(str);
+                        //let reg=new RegExp("((^|\\s)(\\w)+[^,](\\w)+=(\\w)(;$))");
+                        // console.log(reg)
+                        //reg.test(str);
+                        // console.log(reg.test(str))
+                        //return RegExp.$1;
+                    }
+                },
+                remove(key){
+                    Cookie.set({[key]:""},-1)
+                }
+            }
+            Cookie.set({
+                aaa : "阿飞",
+                bccaaa : "123",
+                goudan : "afei"
+            },7);
+
+            Cookie.get("");
+            //console.log();
+            // console.dir( document.cookie );
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
