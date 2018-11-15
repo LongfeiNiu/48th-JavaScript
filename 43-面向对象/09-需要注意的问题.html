@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                得到一个实例的构造函数
+             */
+            function A() {}
+
+            var a = new A();
+            console.log(a.constructor);    //  A(){}   a没有constructor，实际上是 A.prototype.constructor
+
+
+
+            //注意。原型链可能导致不确定
+            function B() {}
+            B.prototype = {};
+
+            var b = new B();
+            console.log(b.constructor);    //  Object(){}
+
+
+            //所有大括号构建对象都相当于new一个Object对象
+            let x={};
+            let x = new Object();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                    ES5的构造函数和原型是分开的，ES6的类都定义在一个{}内
+             */
+            function A(n,a) {
+                this.name = n;
+                this.age = a;
+            }
+            A.showName = function () {
+                alert(this.name);
+            }
+
+            /*
+                构造函数，也就是私有属性，写在constructor里面
+                其他内容就是原型里面的内容
+                原型里面只能有方法，不能有属性（但可以在外面再加，A.prototype.x=10）
+                每个方法结束后，千万不要写 , 号
+             */
+            class A{
+                constructor(n,a) {
+                    this.name = n;
+                    this.age = a;
+                }
+                showName(){
+
+                }
+                x(){
+                    return 10;
+                }
+            }
+
+            //
+            A.prototype.x=10;
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

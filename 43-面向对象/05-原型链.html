@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                当访问对象的属性时，先从自身找，自身没有，才进入原型中找；原型找不到去原型的原型里面找，直到Object.prototype为止
+             */
+            function Fn() {
+                this.x=10;            //实例的x属性
+            }
+            Fn.prototype.x=20;        //原型的x属性
+            console.log(Fn.prototype.constructor === Fn);      //true  构造属性
+
+            var goudan = new Fn();       //  实例
+
+            console.log(goudan.x);
+            console.log(goudan.__proto__ === Fn.prototype);            //true   Fn的原型
+
+            console.log(Fn.prototype);
+            console.log(Fn.prototype.__proto__ === Object.prototype);   //true   Fn.prototype 是 Object的原型
+
+            //Object不存在 .__proto__  属性
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

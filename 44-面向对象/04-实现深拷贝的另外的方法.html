@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            /*
+                    JSON只会传数字和字符串，不能存 函数 等其他类型
+             */
+            var a = {
+                a:20,
+                b:50,
+                k:{             //不支持复杂类型
+                    aa:1,
+                    cc:{
+                        h:2333
+                    }
+                },
+                f:function () {
+                    w:"我在哪？";
+                }
+            }
+
+            console.log(JSON.stringify(a));
+            var b = JSON.parse(JSON.stringify(a));       //这样实现的b也和a不一样了
+
+            b.z=30;
+            b.k.o=80;
+            console.log(b);
+            console.log(a);
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

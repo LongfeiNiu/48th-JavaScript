@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            function clone(obj) {
+                var o ={};
+                for(var key in obj){
+                    o[key] = obj[key];
+                }
+                return o;
+            }
+
+            var a = {
+                a:20,
+                b:50,
+                k:{             //不支持复杂类型
+                    aa:1,
+                }
+            }
+
+            var b = clone(a);      //涉及到引用赋值，还是会影响
+
+            b.c = 40;
+            b.k.bb = 2;
+
+            console.log(a);
+            console.log(b);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            class A{
+                constructor(n,a) {
+                    this.name = n;
+                    this.age = a;
+                }
+                showName(){
+                    alert(this.name);
+                }
+                showAge(){
+                    alert(this.age);
+                }
+                x(){
+                    return 10;
+                }
+            }
+
+            class B extends A{
+                constructor(n,a,id){
+                    super(n,a);     //必要的super，把父类的私有属性继承一下（传参）,类似ES5的 call
+                    this.id = id;
+                }
+                x(){
+                    //return A.prototype.x()+10;       //原型的super代表 A.ptototype
+
+                    return super.x()+10;
+                }
+            }
+
+            let a = new A('阿飞',18);
+            let b = new B('朱雀',81,111);
+
+            console.log(a);
+            console.log(b);
+            console.log(a.x());
+            console.log(b.x());
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
