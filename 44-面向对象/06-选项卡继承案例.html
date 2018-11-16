@@ -57,6 +57,58 @@
             #wrap .tab li.active,#wrap1 .tab li.active{
                 background-color: pink;
             }
+            #wrap2{
+                position:relative;
+                width:780px;
+                height:380px;
+                margin:50px auto 0;
+                user-select:none;
+            }
+            #wrap2 .img{
+                width:100%;
+                height:330px;
+            }
+            #wrap2 .img ul{
+                width:100%;
+                height:330px;
+            }
+            #wrap2 .img ul li{
+                position:absolute;
+                width:100%;
+                height:330px;
+                opacity: 0;
+                transition: opacity .3s;
+            }
+            #wrap2 .img ul li.active{
+                opacity: 1;
+                z-index:2;
+            }
+            #wrap2 .tab{
+                position:absolute;
+                left:0;
+                bottom:0;
+                width:100%;
+                height:50px;
+            }
+            #wrap2 .tab ul{
+                width:100%;
+                height:50px;
+            }
+            #wrap2 .tab ul li{
+                float:left;
+                z-index:4;
+                width:20%;
+                height:100%;
+                background-color: #121112;
+                color:#fff;
+                text-align:center;
+                line-height:50px;
+                cursor: pointer;
+            }
+            #wrap2 .tab ul li.active{
+                background-color: #303030;
+                color:#e9c06c;
+            }
         </style>
     </head>
     <body>
@@ -92,6 +144,26 @@
                 </ul>
             </div>
         </div>
+        <div id="wrap2">
+            <div class="img">
+                <ul>
+                    <li class="active"><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                    <li><img src="img/5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li class="active">开黑吗？</li>
+                    <li>我压缩贼六</li>
+                    <li>只要E的够快</li>
+                    <li>队友的问号</li>
+                    <li>就追不上我</li>
+                </ul>
+            </div>
+        </div>
         
         <script>
             (function () {
@@ -120,6 +192,7 @@
                         }
                     },
                     change:function (i) {
+                        if(this.index === i)return;
                         this.conEle[this.index].classList.remove(this.conClass);
                         this.tabEle[this.index].classList.remove(this.tabClass);
                         this.index = i;
@@ -128,6 +201,34 @@
                     }
 
                 };
+
+                function TabAuto({conEle,tabEle,conClass='active',tabClass='active',wrap}) {
+                    Tab.call(this,{conEle,tabEle,conClass,tabClass});
+                    this.wrap = wrap;
+                    this.timer = null;
+                    this.autoplay();
+                }
+                function Fn(){}
+                Fn.prototype = Tab.prototype;
+                TabAuto.prototype = new Fn();
+                TabAuto.prototype.constructor = TabAuto;
+                TabAuto.prototype.autoplay = function () {
+                    this.timer = setInterval(function () {
+                        var i = this.index;
+                        i++;
+                        i = i%this.lenth;
+                        this.change(i);
+                    }.bind(this),2000);
+                }
+                TabAuto.prototype.addTimer = function () {
+                    this.wrap.onmouseenter = function () {
+                        clearInterval(this.timer);
+                    }.bind(this);
+                    this.wrap.onmouseleave = function () {
+                        this.autoplay();
+                    }.bind(this);
+                }
+
 
                 //实例化
                 new Tab({
@@ -138,6 +239,12 @@
                 new Tab({
                     conEle:document.querySelectorAll("#wrap1 .con li"),
                     tabEle:document.querySelectorAll("#wrap1 .tab li"),
+                });
+
+                new TabAuto({
+                    conEle:document.querySelectorAll("#wrap2 .img li"),
+                    tabEle:document.querySelectorAll("#wrap2 .tab li"),
+                    wrap:document.getElementById("wrap2")
                 });
 
 

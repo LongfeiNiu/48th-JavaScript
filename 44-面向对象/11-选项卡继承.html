@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap,#wrap1{
+                position: relative;
+                width:300px;
+                height:300px;
+                border:1px solid pink;
+                margin:50px auto;
+            }
+            #wrap .con,#wrap1 .con{
+                position: absolute;
+                top:30px;
+                left:0;
+                width:300px;
+                height: 270px;
+            }
+            #wrap .con  ul,#wrap1 .con  ul{
+                width:100%;
+                height:100%;
+            }
+            #wrap .con  li,#wrap1 .con  li{
+                display: none;
+                position: absolute;
+                width:100%;
+                height:100%;
+            }
+            #wrap .con  li.active,#wrap1 .con  li.active{
+                display: block;
+            }
+            #wrap .tab,#wrap1 .tab{
+                position: absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:30px;
+            }
+            #wrap .tab li,#wrap1 .tab li{
+                float: left;
+                width:99px;
+                height:30px;
+                border-right:1px solid red;
+                background-color: #abcded;
+                cursor: pointer;
+            }
+            #wrap .tab li.active,#wrap1 .tab li.active{
+                background-color: pink;
+            }
+            #wrap2{
+                position:relative;
+                width:780px;
+                height:380px;
+                margin:50px auto 0;
+                user-select:none;
+            }
+            #wrap2 .img{
+                width:100%;
+                height:330px;
+            }
+            #wrap2 .img ul{
+                width:100%;
+                height:330px;
+            }
+            #wrap2 .img ul li{
+                position:absolute;
+                width:100%;
+                height:330px;
+                opacity: 0;
+                transition: opacity .3s;
+            }
+            #wrap2 .img ul li.active{
+                opacity: 1;
+                z-index:2;
+            }
+            #wrap2 .tab{
+                position:absolute;
+                left:0;
+                bottom:0;
+                width:100%;
+                height:50px;
+            }
+            #wrap2 .tab ul{
+                width:100%;
+                height:50px;
+            }
+            #wrap2 .tab ul li{
+                float:left;
+                width:20%;
+                height:100%;
+                background-color: #121112;
+                color:#fff;
+                text-align:center;
+                line-height:50px;
+                cursor: pointer;
+            }
+            #wrap2 .tab ul li.active{
+                background-color: #303030;
+                color:#e9c06c;
+            }
+            #wrap2 span{
+                position:absolute;
+                top:0;
+                bottom:0;
+                z-index:5;
+                display:inline-block;
+                width:40px;
+                height:40px;
+                margin:auto;
+                background-color: rgb(100,100,100);
+                background-color: rgba(100,100,100,0.8);
+                color:white;
+                font-size: 20px;
+                line-height: 40px;
+                text-align: center;
+                cursor: pointer;
+            }
+            #wrap2 span.left{
+                left:0;
+            }
+            #wrap2 span.right{
+                right:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="con">
+                <ul>
+                    <li class="active" style="background-color: red">A内容</li>
+                    <li style="background-color: #06aaff">B内容</li>
+                    <li style="background-color: #f9a886">C内容</li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li class="active">A</li>
+                    <li>B</li>
+                    <li>C</li>
+                </ul>
+            </div>
+        </div>
+        <div id="wrap1">
+            <div class="con">
+                <ul>
+                    <li class="active" style="background-color: red">A内容</li>
+                    <li style="background-color: #06aaff">B内容</li>
+                    <li style="background-color: #f9a886">C内容</li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li class="active">A</li>
+                    <li>B</li>
+                    <li>C</li>
+                </ul>
+            </div>
+        </div>
+        <div id="wrap2">
+            <div class="img">
+                <ul>
+                    <li class="active"><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                    <li><img src="img/5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul>
+                    <li class="active">开黑吗？</li>
+                    <li>我压缩贼六</li>
+                    <li>只要E的够快</li>
+                    <li>队友的问号</li>
+                    <li>就追不上我</li>
+                </ul>
+            </div>
+            <span class="left"><</span>
+            <span class="right">></span>
+        </div>
+        
+        <script>
+            (function () {
+
+                class Tab{
+                    constructor({conEle,tabEle})
+                    {
+                        this.conEle = conEle;
+                        this.tabEle = tabEle;
+                        this.index = 0;
+                        this.lenth = this.tabEle.length;
+                        this.addClick();
+                    }
+                    addClick(){
+                        [...(this.tabEle)].forEach((ele,index)=>{
+                            ele.onclick = function() {
+                                this.change(index);
+                            }.bind(this);
+                        })
+                    }
+                    change(i){
+                        if(this.index === i)return;
+                        this.conEle[this.index].classList.remove('active');
+                        this.tabEle[this.index].classList.remove('active');
+                        this.index = i;
+                        this.conEle[this.index].classList.add('active');
+                        this.tabEle[this.index].classList.add('active');
+                    }
+                }
+
+                class TabAuto extends Tab{
+                    constructor({conEle,tabEle,wrap,left,right}){
+                        super({conEle,tabEle});
+                        this.wrap = wrap;
+                        this.left = left;
+                        this.right = right;
+                        this.timer = null;
+                        this.init();
+                    }
+                    init(){
+                        this.autoplay();
+                        this.addTimer();
+                        this.addLeft();
+                        this.addRight();
+                    }
+                    autoplay() {
+                        this.timer = setInterval(()=>{
+                            let i = this.index;
+                            i++;
+                            i = i%this.lenth;
+                            this.change(i);
+                        },2000);
+                    }
+                    addTimer() {
+                        this.wrap.onmouseenter = ()=> {
+                            clearInterval(this.timer);
+                        };
+                        this.wrap.onmouseleave = ()=>{
+                            this.autoplay();
+                        };
+                    }
+                    addLeft(){
+                        this.left.onclick = function () {
+                            let i = this.index;
+                            i--;
+                            i = i<0 ? this.lenth-1 : i;
+                            this.change(i);
+                        }.bind(this);
+                    }
+                    addRight(){
+                        this.right.onclick = function () {
+                            let i = this.index;
+                            i++;
+                            i = (i===this.lenth) ? 0 : i;
+                            this.change(i);
+                        }.bind(this);
+                    }
+                };
+
+
+
+                //实例化
+                new Tab({
+                    conEle:document.querySelectorAll("#wrap .con li"),
+                    tabEle:document.querySelectorAll("#wrap .tab li"),
+                });
+
+                new Tab({
+                    conEle:document.querySelectorAll("#wrap1 .con li"),
+                    tabEle:document.querySelectorAll("#wrap1 .tab li"),
+                });
+
+                new TabAuto({
+                    conEle:document.querySelectorAll("#wrap2 .img li"),
+                    tabEle:document.querySelectorAll("#wrap2 .tab li"),
+                    wrap:document.getElementById("wrap2"),
+                    left:document.getElementsByClassName('left')[0],
+                    right:document.getElementsByClassName('right')[0]
+                });
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
