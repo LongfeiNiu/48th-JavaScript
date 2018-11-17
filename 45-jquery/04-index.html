@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div id="wrap">
+            <a href=""></a>
+            <p></p>
+            <p class="goudan"></p>
+            <p></p>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            /*
+                传参数时，从找到p的第一个开始计数
+                不传参数，获取在父级里面的位置，不分别标签名
+                传
+             */
+            let $goudan = $("#wrap .goudan");
+
+            console.log($goudan.index("p"));   //4  传参数时，从找到p的第一个开始计数
+            console.log($goudan.index("#wrap p"));  // 1  传选择器，获取的是父级里面p的位置
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

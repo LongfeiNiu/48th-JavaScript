@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+            /*
+                兼容 IE678
+                1.x.x
+
+                不兼容IE678
+                2.x.x
+                3.x.x
+                (国外的 https://code.jquery.com/jquery-3.3.1.min.js)
+                （国内cdn https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js）
+             */
+            /*
+            console.log(jQuery === $);       //true
+            console.log($);
+            */
+
+            /*
+            let $=1;
+            (function ($) {
+                console.log($);
+            })(jQuery);
+            */
+
+            /*
+                参数
+                   函数 function(){}  当dom节点加载完成之后，再执行这个函数里面的代码
+                   选择器字符串         一个包含了dom节点的对象（jq）
+                   节点对象/节点集合    返回对应的jq对象
+
+
+                jQ对象  js对象/DOM对象  不一样
+                JQ -> JS   [序号] / get(序号)
+                JS -> JQ    $(js对象)
+             */
+            console.log($);
+            $(function () {
+
+
+                console.log($("#wrap p"));
+
+                // $("#wrap p")[1].innerHTML = "阿飞大傻吊";
+                //console.log($("#wrap p").get(0));
+
+                //$("#wrap p").html("<b>阿飞老师</b>");   //所有节点一起渲染
+
+                /*
+                let aP = document.querySelectorAll("#wrap p");
+                let $p = $(aP);
+                console.log($p);
+                */
+
+            });
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

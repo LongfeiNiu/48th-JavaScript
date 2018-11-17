@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            /*
+                第一个参数是序号
+                第二个参数是dom
+                this指向节点
+
+                $p.html()内部自带each...
+             */
+            let $p = $("#wrap p");
+
+            // $p.each((index,dom)=>{
+            //     console.log(index);
+            //     console.log(dom);
+            // })
+
+            let colorArr = ['red','blue','green'];
+            $p.each(function (i) {
+                //console.log(i,this);       //this指向每一次遍历的dom对象, 变成jq对象要加$()
+                $(this).css("color",colorArr[i%3]);
+            });
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

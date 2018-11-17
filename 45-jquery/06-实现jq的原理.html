@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        
+        <script>
+            (function () {
+
+                function $(e,t) {
+                    return new Init(e,t);   //返回一个实例
+                }
+
+                //对象
+                class Init{
+                    constructor(e,t){
+                        let dom = [...document.querySelectorAll(e)];
+                        dom.forEach((ele,index)=>{
+                            this[index]=ele;
+                        })
+                        this.length = dom.length;
+                    }
+                    each(fn){
+                        for(let i=0;i<this.length;i++){
+                            fn.call(this[i],i);
+                        }
+                    }
+                    html(str){
+                        this.each(function () {
+                           this.innerHTML = str;
+                        });
+                        return this;
+                    }
+                    css(attr,value){
+                        this.each(function () {
+                            this.style[attr] = value;
+                        });
+                        return this;
+                    }
+                };
+
+                window.$=window.jQuery=$;
+            })();
+
+            console.log($);
+            let $p = $("#wrap p");
+            console.log($p);
+            $p.html("12233")
+                .css("color","red");
+            $p.each(function (i) {
+               console.log(this,i);
+            });
+            console.log($p.eq(1));
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
