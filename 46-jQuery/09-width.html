@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                padding:4px;
+                border:5px solid #abcded;
+                margin:3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            /*
+                获取元素的宽
+             */
+            console.log($("#wrap").width());    //100
+            console.log($("#wrap").css("width")); // 100px
+            //设置
+            $("#wrap").width(200);
+
+            console.log($("#wrap").innerWidth());         //宽 + padding
+            console.log($("#wrap").outerWidth());         //宽 + padding +border
+
+            $("#wrap").innerWidth(300);
+            $("#wrap").outerWidth(400);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

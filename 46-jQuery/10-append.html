@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>123</p>
+        </div>
+        <p id="ff"></p>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            /*
+                appendChild
+                    字符串
+                    html
+                    dom节点
+                    调换位置
+                    jq对象
+             */
+
+            /*
+            $("#wrap").append("7899");
+            $("#wrap").append("<b>56566</b>");
+
+            let b = document.createElement("b");
+            b.innerHTML="777";
+            $("#wrap").append(b);
+            */
+
+            $("#wrap").append($("#ff"));
+
+            let $b = $("<b class='gg' id='hh'>789</b>");     //创建一个dom对象，再封装成一个jq对象
+
+            $("#wrap").append($b);
+
+
+            //节点片段
+            let $f = $(`<b class='gg' id='hh'>789</b>
+                        <p>123456</p>
+                        <a href="#">4444</a>
+                        `);
+            //包含文本节点
+            $f.eq(2).css("color","red");
+
+            $("#wrap").append($f);
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

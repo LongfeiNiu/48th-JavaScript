@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            /*
+                .attr
+                给标签加/获取属性
+             */
+
+            //$("#wrap").attr("afei","123");  //设置一组属性
+
+            $("#wrap").attr({       //设置多组属性
+                afei:123,
+                class:"on"
+            });
+
+            //获取属性
+            console.log($("#wrap").attr("id"));       //string(wrap)
+
+            //移除属性
+            console.log($("wrap").removeAttr("id"));  //返回原jq对象，支持链式
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

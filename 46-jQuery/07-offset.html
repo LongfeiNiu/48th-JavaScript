@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                position: absolute;
+                top:100px;
+                left:100px;
+                margin-top:30px;
+                margin-left:20px;
+                width:200px;
+                height:200px;
+                background-color: pink;
+            }
+            #wrap p{
+                position: absolute;
+                top:50px;
+                left:30px;
+                width:50px;
+                height:50px;
+                background-color: red;
+                margin-top:5px;
+                margin-left:3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p></p>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            /*
+                offset      元素到浏览器的距离  top  left， 要加上 margin
+                position    元素到定位父级的距离,与margin无关
+             */
+            let $wrap = $("#wrap"),
+                $p = $("#wrap p");
+
+            console.log($wrap.offset());
+            console.log($wrap.position());
+
+
+            console.log($p.offset());
+            console.log($p.position());
+
+            //offset可以设置 ,不写单位，默认px
+
+            $wrap.offset({
+               top:300,
+               left:400
+            });
+
+            console.log($wrap.offset());
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
