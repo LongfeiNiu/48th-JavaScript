@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            p{
+                width:100px;
+                height:30px;
+                background-color: pink;
+                margin:5px;
+            }
+            p.active{
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p class="active">1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+        </div>
+        <p class="a"></p>
+        <p class="b"></p>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            $("p").click(function () {
+                //alert($(this).index());
+                $(this)
+                    .addClass("active")
+                    .siblings()                 //无参表示选择所有的兄弟，可以传参
+                    .removeClass("active")
+            })
+
+            //jq对象内部加一个元素  add   新的jq对象
+            console.log($(".a").add('.b'));
+
+            //console.log($('p').eq(2).siblings('.active').andSelf());        //jq1才有用
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

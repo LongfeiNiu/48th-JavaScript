@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>123456</p>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            /*
+           let oW = document.getElementById("wrap");
+
+           //over 会在子元素的切换时触发  对应的就是out离开
+           //enter 只在当前元素切换触发  对应的就是leave
+           oW.onmouseover=function () {
+               console.log('over');
+           }
+           */
+
+            //hover就是 enter 和 leave 的组合，如果只传入一个函数，则enter和leave公用一个函数
+            $("#wrap").hover(function () {
+                console.log(1);
+            },function () {
+                console.log(2);
+            })
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

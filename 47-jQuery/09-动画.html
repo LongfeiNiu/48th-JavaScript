@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                display: none;
+                width:200px;
+                height:200px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+            // show hide toggle 动画      jq自带动画队列
+            //$("#wrap").hide(3000);     //3秒动画
+            //$("#wrap").show(3000);
+
+            /*
+            $("#wrap").hide("slow");      //slow fast normal 第二个参数可以是速度
+
+            //回调函数，动画完成之后的函数
+            $("#wrap").hide("slow",function () {
+                alert(1);
+            });
+            */
+
+            /*
+                fadeIn fadeOut fadeToggle  fadeTo
+                淡入淡出
+             */
+            //$("#wrap").fadeToggle(1000);
+            //$("#wrap").fadeTo(2000,0.7);        //第二个参数是指定透明度
+
+            /*
+                slideDown slideUp slideToggle
+                下拉      上拉
+             */
+            $("#wrap").slideDown(2000).slideUp(2000);
+
+            $("#wrap").slideToggle(2000).slideToggle(2000);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

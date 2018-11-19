@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            #wrap{
+                width:100px;
+                height:100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <p>12222</p>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            //简写
+            /*
+            $(function () {
+
+            });
+            //等document的dom元素加载完毕才会触发
+            $(document).ready(function () {
+
+            })
+            */
+
+            //本质是  addEventListener
+            /*
+            $("#wrap").on("click",function () {
+                alert(1);
+            });
+
+            $("#wrap").click(function () {
+               alert(2);
+            });
+            $("#wrap").click(function () {
+                alert(3);
+            });
+            */
+
+            /*
+            $("#wrap").on({
+                'click.goudan':function (ev) {
+                    console.log(ev);           //被jq封装过的event对象
+                    console.log(this);
+                    console.log("click");
+                },
+                mouseenter:function () {
+                    console.log("enter");
+                }
+            });
+            $("#wrap")["click"](function () {
+                alert(2);
+            });
+
+            $("#wrap").off('click.goudan');           //解除所有click事件,  可以加个名字，区别解绑
+            */
+
+
+            let $wrap = $('#wrap');
+            /*
+            $wrap.find('p').click(function () {      //推荐用find
+                alert($(this).index());
+            })
+            */
+
+            //第二个参数表示事件委托对象，每个p都拥有该事件
+            $wrap.on('click','p',function (e) {
+                alert($(this).index());
+
+                e.stopPropagation();
+            });
+
+            $(document).click(function () {
+                $wrap.append("<p>pppppppp</p>")
+            })
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
