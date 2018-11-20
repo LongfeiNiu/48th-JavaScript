@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content="关键词">
+    <meta name="description" content="描述">
+    <meta name="author" content="Danew">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+
+        #wrap{
+            width:100px;
+            height:100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+
+        let $wrap = $("#wrap");
+        $($wrap).animate({
+            width:400
+        },500);
+
+
+        //自定义队列 .queue()
+        $($wrap).queue(function () {
+            $(this).css('background-color','red');
+            $(this).dequeue();         //必须主动退出队列
+        })
+
+        //队列延时， .delay()   后面必须跟队列才有效
+        $($wrap).delay(500).animate({
+            height:400
+        },500)
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

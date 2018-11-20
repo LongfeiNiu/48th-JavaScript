@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <script>
+            /*
+            $.each([1,2,3],function (index,value) {
+                console.log(index);
+                console.log(value);
+            })
+            */
+
+
+            //$的属性扩展        .extend
+            /*
+            $.gg=10;
+            console.log($.gg);
+            */
+            $.extend({
+                xx:20,
+                yy:30,
+                goudan(){
+                    alert('goudan');
+                }
+            });
+            console.log($.xx);
+            $.goudan();
+
+
+            //jq对象的属性扩展      .fn.extend
+            $.fn.extend({
+                goudan(){
+                    this.html('狗蛋').css("color",'red');
+                    console.log(this);        //this指向jq对象
+                }
+            });
+
+            $("#wrap").goudan();
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
