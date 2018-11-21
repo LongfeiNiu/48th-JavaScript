@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+
+            html,body{
+                overflow: hidden;
+                height:100%;
+            }
+            #head{
+                position: fixed;
+                top:30px;
+                width:100%;
+                height:47px;
+            }
+            #head .logo{
+                float: left;
+                margin-left:50px;
+            }
+            #head .logo a{
+                display: block;
+            }
+            #head .logo h1{
+                width:226px;
+                height:47px;
+                background: url("img/logo.png");
+            }
+            #head .nav{
+                position: relative;
+                float: right;
+                width:400px;
+                margin-right:50px;
+            }
+            #head .nav ul{
+                position: relative;
+                height:47px;
+            }
+            #head .nav ul li{
+                float: left;
+                margin-left:47px;
+                font-size: 14px;
+                line-height:47px;
+                cursor: pointer;
+            }
+            #head .nav ul li.on a{
+                color:#fff;
+            }
+            #head .nav ul li a{
+                color:rgba(255,255,255,0.8);
+                text-decoration: none;
+                text-shadow: 3px 3px 10px black;
+            }
+            #head .nav .border{
+                position: absolute;
+                width:56px;
+                height:31px;
+                top:8px;
+                left:32px;
+                border:1px solid rgba(255,255,255,0.8);
+                border-radius: 15px;
+            }
+            #bg{
+                height:100%;
+            }
+            #bg div{
+                height:100%;
+                background: fixed center;
+            }
+            #side{
+                position: fixed;
+                left:50px;
+                top:0;
+                bottom:0;
+                width:100px;
+                height:330px;
+                margin:auto;
+                background: url("img/nav.png") no-repeat left center;
+            }
+            #side ul li{
+                margin:39px 0 56px 0;
+                padding-left:50px;
+                color:rgba(255,255,255,0.8);
+                font-size:12px;
+                font-family: "Microsoft YaHei", "楷体";
+                line-height:21px;
+                cursor: pointer;
+            }
+            #side ul li.on{
+                background: url("img/nav_cho.png") no-repeat;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="head">
+            <div class="logo">
+                <a href="#">
+                    <h1></h1>
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="on"><a href="#">首页</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">论坛</a></li>
+                    <li><a href="#">360首页>></a></li>
+                </ul>
+                <div class="border"></div>
+            </div>
+        </div>
+        <div id="bg">
+            <div class="bg1" style="background-image: url('img/1.jpg')"></div>
+            <div class="bg2" style="background-image: url('img/2.jpg')"></div>
+            <div class="bg3" style="background-image: url('img/3.jpg')"></div>
+            <div class="bg4" style="background-image: url('img/4.jpg')"></div>
+        </div>
+        <div id="side">
+            <ul>
+                <li class="on">安全换机</li>
+                <li>无网对传</li>
+                <li>隐私粉碎</li>
+                <li>一键转移</li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <script>
+            (function () {
+                //head动画
+                (function () {
+                    var $nav = $("#head").find(".nav"),
+                        $li = $nav.find('li'),
+                        $border = $nav.find('.border'),
+                        width = $border.width(),
+                        left = $border.position().left,
+                        _w = width -$li.eq(0).width(),
+                        _l = left-$li.eq(0).position().left
+                    ;
+
+                    $li.mouseenter(function () {
+                        //获取当前li宽度和left
+                        $border.stop().animate({
+                            width:$(this).width()+_w,
+                            left:$(this).position().left+_l
+                        })
+                    });
+                    //离开回到起点
+                    $nav.mouseleave(function () {
+                        //获取当前li宽度和left
+                        $border.stop().animate({
+                            width:width,
+                            left:left
+                        },200);
+                    });
+                })();
+
+                //nav点击与滚动事件
+                (function () {
+                    var $bg = $("#bg"),
+                        $li = $('#side').find('ul').find('li'),
+                        length = $li.length,
+                        index=0,
+                        wH = $(window).height(),
+                        t=0
+                    ;
+                    //窗口改变
+                    $(window).resize(function () {
+                        wH=$(this).height();
+                        $bg.css("margin-top",- wH*index+'px');
+                    })
+
+                    //li的点击事件
+                    $li.click(function () {
+                        if(index === $(this).index())return;
+                        index=$(this).index();
+                        change();
+                    });
+
+                    //窗口的滚动事件
+                    $('html').mousewheel(function (e,d) {
+                        if(new Date() - t < 500)return;
+                        t = new Date();
+
+                        if(d===-1){   //下滚
+                            index++;
+                            index %= length;
+                        }else if(d === 1){
+                            index--;
+                            if(index<0){
+                                index = length-1;
+                            }
+                        }
+                        change();
+                    });
+
+                    function change() {
+                        $li.eq(index)
+                            .addClass('on')
+                            .siblings()
+                            .removeClass('on');
+                        $bg.stop().animate({
+                            marginTop: - wH*index
+                        },300);
+                    }
+
+
+                })();
+
+
+
+
+            })();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
