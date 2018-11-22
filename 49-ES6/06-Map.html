@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                Map可以使用一个对象当成键名
+                    支持各种数据类型当键使用，对象，实例，
+             */
+
+            let map = new Map();
+
+            // let key = 'name';
+            // let value = '阿飞';
+
+            let key = {goudan:'狗蛋'};         //对象当成键
+            let value = 'afei';
+
+            map.set(key,value);
+            console.log(map);
+            //取值
+            console.log(map.get(key));
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

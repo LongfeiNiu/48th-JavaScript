@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            //独一无二的Symbol
+            //console.log(Symbol() === Symbol());    //false
+
+            let obj = {name:'阿飞'};
+
+
+            let n=Symbol();      //独一
+            obj[n]='朱雀';
+
+            n=Symbol();        //n被赋值，只是‘朱雀’取不到了，但仍存在
+            obj[n]='心艾';
+
+            //obj[Symbol.for('name')]='朱雀';
+
+            console.log(obj);
+            //获取
+           // console.log(obj[n]);
+
+            //获取所有的Symbol
+            let symbolArr = Object.getOwnPropertySymbols(obj);
+            console.log(obj[symbolArr[0]]);
+
+
+            //传值是别名
+            console.log(Symbol('a'),Symbol.for('a'));
+            //Symbol的名字相同，仍不同
+            console.log(Symbol('a')===Symbol('a'));     //false
+            //Symbol.for的名字相同，就代表相同的Symbol
+            console.log(Symbol.for('a') === Symbol.for('a'));      //true
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

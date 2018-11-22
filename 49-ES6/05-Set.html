@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+            /*
+                对象
+                    特点：没有重复值
+                    只接收一个参数，必须能被迭代的数据，字符串，数组，NodeList，argument，Set，Net
+             */
+            // let set = new Set([1,2,3]);
+            /*
+            let set = new Set("阿飞老师阿飞老师朱雀老师");        //默认去重
+            set.add('心艾');          //当成一条数据传入，不被拆开
+            set.add('心');
+            console.log(set);
+            */
+            // console.log(set.entries());
+
+            //去重
+            let arr=[1,2,4,5,6,1,2,4,2,3];
+            let s = new Set(arr);
+            console.log([...s]);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

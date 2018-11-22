@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <meta name="keywords" content="关键词">
+        <meta name="description" content="描述">
+        <meta name="author" content="Danew">
+        <style>
+            body{font-family: "Microsoft YaHei",serif;}
+            body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+            ol,ul,li{margin:0;padding:0;list-style:none;}
+            img{border:none;}
+        
+        </style>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        
+        <script>
+
+            let arr=[
+                '阿飞',
+                '风屿',
+                '小浪',
+                '海文'
+            ];
+            //console.log(Object.keys(arr),Object.values(arr));
+            console.log(Object.entries(arr));
+
+
+            let obj={
+                name:'afei',
+                age:18,
+                sex:'男',
+                marry:true
+            }
+
+            /*
+                for of只限于用于 iterator接口
+
+             */
+            for (let string of arr) {
+                console.log(string);          //拿到数组的值value
+            }
+
+            for (let objElement of Object.values(obj)) {
+                console.log(objElement);
+            }
+
+            for (let objElement of Object.entries(obj)) {      //打印数组
+                console.log(objElement);
+            }
+
+            for (let [key,value] of Object.entries(obj)) {     //结合使用适合遍历obj的键和值
+                console.log(key);
+                console.log(value);
+            }
+
+
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
